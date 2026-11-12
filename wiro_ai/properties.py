@@ -14,12 +14,15 @@ from . import catalog
 
 
 def path_options() -> set:
-    """Lets a file or folder field take paths relative to the .blend file ("//")."""
-    try:
-        StringProperty(options={"PATH_SUPPORTS_BLEND_RELATIVE"})
-    except TypeError:  # a Blender without this option
-        return set()
-    return {"PATH_SUPPORTS_BLEND_RELATIVE"}
+    """Lets a file or folder field take paths relative to the .blend file ("//").
+
+    Newer Blender releases mark a "//" path as missing without this option.
+    Older ones, such as 4.2, do not have the option, and the add-on resolves
+    "//" paths itself either way.
+    """
+    if "is_path_supports_blend_relative" in bpy.types.Property.bl_rna.properties:
+        return {"PATH_SUPPORTS_BLEND_RELATIVE"}
+    return set()
 
 
 def _image_model_items():
