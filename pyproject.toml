@@ -1,0 +1,19 @@
+# Tool settings only. The add-on itself is the wiro_ai folder, packaged with
+# "blender --command extension build"; it is not a pip package.
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "I", "SIM"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["wiro_ai", "tests"]
+known-third-party = ["bpy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["."]
+addopts = "-q --tb=short"

@@ -1,0 +1,57 @@
+name: Release
+
+# Builds the extension package with Blender and attaches it to the GitHub
+# release of the pushed tag, for example v1.0.0.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    env:
+      VERSION: "5.3.0"
+      SHA256: dacb8264197a3f7fda6001285a5a506fc97ee943881261c2c3bd63c882f22e05
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check the tag against the manifest
+        run: |
+          manifest_version="$(python3 -c 'import tomllib; print(tomllib.load(open("wiro_ai/blender_manifest.toml", "rb"))["version"])')"
+          test "v${manifest_version}" = "${GITHUB_REF_NAME}"
+
+      - name: Download Blender
+        run: |
+          file="blender-${VERSION}-linux-x64.tar.xz"
+          for mirror in \
+            https://mirrors.ocf.berkeley.edu/blender/release \
+            https://ftp.nluug.nl/pub/graphics/blender/release \
+            https://mirror.clarkson.edu/blender/release; do
+            if curl -fsSL --retry 3 -o "$file" "$mirror/Blender${VERSION%.*}/${file}"; then
+              break
+            fi
+          done
+          echo "${SHA256}  ${file}" | sha256sum -c -
+          mkdir blender
+          tar -xf "$file" -C blender --strip-components=1
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libx11-6 libxi6 libxxf86vm1 libxfixes3 libxrender1 libxkbcommon0 libsm6 libgl1 libegl1
+
+      - name: Validate and build
+        run: |
+          blender/blender --command extension validate wiro_ai
+          blender/blender --command extension build --source-dir wiro_ai --output-dir dist
+
+      - name: Attach the package to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "${GITHUB_REF_NAME}" > /dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" dist/wiro_ai-*.zip --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" dist/wiro_ai-*.zip --title "${GITHUB_REF_NAME}" --generate-notes
+          fi

@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-test:
+    name: Lint and unit tests (Python ${{ matrix.python }})
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        # Blender 4.2 to 4.5 ship Python 3.11, Blender 5.x ships Python 3.13.
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install tools
+        run: python -m pip install ruff==0.17.4 pytest
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Unit tests
+        run: python -m pytest
+
+  blender:
+    name: Blender ${{ matrix.version }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # The oldest supported release and the newest one.
+          - version: "4.2.23"
+            sha256: bea0eb3146be13eae6225409a117b215184f41b7f79e799f97cb3abb8f6dc404
+          - version: "5.3.0"
+            sha256: dacb8264197a3f7fda6001285a5a506fc97ee943881261c2c3bd63c882f22e05
+    env:
+      BLENDER_USER_RESOURCES: ${{ github.workspace }}/.blender-user
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Cache Blender
+        id: cache
+        uses: actions/cache@v6
+        with:
+          path: blender
+          key: blender-${{ matrix.version }}-linux-x64
+
+      - name: Download Blender
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          VERSION: ${{ matrix.version }}
+          SHA256: ${{ matrix.sha256 }}
+        run: |
+          series="${VERSION%.*}"
+          file="blender-${VERSION}-linux-x64.tar.xz"
+          for mirror in \
+            https://mirrors.ocf.berkeley.edu/blender/release \
+            https://ftp.nluug.nl/pub/graphics/blender/release \
+            https://mirror.clarkson.edu/blender/release; do
+            if curl -fsSL --retry 3 -o "$file" "$mirror/Blender${series}/${file}"; then
+              break
+            fi
+          done
+          echo "${SHA256}  ${file}" | sha256sum -c -
+          mkdir blender
+          tar -xf "$file" -C blender --strip-components=1
+
+      - name: Install the libraries Blender loads
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libx11-6 libxi6 libxxf86vm1 libxfixes3 libxrender1 libxkbcommon0 libsm6 libgl1 libegl1
+
+      - name: Validate the manifest
+        run: blender/blender --command extension validate wiro_ai
+
+      - name: Build the extension
+        run: blender/blender --command extension build --source-dir wiro_ai --output-dir dist
+
+      - name: Install the extension
+        run: blender/blender --command extension install-file -r user_default dist/wiro_ai-*.zip
+
+      - name: Smoke test in Blender
+        run: >-
+          blender/blender --background --factory-startup --python-exit-code 1
+          --python tests/blender/smoke_test.py -- tests/fixtures/cube.glb
+
+      - name: Upload the package
+        if: matrix.version == '5.3.0'
+        uses: actions/upload-artifact@v7
+        with:
+          name: wiro_ai-extension
+          path: dist/*.zip
