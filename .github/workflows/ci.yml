@@ -84,7 +84,9 @@ jobs:
         run: blender/blender --command extension validate wiro_ai
 
       - name: Build the extension
-        run: blender/blender --command extension build --source-dir wiro_ai --output-dir dist
+        run: |
+          mkdir -p dist
+          blender/blender --command extension build --source-dir wiro_ai --output-dir dist
 
       - name: Install the extension
         run: blender/blender --command extension install-file -r user_default dist/wiro_ai-*.zip

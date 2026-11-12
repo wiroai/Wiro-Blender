@@ -132,6 +132,7 @@ Validate and build the package with Blender 4.2 or later:
 
 ```bash
 blender --command extension validate wiro_ai
+mkdir -p dist
 blender --command extension build --source-dir wiro_ai --output-dir dist
 ```
 

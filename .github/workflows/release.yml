@@ -44,6 +44,7 @@ jobs:
       - name: Validate and build
         run: |
           blender/blender --command extension validate wiro_ai
+          mkdir -p dist
           blender/blender --command extension build --source-dir wiro_ai --output-dir dist
 
       - name: Attach the package to the release
