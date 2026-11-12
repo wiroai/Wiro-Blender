@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Add-on version. Keep it equal to "version" in blender_manifest.toml (a test checks)."""
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 
 def user_agent(blender_version: str = "") -> str:

@@ -1,176 +1,19 @@
 # SPDX-FileCopyrightText: 2026 Wiro AI
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""The Wiro AI tab in the 3D Viewport sidebar, and its operators.
+"""The Wiro AI tab in the 3D Viewport sidebar."""
 
-No "from __future__ import annotations" here: Blender reads operator
-property annotations at registration and needs real objects.
-"""
-
-import os
 import textwrap
+import time
 
 import bpy
 
-from . import api, catalog, pipeline, preferences, runtime
+from . import forms, materials, pipeline, preferences, pricing, runtime
+
+CATEGORY = "Wiro AI"
 
 
 def _settings(context):
     return context.scene.wiro_ai
-
-
-def _build_request(context, settings) -> pipeline.JobRequest:
-    mode = settings.mode
-    request = pipeline.JobRequest(
-        mode=mode,
-        mesh_model=catalog.mesh_model(settings.mesh_model),
-        mesh_settings=settings.mesh_settings(),
-        output_dir=preferences.output_dir(context),
-        prompt=settings.prompt.strip(),
-        image_path=bpy.path.abspath(settings.image_path) if settings.image_path else "",
-        image_model=catalog.image_model(settings.image_model) if mode == pipeline.TEXT else None,
-        framing=settings.framing,
-    )
-    return request
-
-
-def _check_inputs(settings) -> str:
-    if settings.mode == pipeline.TEXT:
-        if not settings.prompt.strip():
-            return "Write a prompt first."
-        return ""
-    path = bpy.path.abspath(settings.image_path) if settings.image_path else ""
-    if not path:
-        return "Choose an image first."
-    if not os.path.isfile(path):
-        return f"Image not found: {path}"
-    if not path.lower().endswith(api.IMAGE_EXTENSIONS):
-        return "Use a PNG, JPEG or WebP image."
-    return ""
-
-
-class WIRO_AI_OT_generate(bpy.types.Operator):
-    bl_idname = "wiro_ai.generate"
-    bl_label = "Generate 3D Model"
-    bl_description = (
-        "Send the prompt or image to Wiro AI, then import the GLB it returns. The run is billed to your Wiro AI wallet"
-    )
-    bl_options = {"REGISTER"}
-
-    @classmethod
-    def poll(cls, context):
-        return not runtime.running()
-
-    def execute(self, context):
-        settings = _settings(context)
-        if not preferences.online():
-            self.report({"ERROR"}, "Turn on Allow Online Access in Preferences > System > Network first.")
-            return {"CANCELLED"}
-        problem = _check_inputs(settings)
-        if problem:
-            self.report({"ERROR"}, problem)
-            return {"CANCELLED"}
-        try:
-            client = preferences.client(context)
-            request = _build_request(context, settings)
-        except api.WiroError as exc:
-            self.report({"ERROR"}, str(exc))
-            return {"CANCELLED"}
-        model = request.mesh_model
-        meta = {
-            "mesh_slug": model.slug,
-            "object_name": f"Wiro {model.label}",
-            "place_at_cursor": settings.place_at_cursor,
-            "prompt": request.prompt if request.mode == pipeline.TEXT else "",
-            "mode": request.mode,
-        }
-        result = runtime.start(pipeline.Job(client, request), meta)
-        if result is None:
-            self.report({"INFO"}, f"Wiro AI: generating with {model.label}.")
-            return {"FINISHED"}
-        # Background mode: the job already ran.
-        if result.get("phase") == "done":
-            self.report(
-                {"INFO"},
-                f"Wiro AI: imported {', '.join(result['objects'])} in {result['seconds']:.0f} s "
-                f"({catalog.format_price(result['cost'])}).",
-            )
-            return {"FINISHED"}
-        self.report({"ERROR"}, result.get("error") or f"Wiro AI: {result.get('phase')}.")
-        return {"CANCELLED"}
-
-
-class WIRO_AI_OT_cancel(bpy.types.Operator):
-    bl_idname = "wiro_ai.cancel"
-    bl_label = "Cancel"
-    bl_description = "Stop the running generation. A queued task is cancelled, a running one is stopped"
-
-    @classmethod
-    def poll(cls, context):
-        return runtime.running()
-
-    def execute(self, context):
-        runtime.cancel()
-        return {"FINISHED"}
-
-
-class WIRO_AI_OT_reimport(bpy.types.Operator):
-    bl_idname = "wiro_ai.reimport"
-    bl_label = "Import Again"
-    bl_description = "Import the last generated GLB again, without a new run"
-
-    @classmethod
-    def poll(cls, context):
-        path = runtime.last_result().get("glb_path") or ""
-        return bool(path) and os.path.isfile(path) and not runtime.running()
-
-    def execute(self, context):
-        try:
-            roots = runtime.reimport_last(context)
-        except Exception as exc:
-            self.report({"ERROR"}, str(exc))
-            return {"CANCELLED"}
-        self.report({"INFO"}, f"Imported {', '.join(obj.name for obj in roots)}.")
-        return {"FINISHED"}
-
-
-class WIRO_AI_OT_use_reference(bpy.types.Operator):
-    bl_idname = "wiro_ai.use_reference"
-    bl_label = "Use in Image to 3D"
-    bl_description = (
-        "Switch to Image to 3D with this reference image, to try another 3D model without drawing a new picture"
-    )
-
-    @classmethod
-    def poll(cls, context):
-        path = runtime.last_result().get("reference_path") or ""
-        return bool(path) and os.path.isfile(path) and not runtime.running()
-
-    def execute(self, context):
-        settings = _settings(context)
-        settings.image_path = runtime.last_result()["reference_path"]
-        settings.mode = pipeline.IMAGE
-        return {"FINISHED"}
-
-
-class WIRO_AI_OT_open_folder(bpy.types.Operator):
-    bl_idname = "wiro_ai.open_folder"
-    bl_label = "Open Folder"
-    bl_description = "Open the folder with the generated GLB files and reference images"
-
-    def execute(self, context):
-        folder = preferences.output_dir(context)
-        bpy.ops.wm.path_open(filepath=folder)
-        return {"FINISHED"}
-
-
-class WIRO_AI_OT_open_preferences(bpy.types.Operator):
-    bl_idname = "wiro_ai.open_preferences"
-    bl_label = "Add API Key"
-    bl_description = "Open the Wiro AI add-on preferences"
-
-    def execute(self, context):
-        bpy.ops.preferences.addon_show(module=preferences.PACKAGE)
-        return {"FINISHED"}
 
 
 def _wrapped(layout, text: str, context, icon: str = "NONE") -> None:
@@ -178,37 +21,63 @@ def _wrapped(layout, text: str, context, icon: str = "NONE") -> None:
     scale = max(0.5, context.preferences.view.ui_scale)
     chars = max(20, int(width / (7.0 * scale)))
     for index, line in enumerate(textwrap.wrap(text, chars) or [""]):
-        layout.label(text=line, icon=icon if index == 0 else "BLANK1" if icon != "NONE" else "NONE")
+        layout.label(text=line, icon=icon if index == 0 else ("BLANK1" if icon != "NONE" else "NONE"))
 
 
-def _model_options(layout, settings) -> None:
-    model = catalog.mesh_model(settings.mesh_model)
-    if model.key == "TRELLIS_2":
-        layout.prop(settings, "trellis_resolution")
-    elif model.key == "PIXAL3D":
-        layout.prop(settings, "pixal_resolution")
-    else:
-        layout.prop(settings, "hunyuan_texture")
-    if model.texture_sizes:
-        layout.prop(settings, "texture_size")
-    layout.prop(settings, "face_limit")
+def _quote(form):
+    model = runtime.catalog.schema(form.slug) if form.slug else None
+    if model is None or not forms.ready(form):
+        return None
+    params = forms.price_params(form, model)
+    prompt = model.prompt_param()
+    chars = len(params.get(prompt.id, "")) if prompt and isinstance(params.get(prompt.id), str) else 0
+    return pricing.quote(model, params, prompt_chars=chars)
 
 
-class WIRO_AI_PT_generate(bpy.types.Panel):
-    bl_idname = "WIRO_AI_PT_generate"
+def _price_row(layout, quotes: list) -> None:
+    quotes = [q for q in quotes if q is not None]
+    row = layout.row()
+    row.alignment = "CENTER"
+    if not quotes:
+        row.label(text="Price: loading the model's settings...")
+        return
+    total = pricing.total(quotes) if len(quotes) > 1 else quotes[0]
+    balance = runtime.status().get("balance")
+    text = f"Price per run: {total.label}"
+    if balance is not None:
+        text += f"   Balance: ${balance:,.2f}"
+    row.label(text=text)
+
+
+def _model_box(layout, settings, form_attr: str, enum_attr: str, title: str, *, expanded_default=False) -> None:
+    form = getattr(settings, form_attr)
+    layout.prop(settings, enum_attr, text=title)
+    if not form.slug:
+        return
+    if not forms.ready(form):
+        message = runtime.schema_status(form.slug) or "Loading this model's settings..."
+        layout.label(text=message, icon="TIME")
+        return
+    forms.draw(layout, settings, form_attr, section="main")
+    if forms.count(form, "more"):
+        header, body = layout.panel(f"wiro_ai_{form_attr}_more", default_closed=not expanded_default)
+        header.label(text="More Options")
+        if body is not None:
+            forms.draw(body, settings, form_attr, section="more")
+            body.operator("wiro_ai.reset_form", text="Reset Settings", icon="LOOP_BACK").form = form_attr
+
+
+class WIRO_AI_PT_main(bpy.types.Panel):
+    bl_idname = "WIRO_AI_PT_main"
     bl_label = "Wiro AI"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_category = "Wiro AI"
+    bl_category = CATEGORY
+    bl_order = 0
 
     def draw(self, context):
         layout = self.layout
-        layout.use_property_split = True
-        layout.use_property_decorate = False
-        settings = _settings(context)
-        job = runtime.current()
-
-        if not preferences.online():
+        if not runtime.online():
             box = layout.box()
             box.label(text="Online access is off", icon="ERROR")
             _wrapped(
@@ -219,103 +88,348 @@ class WIRO_AI_PT_generate(bpy.types.Panel):
             box = layout.box()
             box.label(text="No API key yet", icon="INFO")
             box.operator("wiro_ai.open_preferences", icon="PREFERENCES")
+        status = runtime.status()
+        row = layout.row(align=True)
+        if status.get("balance") is not None:
+            row.label(text=f"Balance: ${status['balance']:,.2f}", icon="FUND")
+        else:
+            row.label(text="1,000+ models on Wiro AI", icon="WORLD")
+        row.operator("wiro_ai.refresh", text="", icon="FILE_REFRESH")
+        if status.get("catalog"):
+            _wrapped(layout, status["catalog"], context, icon="INFO")
+        active = [item for item in runtime.jobs() if item.state in ("running", "waiting")]
+        if active:
+            layout.label(text=f"{len(active)} job(s) in the queue", icon="SORTTIME")
 
-        inputs = layout.column()
-        inputs.enabled = job is None
-        # Mode, prompt and image path use the full width, so they are not cut short.
-        wide = inputs.column()
+
+class WIRO_AI_PT_generate_3d(bpy.types.Panel):
+    bl_idname = "WIRO_AI_PT_generate_3d"
+    bl_label = "3D Model"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = CATEGORY
+    bl_order = 1
+
+    def draw_header(self, context):
+        self.layout.label(text="", icon="MESH_MONKEY")
+
+    def draw(self, context):
+        layout = self.layout
+        layout.use_property_split = True
+        layout.use_property_decorate = False
+        settings = _settings(context)
+
+        wide = layout.column()
         wide.use_property_split = False
         wide.row().prop(settings, "mode", expand=True)
         if settings.mode == pipeline.TEXT:
             wide.label(text="Prompt")
             wide.prop(settings, "prompt", text="")
-            inputs.prop(settings, "image_model")
-            inputs.prop(settings, "framing")
+            _model_box(layout, settings, "reference_form", "reference_model", "Image Model")
+            layout.prop(settings, "framing")
         else:
-            wide.label(text="Image")
-            wide.prop(settings, "image_path", text="")
-            icon = runtime.preview_icon(bpy.path.abspath(settings.image_path)) if settings.image_path else 0
-            if icon:
-                inputs.template_icon(icon_value=icon, scale=7.0)
+            mesh = runtime.catalog.schema(settings.mesh_form.slug)
+            image_param = mesh.image_param() if mesh else None
+            limit = image_param.max_files if image_param else 1
+            header = "Pictures" if limit > 1 else "Picture"
+            wide.label(text=f"{header} ({len(settings.images)}/{limit})" if limit > 1 else header)
+            for index, entry in enumerate(settings.images):
+                row = wide.row(align=True)
+                if entry.image is None:
+                    row.prop(entry, "path", text="")
+                row.prop(entry, "image", text="")
+                row.operator("wiro_ai.image_remove", text="", icon="X").index = index
+            if len(settings.images) < max(1, limit):
+                wide.operator("wiro_ai.image_add", icon="ADD")
+            first = settings.images[0] if len(settings.images) else None
+            if first is not None and first.path and not first.image:
+                icon = runtime.preview_icon(bpy.path.abspath(first.path))
+                if icon:
+                    layout.template_icon(icon_value=icon, scale=6.0)
+        layout.prop(settings, "use_cutout")
+        if settings.use_cutout:
+            _model_box(layout, settings, "cutout_form", "cutout_model", "Cutout Model")
 
-        inputs.separator()
-        inputs.prop(settings, "mesh_model")
-        _model_options(inputs, settings)
+        layout.separator()
+        _model_box(layout, settings, "mesh_form", "mesh_model", "3D Model", expanded_default=False)
 
-        options = inputs.column()
-        options.prop(settings, "show_options", icon="DOWNARROW_HLT" if settings.show_options else "RIGHTARROW")
-        if settings.show_options:
-            model = catalog.mesh_model(settings.mesh_model)
-            options.prop(settings, "seed")
-            if model.key == "HUNYUAN3D_2_1":
-                options.prop(settings, "hunyuan_octree")
-                options.prop(settings, "remove_background")
-            options.prop(settings, "place_at_cursor")
+        layout.separator()
+        quotes = [_quote(settings.mesh_form)]
+        if settings.mode == pipeline.TEXT:
+            quotes.append(_quote(settings.reference_form))
+        if settings.use_cutout:
+            quotes.append(_quote(settings.cutout_form))
+        _price_row(layout, quotes)
+        button = layout.row()
+        button.scale_y = 1.5
+        button.enabled = runtime.online()
+        button.operator("wiro_ai.generate", icon="SHADERFX")
 
-        if job is None:
-            layout.separator()
-            price = layout.row()
-            price.alignment = "CENTER"
-            price.label(text=f"Price per run: {catalog.format_price(settings.price())}")
-            button = layout.row()
-            button.scale_y = 1.6
-            button.enabled = preferences.online()
-            button.operator("wiro_ai.generate", icon="SHADERFX")
+
+class WIRO_AI_PT_import_options(bpy.types.Panel):
+    bl_idname = "WIRO_AI_PT_import_options"
+    bl_label = "Import Options"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = CATEGORY
+    bl_parent_id = "WIRO_AI_PT_generate_3d"
+    bl_options = {"DEFAULT_CLOSED"}
+
+    def draw(self, context):
+        layout = self.layout
+        layout.use_property_split = True
+        layout.use_property_decorate = False
+        options = _settings(context).import_options
+        layout.prop(options, "location")
+        layout.prop(options, "origin")
+        layout.prop(options, "size")
+        if options.size == "FIT":
+            layout.prop(options, "target_size")
         else:
-            self._draw_job(layout, context, job)
+            layout.prop(options, "scale")
+        layout.prop(options, "use_collection")
+        layout.prop(options, "cleanup")
 
-        self._draw_last(layout, context)
 
-    def _draw_job(self, layout, context, job) -> None:
-        state = job.snapshot()
-        box = layout.box()
-        box.label(text=state.title, icon="TIME")
-        bar = box.row()
-        bar.progress(factor=state.progress, type="BAR", text=f"{int(state.progress * 100)}%  {state.elapsed:.0f} s")
-        if state.status:
-            box.label(text=state.status)
-        if state.step:
-            box.label(text=state.step, icon="BLANK1")
-        icon = runtime.preview_icon(state.reference_path)
-        if icon:
-            box.template_icon(icon_value=icon, scale=7.0)
-        box.operator("wiro_ai.cancel", icon="CANCEL")
+class WIRO_AI_PT_texture(bpy.types.Panel):
+    bl_idname = "WIRO_AI_PT_texture"
+    bl_label = "Texture"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = CATEGORY
+    bl_order = 2
 
-    def _draw_last(self, layout, context) -> None:
-        last = runtime.last_result()
-        if not last:
+    def draw_header(self, context):
+        self.layout.label(text="", icon="TEXTURE")
+
+    def draw(self, context):
+        layout = self.layout
+        layout.use_property_split = True
+        layout.use_property_decorate = False
+        settings = _settings(context)
+        wide = layout.column()
+        wide.use_property_split = False
+        wide.row().prop(settings, "texture_mode", expand=True)
+        edit = settings.texture_mode == "EDIT"
+        if edit:
+            obj = context.active_object
+            image = materials.base_color_image(obj) if obj else None
+            if image is None:
+                wide.label(text="Select an object with a base color texture", icon="INFO")
+            else:
+                wide.label(text=f"{obj.name}: {image.name}", icon="IMAGE_DATA")
+        else:
+            targets = materials.surface_objects(context.selected_objects)
+            text = f"{len(targets)} selected object(s)" if targets else "Select the objects to texture"
+            wide.label(text=text, icon="OBJECT_DATA" if targets else "INFO")
+        wide.label(text="Prompt")
+        wide.prop(settings, "texture_prompt", text="")
+        if edit:
+            _model_box(layout, settings, "texture_edit_form", "texture_edit_model", "Edit Model")
+        else:
+            _model_box(layout, settings, "texture_form", "texture_model", "Image Model")
+            layout.prop(settings, "tileable")
+            header, body = layout.panel("wiro_ai_material_options", default_closed=True)
+            header.label(text="Material")
+            if body is not None:
+                body.prop(settings, "mapping")
+                body.prop(settings, "tiling")
+                body.prop(settings, "bump")
+                body.prop(settings, "roughness")
+                body.prop(settings, "replace_materials")
+        layout.separator()
+        _price_row(layout, [_quote(settings.texture_edit_form if edit else settings.texture_form)])
+        button = layout.row()
+        button.scale_y = 1.5
+        button.enabled = runtime.online()
+        button.operator("wiro_ai.generate_texture", text="Edit Texture" if edit else "Generate Texture",
+                        icon="BRUSH_DATA")  # fmt: skip
+
+
+class WIRO_AI_UL_results(bpy.types.UIList):
+    bl_idname = "WIRO_AI_UL_results"
+
+    def draw_item(self, context, layout, data, item, icon, active_data, active_propname, index):
+        row = layout.row(align=True)
+        row.label(text=item.slug)
+        price = row.row()
+        price.alignment = "RIGHT"
+        price.label(text=item.price)
+
+
+class WIRO_AI_PT_run(bpy.types.Panel):
+    bl_idname = "WIRO_AI_PT_run"
+    bl_label = "Run Any Model"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = CATEGORY
+    bl_order = 3
+    bl_options = {"DEFAULT_CLOSED"}
+
+    def draw_header(self, context):
+        self.layout.label(text="", icon="VIEWZOOM")
+
+    def draw(self, context):
+        layout = self.layout
+        layout.use_property_split = True
+        layout.use_property_decorate = False
+        settings = _settings(context)
+        wm = context.window_manager
+        wide = layout.column(align=True)
+        wide.use_property_split = False
+        row = wide.row(align=True)
+        row.prop(settings, "run_search", text="", icon="VIEWZOOM")
+        row.operator("wiro_ai.search_models", text="", icon="FORWARD")
+        wide.prop(settings, "run_category", text="")
+        if len(wm.wiro_ai_results):
+            layout.template_list("WIRO_AI_UL_results", "", wm, "wiro_ai_results", wm, "wiro_ai_result_index", rows=5)
+        form = settings.run_form
+        if not form.slug:
+            layout.label(text="Search, then pick a model from the list", icon="INFO")
             return
+        model = runtime.catalog.schema(form.slug)
         box = layout.box()
-        phase = last.get("phase")
-        if phase == "done":
-            names = ", ".join(last.get("objects") or [])
-            box.label(text=f"Imported {names}", icon="CHECKMARK")
-            stats = last.get("stats") or {}
-            if stats:
-                box.label(text=f"{stats.get('faces', 0):,} faces, {len(stats.get('materials', []))} material(s)")
-            box.label(text=f"{last.get('seconds', 0):.0f} s, {catalog.format_price(last.get('cost'))}")
-        elif phase == "cancelled":
-            box.label(text="Cancelled", icon="CANCEL")
-        else:
-            _wrapped(box, last.get("error") or "The generation failed.", context, icon="ERROR")
-        reference = last.get("reference_path") or ""
-        icon = runtime.preview_icon(reference)
-        if icon:
-            box.template_icon(icon_value=icon, scale=7.0)
-            box.operator("wiro_ai.use_reference", icon="IMAGE_DATA")
-        row = box.row(align=True)
-        row.operator("wiro_ai.reimport", icon="IMPORT")
-        row.operator("wiro_ai.open_folder", icon="FILE_FOLDER")
+        box.label(text=form.slug, icon="NODE")
+        if model is not None and model.description:
+            _wrapped(box, model.description[:220], context)
+        if not forms.ready(form):
+            box.label(text=runtime.schema_status(form.slug) or "Loading this model's settings...", icon="TIME")
+            return
+        forms.draw(box, settings, "run_form", section="main")
+        if forms.count(form, "more"):
+            header, body = box.panel("wiro_ai_run_more", default_closed=True)
+            header.label(text="More Options")
+            if body is not None:
+                forms.draw(body, settings, "run_form", section="more")
+        box.prop(settings, "image_output")
+        _price_row(layout, [_quote(form)])
+        button = layout.row()
+        button.scale_y = 1.5
+        button.enabled = runtime.online()
+        button.operator("wiro_ai.run_model", icon="PLAY")
+
+
+class WIRO_AI_PT_queue(bpy.types.Panel):
+    bl_idname = "WIRO_AI_PT_queue"
+    bl_label = "Queue"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = CATEGORY
+    bl_order = 4
+
+    def draw_header(self, context):
+        self.layout.label(text="", icon="SORTTIME")
+
+    def draw(self, context):
+        layout = self.layout
+        items = runtime.jobs()
+        if not items:
+            layout.label(text="No jobs running")
+            return
+        for item in items:
+            box = layout.box()
+            row = box.row()
+            row.label(text=item.title, icon="TIME" if item.state == "running" else "PAUSE")
+            row.operator("wiro_ai.cancel_job", text="", icon="X").job_id = item.id
+            if item.state == "waiting":
+                box.label(text="Waiting for a free slot")
+                continue
+            state = item.job.snapshot()
+            box.label(text=state.title)
+            box.progress(factor=state.progress, type="BAR", text=f"{int(state.progress * 100)}%  {state.elapsed:.0f} s")
+            if state.status:
+                box.label(text=state.status if not state.step else f"{state.status}: {state.step}")
+            icon = runtime.preview_icon(state.preview_path)
+            if icon:
+                box.template_icon(icon_value=icon, scale=5.0)
+
+
+def _ago(stamp: float) -> str:
+    seconds = max(0, time.time() - float(stamp or 0))
+    if seconds < 90:
+        return "just now"
+    if seconds < 5400:
+        return f"{int(seconds // 60)} min ago"
+    if seconds < 129600:
+        return f"{int(seconds // 3600)} h ago"
+    return time.strftime("%b %d", time.localtime(stamp))
+
+
+KIND_ICONS = {"3d": "MESH_MONKEY", "texture": "TEXTURE", "run": "NODE"}
+
+
+class WIRO_AI_PT_history(bpy.types.Panel):
+    bl_idname = "WIRO_AI_PT_history"
+    bl_label = "History"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = CATEGORY
+    bl_order = 5
+    bl_options = {"DEFAULT_CLOSED"}
+
+    def draw_header(self, context):
+        self.layout.label(text="", icon="RECOVER_LAST")
+
+    def draw(self, context):
+        layout = self.layout
+        history = runtime.history
+        entries = history.entries if history is not None else []
+        if not entries:
+            layout.label(text="Finished runs show up here")
+            return
+        for entry in entries[:12]:
+            box = layout.box()
+            ok = entry.get("status") == "done"
+            row = box.row()
+            row.label(text=entry.get("title") or "Run", icon=KIND_ICONS.get(entry.get("kind"), "DOT"))
+            row.label(text=_ago(entry.get("time", 0)))
+            if ok:
+                cost = pricing.format_usd(float(entry.get("cost") or 0))
+                detail = f"{entry.get('seconds', 0):.0f} s, {cost}"
+                stats = entry.get("stats") or {}
+                if stats.get("faces"):
+                    detail = f"{stats['faces']:,} faces, " + detail
+                box.label(text=detail)
+            else:
+                _wrapped(box, entry.get("error") or entry.get("status", ""), context, icon="ERROR")
+            icon = runtime.preview_icon(entry.get("reference") or entry.get("texture") or "")
+            if icon:
+                box.template_icon(icon_value=icon, scale=4.0)
+            buttons = box.row(align=True)
+            kind = entry.get("kind")
+            if ok and kind == "3d":
+                op = buttons.operator("wiro_ai.history", text="Import", icon="IMPORT")
+                op.entry_id, op.action = entry["id"], "IMPORT"
+                if entry.get("reference"):
+                    op = buttons.operator("wiro_ai.history", text="Picture", icon="IMAGE_DATA")
+                    op.entry_id, op.action = entry["id"], "PICTURE"
+            elif ok and kind == "texture":
+                op = buttons.operator("wiro_ai.history", text="Apply", icon="BRUSH_DATA")
+                op.entry_id, op.action = entry["id"], "APPLY"
+            elif ok:
+                op = buttons.operator("wiro_ai.history", text="Load", icon="IMPORT")
+                op.entry_id, op.action = entry["id"], "LOAD"
+            if entry.get("prompt"):
+                op = buttons.operator("wiro_ai.history", text="", icon="TEXT")
+                op.entry_id, op.action = entry["id"], "REUSE"
+            op = buttons.operator("wiro_ai.history", text="", icon="FILE_FOLDER")
+            op.entry_id, op.action = entry["id"], "OPEN"
+            op = buttons.operator("wiro_ai.history", text="", icon="TRASH")
+            op.entry_id, op.action = entry["id"], "REMOVE"
+        row = layout.row()
+        row.label(text=f"{len(entries)} runs, {pricing.format_usd(history.total_cost())} in total")
+        row.operator("wiro_ai.history_clear", text="", icon="TRASH")
 
 
 classes = (
-    WIRO_AI_OT_generate,
-    WIRO_AI_OT_cancel,
-    WIRO_AI_OT_reimport,
-    WIRO_AI_OT_use_reference,
-    WIRO_AI_OT_open_folder,
-    WIRO_AI_OT_open_preferences,
-    WIRO_AI_PT_generate,
+    WIRO_AI_PT_main,
+    WIRO_AI_PT_generate_3d,
+    WIRO_AI_PT_import_options,
+    WIRO_AI_PT_texture,
+    WIRO_AI_UL_results,
+    WIRO_AI_PT_run,
+    WIRO_AI_PT_queue,
+    WIRO_AI_PT_history,
 )
 
 

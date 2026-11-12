@@ -10,7 +10,7 @@ import os
 import threading
 
 import bpy
-from bpy.props import StringProperty
+from bpy.props import IntProperty, StringProperty
 
 from . import api, version
 from .properties import path_options
@@ -63,7 +63,7 @@ _check = {"running": False, "message": "", "ok": False}
 class WIRO_AI_OT_check_key(bpy.types.Operator):
     bl_idname = "wiro_ai.check_key"
     bl_label = "Check API Key"
-    bl_description = "Ask Wiro AI whether the API key works. This is free"
+    bl_description = "Ask Wiro AI whether the API key works and read the wallet balance. This is free"
 
     @classmethod
     def poll(cls, context):
@@ -82,8 +82,11 @@ class WIRO_AI_OT_check_key(bpy.types.Operator):
 
         def work():
             try:
-                wiro.check_key()
-                _check.update(message="The API key works.", ok=True)
+                balance = wiro.balance()
+                message = "The API key works."
+                if balance is not None:
+                    message += f" Wallet balance: ${balance:,.2f}."
+                _check.update(message=message, ok=True)
             except api.WiroError as exc:
                 _check.update(message=str(exc), ok=False)
             finally:
@@ -117,6 +120,13 @@ class WiroAIPreferences(bpy.types.AddonPreferences):
         subtype="PASSWORD",
         default="",
     )
+    max_parallel: IntProperty(
+        name="Jobs at Once",
+        description="How many jobs run on Wiro AI at the same time. The rest wait in the queue",
+        default=2,
+        min=1,
+        max=8,
+    )
     output_dir: StringProperty(
         name="Save files to",
         description=(
@@ -143,6 +153,7 @@ class WiroAIPreferences(bpy.types.AddonPreferences):
             col.label(text="Using the WIRO_API_KEY environment variable.", icon="INFO")
         layout.separator()
         layout.prop(self, "output_dir")
+        layout.prop(self, "max_parallel")
         if not online():
             box = layout.box()
             box.label(text="Online access is off. Wiro AI needs it to run models.", icon="ERROR")

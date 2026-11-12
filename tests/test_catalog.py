@@ -1,105 +1,109 @@
 # SPDX-FileCopyrightText: 2026 Wiro AI
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import re
+import json
 
-import pytest
-
-from wiro_ai import catalog
-
-
-def settings(**changes):
-    return catalog.MeshSettings(**changes)
+from tests.fakes import BUNDLED, FakeTransport, bundled_catalog
+from wiro_ai import api, catalog
 
 
-def test_slugs_and_defaults():
-    for model in (*catalog.IMAGE_MODELS, *catalog.MESH_MODELS):
-        assert re.fullmatch(r"[a-z0-9-]+/[a-z0-9.-]+", model.slug), model.slug
-        assert model.page == f"https://wiro.ai/models/{model.slug}"
-    for model in catalog.MESH_MODELS:
-        assert model.default_detail in [row[0] for row in model.details]
+def client(transport):
+    return api.Client(None, user_agent="Wiro-Blender/test", transport=transport)
 
 
-def test_trellis_params():
-    model = catalog.mesh_model("TRELLIS_2")
-    params = catalog.mesh_params(model, settings(detail="1536_cascade", texture_size="4096", face_limit=5, seed=42))
-    assert params == {
-        "pipeline_type": "1536_cascade",
-        "texture_size": "4096",
-        "decimation_target": "10000",
-        "seed": "42",
-    }
+def tool(owner, project, **extra):
+    return {"cleanslugowner": owner, "cleanslugproject": project, "title": project.title(), "categories": [], **extra}
 
 
-def test_unknown_values_fall_back_to_defaults():
-    model = catalog.mesh_model("PIXAL3D")
-    params = catalog.mesh_params(model, settings(detail="512", texture_size="999", face_limit=9_000_000, seed=-3))
-    assert params == {
-        "pipeline_type": "1024_cascade",
-        "texture_size": "2048",
-        "decimation_target": "2000000",
-        "seed": "0",
-    }
-    assert catalog.mesh_model("NOPE").key == "TRELLIS_2"
-    assert catalog.image_model("NOPE").key == "NANO_BANANA_2_1"
+def test_bundled_lists_preferred_first():
+    shipped = bundled_catalog()
+    assert [row["slug"] for row in shipped.models("3d-generation")][:3] == list(catalog.PREFERRED["3d-generation"])
+    assert shipped.models("text-to-image")[0]["slug"] == "google/nano-banana-2-1"
+    assert shipped.models("background-removal")[0]["slug"] == "wiro/remove-background"
+    for slug in catalog.BUNDLED_SCHEMAS:
+        assert shipped.has_schema(slug), slug
+    for category, slug in catalog.DEFAULTS.items():
+        assert slug in [row["slug"] for row in shipped.models(category)], (category, slug)
 
 
-def test_hunyuan_params():
-    model = catalog.mesh_model("HUNYUAN3D_2_1")
-    params = catalog.mesh_params(
-        model, settings(detail="384", face_limit=500_000, textured=False, remove_background=False)
+def test_hidden_models():
+    assert catalog.is_hidden({"slug": "a/qwen-uncensored", "title": "x"})
+    assert catalog.is_hidden({"slug": "a/b", "title": "NSFW Image Maker"})
+    assert not catalog.is_hidden({"slug": "a/nsfw-detector", "title": "NSFW Detector"})
+    assert not catalog.is_hidden({"slug": "microsoft/trellis-2", "title": "Trellis-2"})
+
+
+def test_summary_and_trim():
+    row = catalog.summary_row(
+        tool(
+            "Microsoft",
+            "Trellis-2",
+            dynamicprice='[{"inputs": {}, "price": 0.3, "priceMethod": "cpr"}]',
+            approximatelycost="0",
+            taskstat={"runcount": 7},
+            readme="long readme",
+        )
     )
-    assert params == {
-        "octree_resolution": "384",
-        "max_facenum": "200000",
-        "generate_texture": "false",
-        "remove_background": "false",
-        "seed": "0",
-    }
+    assert row["slug"] == "microsoft/trellis-2" and row["runs"] == 7 and row["price_rows"][0]["price"] == 0.3
+    assert catalog.summary_row({"title": "no slug"}) == {}
+    trimmed = catalog.trim_tool(
+        tool("a", "b", readme="x", parameters=json.dumps([{"items": [{"id": "p", "type": "text", "class": "is-12"}]}]))
+    )
+    assert "readme" not in trimmed
+    assert trimmed["parameters"] == [{"items": [{"id": "p", "type": "text"}]}]
 
 
-@pytest.mark.parametrize(
-    ("key", "changes", "price"),
-    [
-        ("TRELLIS_2", {"detail": "512"}, 0.25),
-        ("TRELLIS_2", {"detail": "1024_cascade"}, 0.30),
-        ("TRELLIS_2", {"detail": "1536_cascade"}, 0.35),
-        ("PIXAL3D", {"detail": "1024_cascade"}, 0.30),
-        ("PIXAL3D", {"detail": "1536_cascade"}, 0.42),
-        ("HUNYUAN3D_2_1", {"textured": True}, 0.90),
-        ("HUNYUAN3D_2_1", {"textured": False}, 0.30),
-    ],
-)
-def test_mesh_prices(key, changes, price):
-    assert catalog.mesh_price(catalog.mesh_model(key), settings(**changes)) == pytest.approx(price)
+def test_refresh_store_and_cache(tmp_path):
+    cache = tmp_path / "cache" / "catalog.json"
+    live = catalog.Catalog(str(BUNDLED), str(cache))
+    version = live.version
+    transport = FakeTransport(tools={"3d-generation": [tool("meshy", "meshy-6"), tool("microsoft", "trellis-2")]})
+    live.refresh(client(transport), ["3d-generation"])
+    request = transport.requests[0]
+    assert "x-api-key" not in request["headers"], "the catalog is read without the key"
+    assert json.loads(request["body"])["categories"] == ["3d-generation"]
+    assert live.version > version
+    slugs = [row["slug"] for row in live.models("3d-generation")]
+    assert slugs[0] == "microsoft/trellis-2" and "meshy/meshy-6" in slugs
+    assert not live.stale("3d-generation") and live.stale("text-to-image")
+    reloaded = catalog.Catalog(str(BUNDLED), str(cache))
+    assert "meshy/meshy-6" in [row["slug"] for row in reloaded.models("3d-generation")]
 
 
-def test_expected_seconds_are_positive():
-    for model in catalog.MESH_MODELS:
-        for row in model.details:
-            assert catalog.mesh_seconds(model, settings(detail=row[0], textured=True)) > 0
+def test_fetch_schema(tmp_path):
+    detail = tool("meshy", "meshy-6", parameters=[{"items": [{"id": "inputImage", "type": "combinefileinput"}]}])
+    live = catalog.Catalog("", str(tmp_path / "c.json"))
+    parsed = live.fetch_schema(client(FakeTransport(tools={"meshy/meshy-6": detail})), "meshy/meshy-6")
+    assert parsed.image_param().id == "inputImage" and live.has_schema("meshy/meshy-6")
+    try:
+        live.fetch_schema(client(FakeTransport()), "nobody/nothing")
+    except ValueError as exc:
+        assert "no model" in str(exc)
+    else:
+        raise AssertionError("expected an error")
 
 
-def test_reference_prompt():
-    nano = catalog.image_model("NANO_BANANA_2_1")
-    gpt = catalog.image_model("GPT_IMAGE_2_6_FLARE")
-    assert catalog.reference_prompt("  a red   fox ", nano, False) == "a red fox"
-    framed = catalog.reference_prompt("a red fox", nano, True)
-    assert framed.startswith("a red fox. Show one whole object") and "plain white background" in framed
-    assert "transparent background" in catalog.reference_prompt("a red fox!", gpt, True)
-    assert catalog.reference_prompt("a red fox!", gpt, True).startswith("a red fox! Show")
+def test_search_skips_live_models():
+    rows = [
+        tool("a", "image-model", categories=["text-to-image"]),
+        tool("b", "voice", dynamicprice=[{"inputs": {}, "price": 0, "priceMethod": "cp-realtimeturn"}]),
+        tool("c", "chat-uncensored"),
+    ]
+    transport = FakeTransport(tools={"": rows})
+    found = bundled_catalog().search(client(transport), "model")
+    assert [row["slug"] for row in found] == ["a/image-model"]
+    assert json.loads(transport.requests[0]["body"])["search"] == "model"
 
 
-def test_image_params_keep_model_settings():
-    gpt = catalog.image_model("GPT_IMAGE_2_6_FLARE")
-    params = catalog.image_params(gpt, "a lamp")
-    assert params["prompt"] == "a lamp" and params["background"] == "transparent" and params["samples"] == "1"
-    assert "prompt" not in gpt.params
-
-
-@pytest.mark.parametrize(
-    ("value", "text"),
-    [(0.0336, "$0.0336"), (0.3, "$0.30"), (0.25, "$0.25"), (0.3336, "$0.3336"), (1.0, "$1.00"), (None, "")],
-)
-def test_format_price(value, text):
-    assert catalog.format_price(value) == text
+def test_context_values_and_framing():
+    shipped = bundled_catalog()
+    nano = shipped.schema("google/nano-banana-2-1")
+    assert catalog.context_values(nano, "3d") == {"aspectRatio": "1:1", "outputFormat": "png"}
+    flare = shipped.schema("openai/gpt-image-2-6-flare")
+    values = catalog.context_values(flare, "3d")
+    assert values["background"] == "transparent" and values["ratio"] == "1:1" and values["quality"] == "medium"
+    assert "background" not in catalog.context_values(flare, "texture")
+    assert catalog.framed_prompt("mossy stone", "texture").startswith("mossy stone. A seamless, tileable texture")
+    assert "transparent background" in catalog.framed_prompt("a lamp", "3d", transparent=True)
+    assert catalog.short_name("microsoft/trellis-2") == "Trellis-2"
+    assert catalog.short_name("meshy/meshy-6") == "meshy-6"

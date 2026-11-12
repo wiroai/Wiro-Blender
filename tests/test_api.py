@@ -119,7 +119,7 @@ def test_download_skips_auth_and_needs_https(tmp_path):
     with pytest.raises(api.WiroError, match="HTTPS"):
         client.download("http://cdn1.wiro.ai/a/0.glb", str(target))
     with pytest.raises(api.WiroError, match="HTTP 404"):
-        client.download("https://cdn1.wiro.ai/missing.glb", str(target))
+        client.download("https://cdn.example/missing.glb", str(target))
 
 
 def test_wait_for_task_until_done():
@@ -225,3 +225,56 @@ def test_image_upload(tmp_path):
 def test_task_cost():
     assert api.task_cost({"totalcost": "0.300000000000"}) == 0.3
     assert api.task_cost({}) is None
+
+
+def test_public_calls_send_no_key():
+    transport = FakeTransport()
+    client = api.Client(None, user_agent="Wiro-Blender/test", transport=transport)
+    client.post("Tool/List", json_body={"limit": "1"}, auth=False)
+    assert "x-api-key" not in transport.requests[0]["headers"]
+    with pytest.raises(api.WiroError, match="API key"):
+        client.check_key()
+
+
+def test_balance():
+    assert make_client(FakeTransport()).balance() == 12.5
+
+
+@pytest.mark.parametrize(
+    ("name", "ctype", "kind"),
+    [
+        ("0.glb", "model/gltf-binary", "3d"),
+        ("0.ply", "", "3d"),
+        ("scene.usdz", "", "3d"),
+        ("0.png", "image/png", "image"),
+        ("clip.mp4", "", "video"),
+        ("voice.mp3", "audio/mpeg", "audio"),
+        ("notes.txt", "", "text"),
+        ("archive.zip", "application/zip", "file"),
+    ],
+)
+def test_output_kind(name, ctype, kind):
+    assert api.output_kind(name, ctype) == kind
+
+
+def test_task_outputs_and_llm_text():
+    task = {
+        "outputs": [
+            {"name": "0.glb", "url": "https://c/0.glb", "contenttype": "model/gltf-binary"},
+            {"contenttype": "raw", "content": {"raw": "ignored"}},
+            {"name": "", "url": "https://c/x/preview.mp4"},
+        ],
+        "debugoutput": "Generating 3D mesh...",
+    }
+    assert api.task_outputs(task) == [
+        ("https://c/0.glb", "0.glb", "3d"),
+        ("https://c/x/preview.mp4", "preview.mp4", "video"),
+    ]
+    assert api.llm_text({"debugoutput": " The answer. ", "outputs": []}) == "The answer."
+    raw = {
+        "debugoutput": "",
+        "outputs": [{"contenttype": "raw", "content": {"segments": [{"type": "answer", "text": "Hi"}]}}],
+    }
+    assert api.llm_text(raw) == "Hi"
+    # A 3D task's log is not an answer.
+    assert api.llm_text({"debugoutput": "Exporting GLB...", "outputs": task["outputs"][:1]}) == ""

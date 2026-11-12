@@ -184,7 +184,7 @@ class Client:
 
     def __init__(
         self,
-        credentials: Credentials,
+        credentials: Credentials | None,
         *,
         user_agent: str,
         base_url: str = API_BASE,
@@ -200,13 +200,23 @@ class Client:
     # -- requests ---------------------------------------------------------
 
     def post(
-        self, path: str, *, json_body: Any = None, form: Iterable | None = None, timeout: float | None = None
+        self,
+        path: str,
+        *,
+        json_body: Any = None,
+        form: Iterable | None = None,
+        timeout: float | None = None,
+        auth: bool = True,
     ) -> dict:
+        """POST to the API. auth=False is for the public catalog: the key is not sent."""
         url = f"{self.base_url}/{path.lstrip('/')}"
         # Cloudflare in front of the API rejects Python's default User-Agent,
         # so every request names the add-on.
         headers = {"User-Agent": self.user_agent, "Accept": "application/json"}
-        headers.update(self.credentials.headers())
+        if auth:
+            if self.credentials is None:
+                raise WiroError(MISSING_KEY)
+            headers.update(self.credentials.headers())
         if form is not None:
             body, content_type = encode_multipart(form)
         else:
@@ -257,6 +267,21 @@ class Client:
     def check_key(self) -> None:
         """Raise WiroError unless the credentials are accepted. Free to call."""
         self.post("Task/List", json_body={"limit": "1"})
+
+    def balance(self) -> float | None:
+        """The USD balance of the wallet the key's project pays from. Free to call."""
+        data = self.post("Wallet/List", json_body={})
+        wallets = [w for w in data.get("wallet") or [] if isinstance(w, dict)]
+        wallet = next((w for w in wallets if w.get("symbol") == "USD"), wallets[0] if wallets else None)
+        if wallet is None:
+            return None
+        total = 0.0
+        for key in ("amount", "giftedamount", "storeamount"):
+            try:
+                total += float(wallet.get(key) or 0)
+            except (TypeError, ValueError):
+                continue
+        return round(total, 2)
 
     def download(
         self,
@@ -405,3 +430,68 @@ def task_cost(task: dict) -> float | None:
         return float(task.get("totalcost"))
     except (TypeError, ValueError):
         return None
+
+
+MODEL_EXTENSIONS = (".glb", ".gltf", ".obj", ".fbx", ".ply", ".stl", ".usdz", ".usd", ".usdc", ".usda", ".abc")
+VIDEO_EXTENSIONS = (".mp4", ".mov", ".webm", ".mkv", ".avi")
+AUDIO_EXTENSIONS = (".mp3", ".wav", ".ogg", ".flac", ".m4a", ".aac")
+TEXT_EXTENSIONS = (".txt", ".md", ".json", ".srt", ".vtt", ".csv")
+
+
+def output_kind(name: str, content_type: str = "") -> str:
+    """3d, image, video, audio, text or file, from an output's name and type."""
+    lower = name.lower().split("?")[0]
+    ctype = (content_type or "").lower()
+    if lower.endswith(MODEL_EXTENSIONS) or ctype.startswith("model/"):
+        return "3d"
+    if ctype.startswith("image/") or lower.endswith(IMAGE_EXTENSIONS + (".gif", ".bmp", ".tif", ".tiff", ".exr")):
+        return "image"
+    if ctype.startswith("video/") or lower.endswith(VIDEO_EXTENSIONS):
+        return "video"
+    if ctype.startswith("audio/") or lower.endswith(AUDIO_EXTENSIONS):
+        return "audio"
+    if ctype.startswith("text/") or lower.endswith(TEXT_EXTENSIONS):
+        return "text"
+    return "file"
+
+
+def task_outputs(task: dict) -> list:
+    """The task's output files as (url, name, kind), in the order Wiro lists them."""
+    result = []
+    for output in task.get("outputs") or []:
+        if not isinstance(output, dict) or not output.get("url"):
+            continue
+        ctype = str(output.get("contenttype") or "")
+        if ctype.lower() == "raw":
+            continue
+        name = _output_name(output)
+        result.append((str(output["url"]), name, output_kind(name, ctype)))
+    return result
+
+
+def llm_text(task: dict) -> str:
+    """The answer of an LLM task: debugoutput, else the structured raw output."""
+    text = str(task.get("debugoutput") or "").strip()
+    has_raw = any(
+        isinstance(o, dict) and str(o.get("contenttype") or "").lower() == "raw" for o in task.get("outputs") or []
+    )
+    if text and (has_raw or not task_outputs(task)):
+        return text
+    for output in task.get("outputs") or []:
+        if not isinstance(output, dict) or str(output.get("contenttype") or "").lower() != "raw":
+            continue
+        content = output.get("content")
+        if isinstance(content, str) and content.strip():
+            return content.strip()
+        if isinstance(content, dict):
+            raw = content.get("raw")
+            if isinstance(raw, str) and raw.strip():
+                return raw.strip()
+            answers = [
+                str(s.get("text") or "")
+                for s in content.get("segments") or []
+                if isinstance(s, dict) and s.get("type") == "answer"
+            ]
+            if any(answers):
+                return "".join(answers).strip()
+    return ""

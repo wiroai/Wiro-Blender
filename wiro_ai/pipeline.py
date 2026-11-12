@@ -1,11 +1,11 @@
 # SPDX-FileCopyrightText: 2026 Wiro AI
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""One generation job: an optional reference image, then the 3D model, then
-the GLB download.
+"""Jobs: one or more model runs in a row, each one able to use the files the
+previous one returned (a reference picture, then its cutout, then the 3D model).
 
 A job runs on a worker thread and never touches bpy. The add-on reads
-snapshot() from a timer on Blender's main thread and imports the GLB there.
-This module does not import bpy.
+snapshot() from a timer on Blender's main thread and brings the results into
+the scene there. This module does not import bpy.
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ import traceback
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
-from . import api, catalog
+from . import api, catalog, schema
 
 TEXT = "TEXT"
 IMAGE = "IMAGE"
@@ -44,29 +44,46 @@ STATUS_TEXT = {
 
 _RUNNING = ("task_start", "task_output", "task_output_full", "task_error", "task_error_full")
 _SAVING = ("task_end", "task_postprocess_start", "task_postprocess_end")
-
-# Model log lines worth showing as the current step, such as "Exporting GLB...".
+_PREPARING = ("task_accept", "task_preprocess_start", "task_preprocess_end")
 _STEP_LINE = re.compile(r"^[A-Za-z][A-Za-z0-9 ,'()+:-]{2,60}\.{0,3}$")
-
-# Share of the progress bar for the reference image in Text to 3D.
-REFERENCE_SHARE = 0.15
 
 
 @dataclass
-class JobRequest:
-    mode: str
-    mesh_model: catalog.MeshModel
-    mesh_settings: catalog.MeshSettings
-    output_dir: str
-    prompt: str = ""
-    image_path: str = ""
-    image_model: catalog.ImageModel | None = None
-    framing: bool = True
+class Output:
+    url: str
+    name: str
+    kind: str
+    path: str = ""
+    size: int = 0
+    step: str = ""
+
+
+@dataclass
+class Step:
+    """One model run in a job."""
+
+    key: str
+    title: str
+    model: str
+    fields: Callable[[dict], list]  # previous results by key -> multipart fields
+    expected_seconds: float = 30.0
+    download: tuple = ("all",)  # output kinds to save, or "all"
+    weight: float = 1.0
+
+
+@dataclass
+class StepResult:
+    task: dict
+    outputs: list = field(default_factory=list)
+    text: str = ""
+
+    def first(self, kind: str) -> Output | None:
+        return next((o for o in self.outputs if o.kind == kind), None)
 
 
 @dataclass
 class JobState:
-    phase: str = "starting"  # starting, image, mesh, download, done, failed, cancelled
+    phase: str = "starting"  # starting, running, download, done, failed, cancelled
     title: str = "Starting"
     status: str = ""
     step: str = ""
@@ -76,16 +93,17 @@ class JobState:
     error: str = ""
     cost: float = 0.0
     task_ids: list = field(default_factory=list)
-    reference_path: str = ""
-    reference_url: str = ""
-    glb_path: str = ""
-    glb_bytes: int = 0
-    image_model: str = ""
-    mesh_model: str = ""
+    outputs: list = field(default_factory=list)  # every downloaded Output
+    preview_path: str = ""  # the newest picture, for the panel
+    text: str = ""  # an LLM answer
+    results: dict = field(default_factory=dict)
 
     @property
     def ok(self) -> bool:
         return self.finished and self.phase == "done"
+
+    def of_kind(self, kind: str) -> list:
+        return [o for o in self.outputs if o.kind == kind]
 
 
 def log_step(task: dict) -> str:
@@ -108,11 +126,7 @@ def log_step(task: dict) -> str:
     return ""
 
 
-_PREPARING = ("task_accept", "task_preprocess_start", "task_preprocess_end")
-
-
 def _ease(seconds: float, scale: float) -> float:
-    """0 at the start, approaching 1 without reaching it."""
     return 1.0 - math.exp(-max(0.0, seconds) / max(1.0, scale))
 
 
@@ -144,18 +158,22 @@ def task_progress(status: str, seconds_in_stage: float, expected: float) -> floa
     if group == "load":
         return 0.06 + 0.04 * _ease(seconds_in_stage, 60.0)
     if group == "run":
-        # Approaches 0.95: the file arrives at the end.
         return 0.1 + 0.85 * _ease(seconds_in_stage, max(5.0, expected))
     if group == "save":
         return 0.97
     return 0.0
 
 
+def _safe(name: str) -> str:
+    return re.sub(r"[^A-Za-z0-9._-]+", "-", name).strip("-") or "file"
+
+
 class Job:
     def __init__(
         self,
         client: api.Client,
-        request: JobRequest,
+        steps: list,
+        output_dir: str,
         *,
         poll_interval: float = 3.0,
         timeout: float = 1800.0,
@@ -163,7 +181,8 @@ class Job:
         clock: Callable[[], float] = time.monotonic,
     ) -> None:
         self.client = client
-        self.request = request
+        self.steps = list(steps)
+        self.output_dir = output_dir
         self.poll_interval = poll_interval
         self.timeout = timeout
         self._sleep = sleep
@@ -172,15 +191,19 @@ class Job:
         self._cancel = threading.Event()
         self._thread: threading.Thread | None = None
         self._start = clock()
-        uses_image_model = request.mode == TEXT and request.image_model is not None
-        self._state = JobState(
-            image_model=request.image_model.label if uses_image_model else "",
-            mesh_model=request.mesh_model.label,
-        )
+        total = sum(max(0.01, step.weight) for step in self.steps) or 1.0
+        self._shares = []
+        position = 0.0
+        for step in self.steps:
+            width = 0.95 * max(0.01, step.weight) / total
+            self._shares.append((position, position + width))
+            position += width
+        self._state = JobState()
 
     # -- control ----------------------------------------------------------
 
     def start(self) -> None:
+        self._start = self._clock()
         self._thread = threading.Thread(target=self.run, name="wiro-ai-job", daemon=True)
         self._thread.start()
 
@@ -195,7 +218,7 @@ class Job:
     def snapshot(self) -> JobState:
         with self._lock:
             state = copy.deepcopy(self._state)
-        if not state.finished:
+        if not state.finished and state.phase != "starting":
             state.elapsed = self._clock() - self._start
         return state
 
@@ -206,19 +229,19 @@ class Job:
     # -- work ---------------------------------------------------------------
 
     def run(self) -> None:
-        """Do the whole job on the calling thread."""
+        """Run every step on the calling thread."""
+        self._start = self._clock()
+        self._update(phase="running")
         try:
-            if self.request.mode == TEXT:
-                image_field = ("inputImage", self._reference_image())
-                share = REFERENCE_SHARE
-            else:
-                image_field = ("inputImage", api.image_upload(self.request.image_path))
-                share = 0.0
-            self._mesh(image_field, share)
+            results: dict = {}
+            for index, step in enumerate(self.steps):
+                results[step.key] = self._run_step(index, step, results)
+                with self._lock:
+                    self._state.results = dict(results)
             self._update(phase="done", title="Done", status="", step="", progress=1.0)
         except api.WiroCancelled:
             self._update(phase="cancelled", title="Cancelled", status="", step="")
-        except api.WiroError as exc:
+        except (api.WiroError, OSError, ValueError) as exc:
             self._update(phase="failed", title="Failed", status="", step="", error=str(exc))
         except Exception as exc:  # keep the worker thread from dying silently
             traceback.print_exc()
@@ -228,48 +251,38 @@ class Job:
                 self._state.elapsed = self._clock() - self._start
                 self._state.finished = True
 
-    def _reference_image(self) -> str:
-        request = self.request
-        model = request.image_model or catalog.IMAGE_MODELS[0]
-        prompt = catalog.reference_prompt(request.prompt, model, request.framing)
-        if not request.prompt.strip():
-            raise api.WiroError("Write a prompt first.")
-        self._update(phase="image", title=f"Reference image ({model.label})", status="Sending", progress=0.01)
-        fields = list(catalog.image_params(model, prompt).items())
-        task = self._run_task(model.slug, fields, model.expected_seconds, 0.0, REFERENCE_SHARE)
-        output = api.pick_image(task)
-        url = str(output["url"])
-        extension = os.path.splitext(str(output.get("name") or url))[1].lower()
-        if extension not in api.IMAGE_EXTENSIONS:
-            extension = ".png"
-        path = os.path.join(request.output_dir, f"reference-{task.get('id', 'image')}{extension}")
-        self.client.download(url, path, should_stop=self._cancel.is_set)
-        self._update(reference_path=path, reference_url=url)
-        return url
-
-    def _mesh(self, image_field: tuple, share: float) -> None:
-        request = self.request
-        model = request.mesh_model
-        settings = request.mesh_settings
-        fields = [image_field, *catalog.mesh_params(model, settings).items()]
-        status = "Uploading the image" if request.mode == IMAGE else "Sending"
-        self._update(phase="mesh", title=f"3D model ({model.label})", status=status, step="")
-        self._raise_progress(share + 0.01)
-        expected = catalog.mesh_seconds(model, settings)
-        task = self._run_task(model.slug, fields, expected, share, 0.95)
-        output = api.pick_glb(task)
-        name = re.sub(r"[^a-z0-9-]+", "-", model.label.lower()).strip("-")
-        path = os.path.join(request.output_dir, f"{name}-{task.get('id', 'model')}.glb")
-        self._update(phase="download", title="Downloading the GLB", status="", step="")
-        self._raise_progress(0.96)
-        size = self.client.download(str(output["url"]), path, should_stop=self._cancel.is_set)
-        self._update(glb_path=path, glb_bytes=size)
-        self._raise_progress(0.99)
-
-    def _run_task(self, slug: str, fields: list, expected: float, start: float, end: float) -> dict:
+    def _run_step(self, index: int, step: Step, results: dict) -> StepResult:
+        start, end = self._shares[index]
         if self._cancel.is_set():
             raise api.WiroCancelled("Stopped.")
-        run = self.client.run(slug, fields)
+        self._update(title=step.title, status="Sending", step="")
+        self._raise_progress(start + 0.005)
+        fields = step.fields(results)
+        task = self._run_task(step, fields, start, end)
+        outputs = []
+        wanted = step.download
+        for url, name, kind in api.task_outputs(task):
+            outputs.append(Output(url=url, name=name, kind=kind, step=step.key))
+        to_save = [o for o in outputs if "all" in wanted or o.kind in wanted]
+        if to_save:
+            self._update(status="Downloading")
+        for output in to_save:
+            path = os.path.join(self.output_dir, f"{step.key}-{task.get('id', 'task')}-{_safe(output.name)}")
+            output.path = path
+            output.size = self.client.download(output.url, path, should_stop=self._cancel.is_set)
+            with self._lock:
+                self._state.outputs.append(copy.copy(output))
+                if output.kind == "image":
+                    self._state.preview_path = path
+        text = api.llm_text(task)
+        if text:
+            with self._lock:
+                self._state.text = text
+        self._raise_progress(end)
+        return StepResult(task=task, outputs=outputs, text=text)
+
+    def _run_task(self, step: Step, fields: list, start: float, end: float) -> dict:
+        run = self.client.run(step.model, fields)
         with self._lock:
             self._state.task_ids.append(str(run.get("taskid") or ""))
         stage_started: dict = {}
@@ -282,7 +295,7 @@ class Job:
                     status=STATUS_TEXT.get(status, "Working"),
                     step=log_step(task) if status in _RUNNING else "",
                 )
-            self._raise_progress(start + (end - start) * task_progress(status, in_stage, expected))
+            self._raise_progress(start + (end - start) * task_progress(status, in_stage, step.expected_seconds))
 
         task = api.wait_for_task(
             self.client,
@@ -311,3 +324,162 @@ class Job:
     def _raise_progress(self, value: float) -> None:
         with self._lock:
             self._state.progress = max(self._state.progress, min(1.0, value))
+
+
+# ---------------------------------------------------------------------------
+# Job recipes. Each takes ready schemas and values, so it never waits on the
+# catalog; the Blender side makes sure the schemas are loaded first.
+
+
+def _need(result: StepResult | None, kind: str, what: str) -> Output:
+    output = result.first(kind) if result else None
+    if output is None:
+        raise api.WiroError(f"The {what} step returned no {kind}.")
+    return output
+
+
+def three_d_steps(
+    *,
+    mode: str,
+    mesh: schema.ModelSchema,
+    mesh_values: dict,
+    mesh_files: dict | None = None,
+    images: list | None = None,
+    prompt: str = "",
+    reference: schema.ModelSchema | None = None,
+    reference_values: dict | None = None,
+    framing: bool = True,
+    cutout: schema.ModelSchema | None = None,
+    mesh_seconds: float = 60.0,
+) -> list:
+    """Steps for Text to 3D or Image to 3D.
+
+    images: the pictures for Image to 3D, each a URL or a (filename, bytes,
+        mime) upload. A model that takes several pictures gets all of them.
+    """
+    steps = []
+    image_param = mesh.image_param()
+    if image_param is None:
+        raise api.WiroError(f"{mesh.title} takes no picture, so it cannot run from the 3D panel.")
+    if mode == TEXT:
+        if reference is None:
+            raise api.WiroError("Choose an image model for the reference picture.")
+        if not prompt.strip():
+            raise api.WiroError("Write a prompt first.")
+        prompt_param = reference.prompt_param()
+        if prompt_param is None:
+            raise api.WiroError(f"{reference.title} takes no prompt.")
+        values = dict(reference_values or {})
+        transparent = str(values.get("background", "")) == "transparent"
+        values[prompt_param.id] = catalog.framed_prompt(prompt, "3d", transparent=transparent) if framing else prompt
+        steps.append(
+            Step(
+                key="reference",
+                title=f"Reference picture ({catalog.short_name(reference.slug, reference.title)})",
+                model=reference.slug,
+                fields=lambda results, schema_=reference, values_=values: schema.build_fields(schema_, values_),
+                expected_seconds=20.0,
+                download=("image",),
+                weight=0.15,
+            )
+        )
+    elif not images:
+        raise api.WiroError("Add a picture first.")
+
+    if cutout is not None:
+        cut_param = cutout.image_param()
+        if cut_param is None:
+            raise api.WiroError(f"{cutout.title} takes no picture.")
+
+        def cutout_fields(results, schema_=cutout, pid=cut_param.id):
+            reference_result = results.get("reference")
+            source = _need(reference_result, "image", "reference picture").url if mode == TEXT else images[0]
+            return schema.build_fields(schema_, {}, {pid: [source]})
+
+        steps.append(
+            Step(
+                key="cutout",
+                title=f"Background removal ({catalog.short_name(cutout.slug, cutout.title)})",
+                model=cutout.slug,
+                fields=cutout_fields,
+                expected_seconds=10.0,
+                download=("image",),
+                weight=0.05,
+            )
+        )
+
+    def mesh_fields(results):
+        if "cutout" in results:
+            pictures = [_need(results["cutout"], "image", "background removal").url]
+            if mode == IMAGE and images and image_param.max_files > 1:
+                pictures += list(images[1:])
+        elif mode == TEXT:
+            pictures = [_need(results.get("reference"), "image", "reference picture").url]
+        else:
+            pictures = list(images or [])
+        pictures = pictures[: max(1, image_param.max_files)]
+        files = dict(mesh_files or {})
+        files[image_param.id] = pictures
+        return schema.build_fields(mesh, mesh_values, files)
+
+    steps.append(
+        Step(
+            key="mesh",
+            title=f"3D model ({catalog.short_name(mesh.slug, mesh.title)})",
+            model=mesh.slug,
+            fields=mesh_fields,
+            expected_seconds=mesh_seconds,
+            download=("3d", "image", "video"),
+            weight=0.8,
+        )
+    )
+    return steps
+
+
+def texture_steps(
+    *,
+    model: schema.ModelSchema,
+    values: dict,
+    prompt: str,
+    tileable: bool = True,
+    source: object | None = None,
+) -> list:
+    """One image run that makes a texture, from a prompt or by editing a source picture."""
+    prompt_param = model.prompt_param()
+    if prompt_param is None:
+        raise api.WiroError(f"{model.title} takes no prompt.")
+    if not prompt.strip():
+        raise api.WiroError("Write a prompt first.")
+    values = dict(values)
+    values[prompt_param.id] = catalog.framed_prompt(prompt, "texture") if tileable and source is None else prompt
+    files = {}
+    if source is not None:
+        image_param = model.image_param()
+        if image_param is None:
+            raise api.WiroError(f"{model.title} cannot edit a picture.")
+        files[image_param.id] = [source]
+    title = f"Texture ({catalog.short_name(model.slug, model.title)})"
+    return [
+        Step(
+            key="texture",
+            title=title,
+            model=model.slug,
+            fields=lambda results: schema.build_fields(model, values, files),
+            expected_seconds=25.0,
+            download=("image",),
+        )
+    ]
+
+
+def run_steps(*, model: schema.ModelSchema, values: dict, files: dict, expected_seconds: float = 60.0) -> list:
+    """One run of any model, saving every file it returns."""
+    return [
+        Step(
+            key="run",
+            title=catalog.short_name(model.slug, model.title),
+            model=model.slug,
+            fields=lambda results: schema.build_fields(model, values, files),
+            expected_seconds=expected_seconds,
+            download=("all",),
+        )
+    ]
