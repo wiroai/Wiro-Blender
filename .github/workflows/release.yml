@@ -1,13 +1,26 @@
 name: Release
 
-# Builds the extension package with Blender and attaches it to the GitHub
-# release of the pushed tag, for example v1.0.0.
+# Builds the extension package with Blender, attaches it to the GitHub release
+# of the tag (for example v1.1.0), and publishes the Wiro AI extension
+# repository on GitHub Pages, so Blender can install and update the add-on
+# from https://wiroai.github.io/Wiro-Blender/index.json.
+#
+# A tag push runs it. "Run workflow" runs it again for an existing tag.
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to package and publish, for example v1.1.0"
+        required: true
 
 permissions:
   contents: write
+
+concurrency:
+  group: release-pages
+  cancel-in-progress: false
 
 jobs:
   package:
@@ -15,13 +28,16 @@ jobs:
     env:
       VERSION: "5.3.0"
       SHA256: dacb8264197a3f7fda6001285a5a506fc97ee943881261c2c3bd63c882f22e05
+      TAG: ${{ inputs.tag || github.ref_name }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag || github.ref }}
 
       - name: Check the tag against the manifest
         run: |
           manifest_version="$(python3 -c 'import tomllib; print(tomllib.load(open("wiro_ai/blender_manifest.toml", "rb"))["version"])')"
-          test "v${manifest_version}" = "${GITHUB_REF_NAME}"
+          test "v${manifest_version}" = "${TAG}"
 
       - name: Download Blender
         run: |
@@ -51,8 +67,32 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view "${GITHUB_REF_NAME}" > /dev/null 2>&1; then
-            gh release upload "${GITHUB_REF_NAME}" dist/wiro_ai-*.zip --clobber
+          if gh release view "${TAG}" > /dev/null 2>&1; then
+            gh release upload "${TAG}" dist/wiro_ai-*.zip --clobber
           else
-            gh release create "${GITHUB_REF_NAME}" dist/wiro_ai-*.zip --title "${GITHUB_REF_NAME}" --generate-notes
+            gh release create "${TAG}" dist/wiro_ai-*.zip --title "${TAG}" --generate-notes
           fi
+
+      - name: Build the extension repository
+        run: |
+          mkdir -p site
+          cp dist/wiro_ai-*.zip site/
+          blender/blender --command extension server-generate --repo-dir site --html
+          python3 -c 'import json; data = json.load(open("site/index.json")); print([(p["id"], p["version"], p["archive_url"]) for p in data["data"]])'
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  pages:
+    needs: package
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v5

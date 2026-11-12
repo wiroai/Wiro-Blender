@@ -31,9 +31,20 @@ The add-on adds a **Wiro AI** tab to the sidebar of the 3D Viewport. Describe an
 
 ## Install
 
-1. Download `wiro_ai-1.1.0.zip` from the [latest release](https://github.com/wiroai/Wiro-Blender/releases/latest).
-2. Drag the zip into Blender 4.2 or later. You can also open **Edit > Preferences > Get Extensions**, click the menu at the top right and choose **Install from Disk**.
-3. The models run online, so **Allow Online Access** has to be on (**Edit > Preferences > System > Network**). The panel tells you when it is off.
+**From the Wiro AI extension repository**, so Blender shows new versions as updates:
+
+1. In Blender 4.2 or later, open **Edit > Preferences > Get Extensions**.
+2. Open the **Repositories** menu at the top right, click **+** and choose **Add Remote Repository**. Enter this URL and click **Create**:
+
+   ```
+   https://wiroai.github.io/Wiro-Blender/index.json
+   ```
+
+3. Search for **Wiro AI** in **Get Extensions** and click **Install**. New versions appear under **Check for Updates** in the same menu.
+
+**From a file:** download `wiro_ai-1.1.0.zip` from the [latest release](https://github.com/wiroai/Wiro-Blender/releases/latest) and drag it into Blender, or choose **Install from Disk** in the menu at the top right of **Get Extensions**.
+
+The models run online, so **Allow Online Access** has to be on (**Edit > Preferences > System > Network**). The panel tells you when it is off.
 
 ## Set your API key
 
@@ -170,6 +181,8 @@ blender --background --factory-startup --python-exit-code 1 --python tests/blend
 ```
 
 `tests/blender/live_test.py` makes real runs and is billed to the key's wallet, so it stays out of CI. CI runs lint and the unit tests on Python 3.11 and 3.13, and the manifest check, build and smoke test on Blender 4.2.23 and 5.3.0. `python scripts/update_catalog.py` refreshes `wiro_ai/data/catalog.json` from the public catalog.
+
+Pushing a tag such as `v1.1.0` runs the Release workflow: it builds the package with Blender, attaches it to the GitHub release and publishes the extension repository (`index.json` and an `index.html` page) on GitHub Pages.
 
 ## Pricing
 
