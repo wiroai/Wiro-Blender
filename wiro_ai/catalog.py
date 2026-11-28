@@ -133,6 +133,9 @@ _NSFW = re.compile(r"nsfw", re.I)
 _MODERATION = re.compile(r"detect|classif|moderat|filter|checker", re.I)
 
 CACHE_SECONDS = 6 * 3600
+# What the disk cache holds. Bump it when that changes; a file of another format is not read.
+# 2: Wiro's renamed price method ids (per-run, per-output-file...).
+CACHE_FORMAT = 2
 
 
 def is_hidden(row: dict) -> bool:
@@ -292,6 +295,8 @@ class Catalog:
                 data = json.load(handle)
         except (OSError, ValueError):
             return
+        if live and data.get("format") != CACHE_FORMAT:
+            return
         for category, rows in (data.get("categories") or {}).items():
             self._lists[category] = [row for row in rows if isinstance(row, dict) and row.get("slug")]
             if live:
@@ -306,6 +311,7 @@ class Catalog:
             return
         with self._lock:
             payload = {
+                "format": CACHE_FORMAT,
                 "categories": {k: v for k, v in self._lists.items() if k in self._listed_at},
                 "listed_at": dict(self._listed_at),
                 "schemas": dict(self._tools),
@@ -425,6 +431,6 @@ class Catalog:
             for row in rows
             if row
             and not is_hidden(row)
-            and not any(r.get("priceMethod") == "cp-realtimeturn" for r in row.get("price_rows") or [])
+            and not any(r.get("priceMethod") == "per-realtime-turn" for r in row.get("price_rows") or [])
             and not any(live.search(c) for c in row.get("categories") or [] if c == "realtime-conversation")
         ]

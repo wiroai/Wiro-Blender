@@ -18,7 +18,7 @@
       },
       "note": "$0.30 for 1024P",
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -26,10 +26,10 @@
       },
       "note": "$0.42 for 1536P",
       "price": 0.42,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 454,
+    "runs": 789,
     "slug": "tencentarc/pixal3d",
     "title": "Pixal3D Image-to-3D GLB Generator"
    },
@@ -50,7 +50,7 @@
       },
       "note": "$0.25 for 512P",
       "price": 0.25,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -58,7 +58,7 @@
       },
       "note": "$0.30 for 1024P",
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -66,10 +66,10 @@
       },
       "note": "$0.35 for 1536P",
       "price": 0.35,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 839,
+    "runs": 979,
     "slug": "microsoft/trellis-2",
     "title": "Trellis-2 3D Mesh Generator"
    },
@@ -89,7 +89,7 @@
       },
       "note": "$0.9 for textured mesh",
       "price": 0.9,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -97,10 +97,10 @@
       },
       "note": "$0.30 for untextured white mesh.",
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 829,
+    "runs": 992,
     "slug": "tencent/hunyuan3d-2-1",
     "title": "Hunyuan3D-2.1 3D Model Generator"
    },
@@ -109,12 +109,13 @@
      "persistent",
      "3d-generation",
      "price-list",
-     "model"
+     "model",
+     "splat-3d"
     ],
     "description": "Reconstruct a 3D scene from multi-view photos or a short video. Produces 3D Gaussian splats with depth maps and cameras, plus a colored point cloud.",
-    "estimated_cost": null,
+    "estimated_cost": 0.04212,
     "price_rows": [],
-    "runs": 266,
+    "runs": 355,
     "slug": "tencent/hy-world-2-0-world-reconstruction",
     "title": "HY-World 2.0 World Reconstruction"
    }
@@ -129,8 +130,8 @@
      "nogpu-pipeline",
      "ideogram",
      "image-to-image",
-     "compare-landscape",
-     "background-removal"
+     "background-removal",
+     "cutout"
     ],
     "description": "Remove image backgrounds and get a clean transparent PNG cutout. Ideogram’s generative matting keeps hair, glass, and fine text edges crisp.",
     "estimated_cost": null,
@@ -138,10 +139,10 @@
      {
       "inputs": {},
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 1176,
+    "runs": 1583,
     "slug": "ideogram/remove-background",
     "title": "Ideogram Remove Background (Transparent PNG)"
    },
@@ -150,17 +151,17 @@
      "model",
      "birefnet",
      "image-to-image",
-     "compare-portrait",
      "checkpoint-folder",
      "fp32",
      "quick-showcase",
      "persistent",
-     "background-removal"
+     "background-removal",
+     "cutout"
     ],
     "description": "Cuts the main subject out of a photo and returns it on a transparent background at the original size. BiRefNet is a high-resolution segmentation model that uses gradient maps to keep fine edges.",
-    "estimated_cost": 0.006618586956521739,
+    "estimated_cost": 0.005390545454545454,
     "price_rows": [],
-    "runs": 1929,
+    "runs": 2565,
     "slug": "zhengpeng7/birefnet",
     "title": "Image Background Remover"
    },
@@ -169,17 +170,17 @@
      "tool",
      "image-to-image",
      "quick-showcase",
-     "compare-landscape",
      "use-agent",
      "wiroEcommerce",
      "persistent",
      "wiro-models",
-     "background-removal"
+     "background-removal",
+     "cutout"
     ],
     "description": "Removes the background from photos and returns each subject as a PNG cutout with transparency. One run takes up to 30 images.",
-    "estimated_cost": 0.001208299249708822,
+    "estimated_cost": 0.0012088667285792855,
     "price_rows": [],
-    "runs": 111054,
+    "runs": 111206,
     "slug": "wiro/remove-background",
     "title": "Remove Background AI Tool"
    },
@@ -191,13 +192,13 @@
      "use-agent",
      "wiroEcommerce",
      "persistent",
-     "compare-landscape",
-     "background-removal"
+     "background-removal",
+     "cutout"
     ],
     "description": "RMBG-2.0 removes image backgrounds with an 8-bit alpha matte for smooth edges. Built by BRIA AI for production cutouts trained on licensed data.",
-    "estimated_cost": 0.001733659621802002,
+    "estimated_cost": 0.0018292747252747251,
     "price_rows": [],
-    "runs": 4588,
+    "runs": 4643,
     "slug": "briaai/rmbg-2-0",
     "title": "RMBG 2.0 Image Background Removal (BRIA AI)"
    }
@@ -215,7 +216,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Google's Gemini 3 Pro Image (Nano Banana Pro) creates and edits images at 1K, 2K or 4K from a prompt and up to 14 references, aimed at legible text, charts and dense layouts.",
     "estimated_cost": null,
@@ -225,24 +227,24 @@
        "resolution": "1K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.24,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 184246,
+    "runs": 190921,
     "slug": "google/nano-banana-pro",
     "title": "Nano Banana Pro API: Create Mobile & Web Apps with Nano Banana"
    },
@@ -258,7 +260,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Gemini 3.1 Flash Image from Google: generation and editing with up to 14 references, output from 512px to 4K, and aspect ratios as extreme as 8:1 and 1:8.",
     "estimated_cost": null,
@@ -268,31 +271,31 @@
        "resolution": "512"
       },
       "price": 0.045,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "1K"
       },
       "price": 0.067,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.101,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.151,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 139836,
+    "runs": 147576,
     "slug": "google/nano-banana-2",
     "title": "Nano-Banana-2 Image Editing Tool"
    },
@@ -304,7 +307,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Generate or edit images with GPT Image 2 from OpenAI. It delivers strong instruction following, sharp text rendering, and flexible sizing up to 4K.",
     "estimated_cost": null,
@@ -316,7 +320,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -325,7 +329,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -334,7 +338,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -343,7 +347,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -352,7 +356,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -361,7 +365,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -370,7 +374,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -379,7 +383,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -388,7 +392,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -397,7 +401,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -406,7 +410,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -415,7 +419,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -424,7 +428,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -433,7 +437,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -442,7 +446,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -451,7 +455,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -460,7 +464,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -469,7 +473,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -478,7 +482,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -487,7 +491,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -496,7 +500,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -505,7 +509,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -514,7 +518,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -523,7 +527,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -532,7 +536,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -541,7 +545,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -550,7 +554,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -559,7 +563,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -568,7 +572,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -577,7 +581,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -586,7 +590,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -595,7 +599,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -604,7 +608,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -613,7 +617,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -622,7 +626,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -631,7 +635,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -640,7 +644,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -649,7 +653,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -658,7 +662,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -667,7 +671,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -676,7 +680,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -685,7 +689,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -694,7 +698,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -703,7 +707,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -712,7 +716,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -721,7 +725,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -730,7 +734,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -739,7 +743,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -748,7 +752,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -757,7 +761,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -766,7 +770,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -775,7 +779,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -784,7 +788,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -793,7 +797,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -802,7 +806,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -811,7 +815,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -820,7 +824,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -829,7 +833,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -838,7 +842,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -847,7 +851,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -856,7 +860,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -865,7 +869,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -874,10 +878,10 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 174876,
+    "runs": 189110,
     "slug": "openai/gpt-image-2",
     "title": "OpenAI GPT Image 2: Generation and Edits"
    },
@@ -889,7 +893,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Create or edit images with OpenAI GPT Image 2 using custom pixel sizes, quality tiers, and format controls. Add optional masks to target specific edits.",
     "estimated_cost": null,
@@ -898,10 +903,10 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 5111,
+    "runs": 5486,
     "slug": "openai/gpt-image-2-custom",
     "title": "GPT Image 2 Custom by OpenAI"
    },
@@ -911,14 +916,14 @@
      "partner",
      "google",
      "image-to-image",
-     "compare-landscape",
      "use-agent",
      "quick-showcase",
      "text-to-image",
      "price-list",
      "fast-inference",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Text-to-image and photo editing from Google's Gemini 2.5 Flash Image. It edits or merges up to 3 photos from a plain-language instruction and keeps a character's look consistent across edits.",
     "estimated_cost": null,
@@ -926,10 +931,10 @@
      {
       "inputs": {},
       "price": 0.039,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 540686,
+    "runs": 542176,
     "slug": "google/nano-banana",
     "title": "Nano Banana API: Create Mobile & Web Apps with Nano Banana"
    },
@@ -943,7 +948,8 @@
      "quick-showcase",
      "price-list",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "ByteDance image model that generates and edits pictures from a prompt. It takes up to 14 reference images and can return a set of up to 15 related images in one run.",
     "estimated_cost": null,
@@ -951,10 +957,10 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 4295,
+    "runs": 4517,
     "slug": "bytedance/seedream-v4",
     "title": "Seedream 4.0"
    },
@@ -970,7 +976,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Nano Banana 2.1 Advanced by Google generates and edits images with up to 14 references, optional Web or Image Search grounding, and 1K to 4K output.",
     "estimated_cost": null,
@@ -979,10 +986,10 @@
       "inputs": {},
       "note": "input (text/image/video/PDF) $1.50 per 1M tokens, text and thinking output $7.50 per 1M tokens, image output $30 per 1M tokens. Google Web/Image Search $0.014 per query. Higher thinking levels use more thinking tokens and cost more.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 6328,
+    "runs": 7884,
     "slug": "google/nano-banana-2-1-advanced",
     "title": "Nano Banana 2.1 Advanced (Google)"
    },
@@ -995,7 +1002,8 @@
      "quick-showcase",
      "text-to-image",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Alibaba’s Qwen Image 3.0 Pro generates and edits PNG images from long prompts and up to 3 reference images, built for dense layouts and small text.",
     "estimated_cost": null,
@@ -1005,17 +1013,17 @@
        "size": "1K"
       },
       "price": 0.05,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "size": "2K"
       },
       "price": 0.085,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 3392,
+    "runs": 4153,
     "slug": "alibaba/qwen-image-3-0-pro",
     "title": "Alibaba Qwen Image 3.0 Pro"
    },
@@ -1031,7 +1039,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Nano Banana 2.1 by Google generates and edits images from text and reference photos. It supports multi-image fusion, sharp text rendering, and up to 4K output.",
     "estimated_cost": null,
@@ -1041,24 +1050,24 @@
        "resolution": "1K"
       },
       "price": 0.0336,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.0504,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.113,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 27043,
+    "runs": 42902,
     "slug": "google/nano-banana-2-1",
     "title": "Nano Banana 2.1 Image Generator (Google)"
    },
@@ -1072,7 +1081,8 @@
      "quick-showcase",
      "price-list",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "ByteDance Seedream V5 Pro generates images from text and edits a base image using up to 10 references. It’s tuned for infographics, layouts, and clear typography.",
     "estimated_cost": null,
@@ -1082,17 +1092,17 @@
        "resolution": "1k"
       },
       "price": 0.045,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2k"
       },
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 12699,
+    "runs": 14691,
     "slug": "bytedance/seedream-v5-pro",
     "title": "Seedream V5 Pro by ByteDance (Image)"
    },
@@ -1104,7 +1114,8 @@
      "text-to-image",
      "image-to-image",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "xAI’s Grok Imagine Image generates images from prompts and can edit a source image using instructions. Pick an aspect ratio, 1K or 2K, and 1–10 samples.",
     "estimated_cost": null,
@@ -1112,126 +1123,12 @@
      {
       "inputs": {},
       "price": 0.02,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 4849,
+    "runs": 5044,
     "slug": "xai/grok-imagine-image",
     "title": "Grok Imagine Image by xAI"
-   },
-   {
-    "categories": [
-     "tool",
-     "partner",
-     "openai",
-     "text-to-image",
-     "image-to-image",
-     "image-editing",
-     "nogpu-pipeline"
-    ],
-    "description": "Generate or edit images using text prompts or image edits with GPT Image 1.5. Supports multiple sizes, formats, and quality settings.",
-    "estimated_cost": null,
-    "price_rows": [
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "1:1"
-      },
-      "price": 0.009,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "3:2"
-      },
-      "price": 0.013,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "2:3"
-      },
-      "price": 0.013,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "auto"
-      },
-      "price": 0.013,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "1:1"
-      },
-      "price": 0.034,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "3:2"
-      },
-      "price": 0.05,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "2:3"
-      },
-      "price": 0.05,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "auto"
-      },
-      "price": 0.05,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "1:1"
-      },
-      "price": 0.133,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "3:2"
-      },
-      "price": 0.2,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "2:3"
-      },
-      "price": 0.2,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "auto"
-      },
-      "price": 0.2,
-      "priceMethod": "cpr"
-     }
-    ],
-    "runs": 2981,
-    "slug": "openai/gpt-image-1-5",
-    "title": "GPT Image 1.5 - Text-to-Image & Image Editing"
    },
    {
     "categories": [
@@ -1243,7 +1140,8 @@
      "quick-showcase",
      "price-list",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Seedream 4.5 is ByteDance's image generation and editing model. It works from a prompt and up to 14 reference images, keeps faces, lighting and color tone from the references, and outputs at 2K or 4K.",
     "estimated_cost": null,
@@ -1251,10 +1149,10 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 30086,
+    "runs": 36400,
     "slug": "bytedance/seedream-v4-5",
     "title": "Seedream 4.5"
    },
@@ -1267,7 +1165,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Black Forest Labs' FLUX.2 [flex] generates and edits images from a prompt and up to 8 reference images, and lets you set steps and guidance yourself. It is specialized for legible text and small details.",
     "estimated_cost": null,
@@ -1279,7 +1178,7 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -1288,10 +1187,10 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0.06,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
-    "runs": 867,
+    "runs": 914,
     "slug": "black-forest-labs/flux-2-flex",
     "title": "FLUX.2 Flex"
    },
@@ -1304,7 +1203,8 @@
      "flux-2-pro",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "FLUX.2 [pro], from Black Forest Labs, generates images from a prompt or edits and combines up to 8 reference photos in one request. Width and height are set in pixels, up to 2048 each.",
     "estimated_cost": null,
@@ -1316,7 +1216,7 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -1325,10 +1225,10 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0.015,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
-    "runs": 5918,
+    "runs": 6900,
     "slug": "black-forest-labs/flux-2-pro",
     "title": "FLUX.2 Pro"
    },
@@ -1348,10 +1248,10 @@
      {
       "inputs": {},
       "price": 1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 248,
+    "runs": 253,
     "slug": "wiro/store-image-generator",
     "title": "Store Image Generator for App Listings"
    },
@@ -1359,7 +1259,6 @@
     "categories": [
      "tool",
      "image-to-image",
-     "compare-landscape",
      "use-agent",
      "quick-showcase",
      "wiroEcommerce",
@@ -1368,45 +1267,152 @@
      "image-editing",
      "partner",
      "nogpu-pipeline",
-     "virtual-try-on"
+     "virtual-try-on",
+     "input-compare"
     ],
     "description": "Dresses the person in one photo in up to two garments or accessories from other photos. Keep the original scene or restage it in a studio, indoor or outdoor setting, and get a still image, a short clip or both.",
     "estimated_cost": null,
     "price_rows": [
      {
-      "inputs": {},
-      "price": 0.09,
-      "priceMethod": "cpr"
+      "inputs": {
+       "outputType": "image"
+      },
+      "price": 0.08,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "outputType": "video"
+      },
+      "price": 0.5,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "outputType": "both"
+      },
+      "price": 0.5,
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 1428,
+    "runs": 1429,
     "slug": "wiro/virtual-try-on",
     "title": "Virtual Try-on"
    },
    {
     "categories": [
      "tool",
-     "bf16",
-     "persistent",
-     "fast-inference",
-     "price-list",
+     "partner",
+     "openai",
+     "text-to-image",
      "image-to-image",
-     "H200",
-     "compare-landscape",
-     "image-editing"
+     "image-editing",
+     "nogpu-pipeline",
+     "image-compare"
     ],
-    "description": "FireRed Image Edit is a general-purpose, instruction-based image editor from FireRedTeam. It changes a photo from a written prompt, edits printed text in place and can draw on several reference images at once.",
+    "description": "Generate or edit images using text prompts or image edits with GPT Image 1.5. Supports multiple sizes, formats, and quality settings.",
     "estimated_cost": null,
     "price_rows": [
      {
-      "inputs": {},
-      "price": 0.007,
-      "priceMethod": "cpr"
+      "inputs": {
+       "quality": "low",
+       "size": "1:1"
+      },
+      "price": 0.009,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "low",
+       "size": "3:2"
+      },
+      "price": 0.013,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "low",
+       "size": "2:3"
+      },
+      "price": 0.013,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "low",
+       "size": "auto"
+      },
+      "price": 0.013,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "1:1"
+      },
+      "price": 0.034,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "3:2"
+      },
+      "price": 0.05,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "2:3"
+      },
+      "price": 0.05,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "auto"
+      },
+      "price": 0.05,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "1:1"
+      },
+      "price": 0.133,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "3:2"
+      },
+      "price": 0.2,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "2:3"
+      },
+      "price": 0.2,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "auto"
+      },
+      "price": 0.2,
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 810,
-    "slug": "fireredteam/firered-image-edit",
-    "title": "FireRed Image Edit"
+    "runs": 3030,
+    "slug": "openai/gpt-image-1-5",
+    "title": "GPT Image 1.5 - Text-to-Image & Image Editing"
    },
    {
     "categories": [
@@ -1420,7 +1426,8 @@
      "partner",
      "nogpu-pipeline",
      "wiro-models",
-     "image-editing"
+     "image-editing",
+     "input-compare"
     ],
     "description": "Places one product photo on a styled studio backdrop for store listings and banners. Choose from 9 backdrop and shadow styles, such as Golden Hour Shadow or Cool Minimal Spotlight, and 10 aspect ratios.",
     "estimated_cost": null,
@@ -1428,10 +1435,10 @@
      {
       "inputs": {},
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 4815,
+    "runs": 4885,
     "slug": "wiro/shopify-template",
     "title": "Shopify Template Generator"
    },
@@ -1439,7 +1446,6 @@
     "categories": [
      "tool",
      "image-to-image",
-     "compare-landscape",
      "use-agent",
      "quick-showcase",
      "wiroEcommerce",
@@ -1450,7 +1456,8 @@
      "partner",
      "nogpu-pipeline",
      "wiro-models",
-     "virtual-try-on"
+     "virtual-try-on",
+     "input-compare"
     ],
     "description": "Generate realistic virtual try-on images and videos for fashion products using AI. Supports multiple garment uploads and photography styles.",
     "estimated_cost": null,
@@ -1460,24 +1467,24 @@
        "outputType": "image"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "outputType": "video"
       },
-      "price": 0.9,
-      "priceMethod": "cpr"
+      "price": 1.37,
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "outputType": "both"
       },
-      "price": 0.9,
-      "priceMethod": "cpr"
+      "price": 1.37,
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 25272,
+    "runs": 27106,
     "slug": "wiro/virtual-try-on-v2",
     "title": "Virtual Try-On V2"
    },
@@ -1491,7 +1498,8 @@
      "fast-inference",
      "price-list",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "FLUX.2 [dev] is a 32 billion parameter rectified flow transformer from Black Forest Labs that generates, edits and combines images from text instructions, with up to 5 reference images per run.",
     "estimated_cost": null,
@@ -1499,10 +1507,10 @@
      {
       "inputs": {},
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 9679,
+    "runs": 9881,
     "slug": "wiro/flux-2-dev",
     "title": "FLUX.2 Dev"
    },
@@ -1516,8 +1524,8 @@
      "image-to-image",
      "image-editing",
      "fast-inference",
-     "compare-landscape",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "P-Image-Edit is Pruna's image editing model. You upload one to five photos and describe the change in plain words, from a new wall material to a beach cleared of people.",
     "estimated_cost": null,
@@ -1525,10 +1533,10 @@
      {
       "inputs": {},
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 619,
+    "runs": 803,
     "slug": "pruna/p-image-edit",
     "title": "Pruna P-Image Edit Image-to-Image API, Pricing and Docs"
    },
@@ -1536,7 +1544,6 @@
     "categories": [
      "tool",
      "image-to-image",
-     "compare-landscape",
      "use-agent",
      "quick-showcase",
      "wiroEcommerce",
@@ -1544,18 +1551,35 @@
      "image-editing",
      "partner",
      "nogpu-pipeline",
-     "wiro-models"
+     "wiro-models",
+     "input-compare"
     ],
     "description": "Save time and production costs with AI Product Photoshoot. Generate polished product images featuring adaptive lighting, varied angles, and contextual scenes. Ideal for online stores, marketing teams, and agencies looking to accelerate content creation with consistent, high-quality visuals.",
     "estimated_cost": null,
     "price_rows": [
      {
-      "inputs": {},
-      "price": 0.09,
-      "priceMethod": "cpr"
+      "inputs": {
+       "outputType": "image"
+      },
+      "price": 0.08,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "outputType": "video"
+      },
+      "price": 0.5,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "outputType": "both"
+      },
+      "price": 0.5,
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 1404,
+    "runs": 2053,
     "slug": "wiro/product-photoshoot",
     "title": "Product Photoshoot"
    },
@@ -1567,7 +1591,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "OpenAI’s GPT Image 2.6 Sunburst Custom generates images, performs precise edits with masks or markup, and can create short animated GIF loops.",
     "estimated_cost": null,
@@ -1576,10 +1601,10 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. SVG output also bills the gpt-6.1-terra tokens that write the SVG: $1 / 1M input, $5 / 1M output. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 1402,
+    "runs": 2856,
     "slug": "openai/gpt-image-2-6-sunburst-custom",
     "title": "GPT Image 2.6 Sunburst Custom"
    },
@@ -1592,12 +1617,13 @@
      "model",
      "H200",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Qwen-Image-2.1 is Qwen’s open-weight 7B model for text-to-image and image editing. It supports 2K PNG output, including native RGBA transparency.",
-    "estimated_cost": 0.05224404532304725,
+    "estimated_cost": 0.05542658798283262,
     "price_rows": [],
-    "runs": 2167,
+    "runs": 2427,
     "slug": "qwen/qwen-image-2-1",
     "title": "Qwen Image 2.1"
    },
@@ -1609,7 +1635,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "A custom Sunburst build of OpenAI GPT Image 2.5 for high-fidelity image generation and precise edits with masks, transparency options, and custom sizes up to 4K.",
     "estimated_cost": null,
@@ -1618,10 +1645,10 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 12406,
+    "runs": 15466,
     "slug": "openai/gpt-image-2-5-sunburst-custom",
     "title": "GPT Image 2.5 Sunburst (Custom)"
    },
@@ -1633,7 +1660,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "OpenAI’s GPT Image 2.5 Sunburst generates and edits images with tight control using prompts, reference photos, and optional masks. Supports transparent output and up to 4K.",
     "estimated_cost": null,
@@ -1645,7 +1673,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1654,7 +1682,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1663,7 +1691,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1672,7 +1700,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1681,7 +1709,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1690,7 +1718,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1699,7 +1727,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1708,7 +1736,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1717,7 +1745,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1726,7 +1754,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1735,7 +1763,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1744,7 +1772,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1753,7 +1781,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1762,7 +1790,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1771,7 +1799,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1780,7 +1808,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1789,7 +1817,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1798,7 +1826,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1807,7 +1835,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1816,7 +1844,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1825,7 +1853,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1834,7 +1862,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1843,7 +1871,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1852,7 +1880,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1861,7 +1889,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1870,7 +1898,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1879,7 +1907,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1888,7 +1916,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1897,7 +1925,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1906,7 +1934,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1915,7 +1943,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1924,7 +1952,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1933,7 +1961,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1942,7 +1970,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1951,7 +1979,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1960,7 +1988,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1969,7 +1997,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1978,7 +2006,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1987,7 +2015,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1996,7 +2024,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2005,7 +2033,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2014,7 +2042,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2023,7 +2051,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2032,7 +2060,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2041,7 +2069,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2050,7 +2078,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2059,7 +2087,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2068,7 +2096,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2077,7 +2105,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2086,7 +2114,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2095,7 +2123,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2104,7 +2132,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2113,7 +2141,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2122,7 +2150,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2131,7 +2159,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2140,7 +2168,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2149,7 +2177,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2158,7 +2186,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2167,7 +2195,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2176,7 +2204,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2185,7 +2213,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2194,7 +2222,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2203,7 +2231,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2212,7 +2240,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2221,7 +2249,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2230,7 +2258,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2239,7 +2267,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2248,7 +2276,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2257,7 +2285,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2266,7 +2294,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2275,7 +2303,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2284,7 +2312,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2293,7 +2321,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2302,7 +2330,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2311,7 +2339,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2320,7 +2348,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2329,7 +2357,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2338,7 +2366,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2347,7 +2375,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2356,7 +2384,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2365,7 +2393,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2374,7 +2402,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2383,7 +2411,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2392,7 +2420,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2401,7 +2429,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2410,7 +2438,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2419,7 +2447,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2428,7 +2456,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2437,7 +2465,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2446,7 +2474,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2455,7 +2483,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2464,7 +2492,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2473,7 +2501,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2482,7 +2510,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2491,7 +2519,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2500,7 +2528,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2509,7 +2537,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2518,7 +2546,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2527,7 +2555,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2536,7 +2564,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2545,7 +2573,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2554,7 +2582,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2563,7 +2591,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2572,7 +2600,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2581,10 +2609,10 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 37692,
+    "runs": 45144,
     "slug": "openai/gpt-image-2-5-sunburst",
     "title": "GPT Image 2.5 Sunburst (OpenAI)"
    },
@@ -2596,7 +2624,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Generate and edit images with GPT Image 2.5 Flare from OpenAI. Use reference images, optional masks, size controls, and PNG/JPEG/WEBP outputs.",
     "estimated_cost": null,
@@ -2608,7 +2637,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2617,7 +2646,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2626,7 +2655,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2635,7 +2664,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2644,7 +2673,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2653,7 +2682,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2662,7 +2691,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2671,7 +2700,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2680,7 +2709,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2689,7 +2718,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2698,7 +2727,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2707,7 +2736,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2716,7 +2745,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2725,7 +2754,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2734,7 +2763,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2743,7 +2772,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2752,7 +2781,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2761,7 +2790,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2770,7 +2799,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2779,7 +2808,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2788,7 +2817,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2797,7 +2826,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2806,7 +2835,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2815,7 +2844,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2824,7 +2853,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2833,7 +2862,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2842,7 +2871,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2851,7 +2880,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2860,7 +2889,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2869,7 +2898,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2878,7 +2907,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2887,7 +2916,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2896,7 +2925,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2905,7 +2934,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2914,7 +2943,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2923,7 +2952,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2932,7 +2961,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2941,7 +2970,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2950,7 +2979,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2959,7 +2988,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2968,7 +2997,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2977,7 +3006,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2986,7 +3015,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2995,7 +3024,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3004,7 +3033,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3013,7 +3042,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3022,7 +3051,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3031,7 +3060,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3040,7 +3069,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3049,7 +3078,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3058,7 +3087,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3067,7 +3096,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3076,7 +3105,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3085,7 +3114,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3094,7 +3123,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3103,7 +3132,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3112,7 +3141,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3121,7 +3150,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3130,7 +3159,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3139,7 +3168,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3148,7 +3177,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3157,7 +3186,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3166,7 +3195,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3175,7 +3204,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3184,7 +3213,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3193,7 +3222,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3202,7 +3231,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3211,7 +3240,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3220,7 +3249,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3229,7 +3258,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3238,7 +3267,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3247,7 +3276,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3256,7 +3285,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3265,7 +3294,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3274,7 +3303,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3283,7 +3312,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3292,7 +3321,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3301,7 +3330,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3310,7 +3339,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3319,7 +3348,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3328,7 +3357,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3337,7 +3366,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3346,7 +3375,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3355,7 +3384,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3364,7 +3393,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3373,7 +3402,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3382,7 +3411,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3391,7 +3420,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3400,7 +3429,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3409,7 +3438,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3418,7 +3447,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3427,7 +3456,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3436,7 +3465,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3445,7 +3474,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3454,7 +3483,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3463,7 +3492,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3472,7 +3501,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3481,7 +3510,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3490,7 +3519,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3499,7 +3528,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3508,7 +3537,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3517,7 +3546,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3526,7 +3555,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3535,7 +3564,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3544,12 +3573,37 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 32438,
+    "runs": 36867,
     "slug": "openai/gpt-image-2-5-flare",
     "title": "GPT Image 2.5 Flare Image Generator"
+   },
+   {
+    "categories": [
+     "tool",
+     "bf16",
+     "persistent",
+     "fast-inference",
+     "price-list",
+     "image-to-image",
+     "H200",
+     "image-editing",
+     "image-compare"
+    ],
+    "description": "FireRed Image Edit is a general-purpose, instruction-based image editor from FireRedTeam. It changes a photo from a written prompt, edits printed text in place and can draw on several reference images at once.",
+    "estimated_cost": null,
+    "price_rows": [
+     {
+      "inputs": {},
+      "price": 0.007,
+      "priceMethod": "per-run"
+     }
+    ],
+    "runs": 786,
+    "slug": "fireredteam/firered-image-edit",
+    "title": "FireRed Image Edit"
    },
    {
     "categories": [
@@ -3560,7 +3614,8 @@
      "fast-inference",
      "price-list",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Z.ai's GLM-Image creates and edits pictures by pairing a 9B autoregressive generator with a 7B diffusion decoder. It is built for images that carry a lot of text, such as posters and labeled diagrams.",
     "estimated_cost": null,
@@ -3568,10 +3623,10 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 487,
+    "runs": 524,
     "slug": "zai-org/glm-image",
     "title": "GLM-Image"
    },
@@ -3586,7 +3641,8 @@
      "model",
      "image-to-image",
      "H200",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "The undistilled 9B base model of FLUX.2 [klein], for text-to-image and editing with up to 4 reference images, aimed at research and fine-tuning under a non-commercial license.",
     "estimated_cost": null,
@@ -3598,7 +3654,7 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -3607,10 +3663,10 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0.011,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
-    "runs": 3096,
+    "runs": 3107,
     "slug": "black-forest-labs/flux-2-klein-base-9b",
     "title": "FLUX.2 Klein Base 9B"
    },
@@ -3620,9 +3676,9 @@
      "persistent",
      "price-list",
      "model",
-     "compare-landscape",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Meituan's instruction-based image editor. You describe a change in English or Chinese, and it applies that change while aiming to keep everything you did not mention as it was.",
     "estimated_cost": null,
@@ -3630,10 +3686,10 @@
      {
       "inputs": {},
       "price": 0.14,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 265,
+    "runs": 275,
     "slug": "meituan-longcat/longcat-image-edit",
     "title": "LongCat-Image-Edit"
    },
@@ -3644,7 +3700,8 @@
      "checkpoint-folder",
      "image-to-image",
      "model",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "DreamOmni2 edits or composes images from a text instruction plus up to four input pictures. A reference can supply a subject, like a jacket or a pet, or an abstract trait such as a print or a painting style.",
     "estimated_cost": null,
@@ -3652,10 +3709,10 @@
      {
       "inputs": {},
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 250,
+    "runs": 306,
     "slug": "xiabs/dreamomni2",
     "title": "DreamOmni2"
    },
@@ -3665,26 +3722,26 @@
      "model",
      "hunyuanworld",
      "image-to-image",
-     "compare-landscape",
-     "image-editing"
+     "image-editing",
+     "panorama-360"
     ],
     "description": "Builds a full 360-degree equirectangular panorama around a single photo, generating the parts of the scene the camera never captured. You set the field of view the photo covers on the sphere.",
-    "estimated_cost": 0.07077333333333333,
+    "estimated_cost": 0.07182127659574468,
     "price_rows": [],
-    "runs": 227,
+    "runs": 223,
     "slug": "tencent/hunyuanworld-image-to-panorama",
     "title": "HunyuanWorld-1.0 Image to Panorama"
    },
    {
     "categories": [
      "tool",
-     "compare-landscape",
      "fast-inference",
      "image-to-image",
      "image-editing",
      "text-to-image",
      "partner",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Edits a photo from a plain-language instruction and can take up to two more images as references, for example a logo to print on a shirt. With no image attached, it creates one from the prompt.",
     "estimated_cost": null,
@@ -3692,10 +3749,10 @@
      {
       "inputs": {},
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 1169,
+    "runs": 1180,
     "slug": "wiro/image-edit-general",
     "title": "Image Edit General"
    },
@@ -3703,12 +3760,12 @@
     "categories": [
      "tool",
      "image-to-image",
-     "compare-landscape",
      "wiroEntertainment",
      "image-editing",
      "partner",
      "nogpu-pipeline",
-     "restoration"
+     "restoration",
+     "image-compare"
     ],
     "description": "Repairs cracked or faded old photos and returns them in color. There is no prompt: you upload one image and the app redraws it.",
     "estimated_cost": null,
@@ -3716,10 +3773,10 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 562,
+    "runs": 476,
     "slug": "wiro/restore-image",
     "title": "Restore Image"
    },
@@ -3727,12 +3784,12 @@
     "categories": [
      "tool",
      "image-to-image",
-     "compare-landscape",
      "use-agent",
      "wiroHR",
      "image-editing",
      "partner",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "input-compare"
     ],
     "description": "Turns an everyday photo of a person into a business headshot: same face, professional clothing, and a white, black, gray, neutral or office background.",
     "estimated_cost": null,
@@ -3740,43 +3797,12 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 548,
+    "runs": 543,
     "slug": "wiro/professional-headshot",
     "title": "Professional Headshot"
-   },
-   {
-    "categories": [
-     "tool",
-     "image-to-image",
-     "quick-showcase",
-     "swap",
-     "persistent",
-     "face-swap",
-     "image-editing"
-    ],
-    "description": "Puts one or two faces into a scene it generates from your prompt, or into a photo you upload. In a two-person photo it can replace just the left or the right person.",
-    "estimated_cost": 0.05260710900473933,
-    "price_rows": [],
-    "runs": 1409,
-    "slug": "wiro/face-swap",
-    "title": "Face Swap"
-   },
-   {
-    "categories": [
-     "tool",
-     "image-to-image",
-     "persistent",
-     "image-editing"
-    ],
-    "description": "hair-fast-gan applies the hairstyle and hair color to the input image.",
-    "estimated_cost": 0.020223529411764703,
-    "price_rows": [],
-    "runs": 143,
-    "slug": "wiro/hair-fast-gan",
-    "title": "HairFastGAN"
    }
   ],
   "text-to-image": [
@@ -3792,7 +3818,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Google's Gemini 3 Pro Image (Nano Banana Pro) creates and edits images at 1K, 2K or 4K from a prompt and up to 14 references, aimed at legible text, charts and dense layouts.",
     "estimated_cost": null,
@@ -3802,24 +3829,24 @@
        "resolution": "1K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.24,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 184246,
+    "runs": 190921,
     "slug": "google/nano-banana-pro",
     "title": "Nano Banana Pro API: Create Mobile & Web Apps with Nano Banana"
    },
@@ -3835,7 +3862,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Gemini 3.1 Flash Image from Google: generation and editing with up to 14 references, output from 512px to 4K, and aspect ratios as extreme as 8:1 and 1:8.",
     "estimated_cost": null,
@@ -3845,31 +3873,31 @@
        "resolution": "512"
       },
       "price": 0.045,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "1K"
       },
       "price": 0.067,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.101,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.151,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 139836,
+    "runs": 147576,
     "slug": "google/nano-banana-2",
     "title": "Nano-Banana-2 Image Editing Tool"
    },
@@ -3881,7 +3909,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Generate or edit images with GPT Image 2 from OpenAI. It delivers strong instruction following, sharp text rendering, and flexible sizing up to 4K.",
     "estimated_cost": null,
@@ -3893,7 +3922,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3902,7 +3931,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3911,7 +3940,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3920,7 +3949,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3929,7 +3958,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3938,7 +3967,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3947,7 +3976,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3956,7 +3985,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3965,7 +3994,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3974,7 +4003,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3983,7 +4012,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3992,7 +4021,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4001,7 +4030,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4010,7 +4039,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4019,7 +4048,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4028,7 +4057,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4037,7 +4066,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4046,7 +4075,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4055,7 +4084,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4064,7 +4093,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4073,7 +4102,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4082,7 +4111,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4091,7 +4120,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4100,7 +4129,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4109,7 +4138,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4118,7 +4147,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4127,7 +4156,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4136,7 +4165,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4145,7 +4174,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4154,7 +4183,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4163,7 +4192,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4172,7 +4201,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4181,7 +4210,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4190,7 +4219,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4199,7 +4228,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4208,7 +4237,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4217,7 +4246,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4226,7 +4255,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4235,7 +4264,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4244,7 +4273,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4253,7 +4282,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4262,7 +4291,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4271,7 +4300,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4280,7 +4309,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4289,7 +4318,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4298,7 +4327,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4307,7 +4336,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4316,7 +4345,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4325,7 +4354,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4334,7 +4363,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4343,7 +4372,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4352,7 +4381,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4361,7 +4390,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4370,7 +4399,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4379,7 +4408,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4388,7 +4417,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4397,7 +4426,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4406,7 +4435,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4415,7 +4444,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4424,7 +4453,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4433,7 +4462,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4442,7 +4471,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4451,10 +4480,10 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 174876,
+    "runs": 189110,
     "slug": "openai/gpt-image-2",
     "title": "OpenAI GPT Image 2: Generation and Edits"
    },
@@ -4466,7 +4495,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Create or edit images with OpenAI GPT Image 2 using custom pixel sizes, quality tiers, and format controls. Add optional masks to target specific edits.",
     "estimated_cost": null,
@@ -4475,10 +4505,10 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 5111,
+    "runs": 5486,
     "slug": "openai/gpt-image-2-custom",
     "title": "GPT Image 2 Custom by OpenAI"
    },
@@ -4488,14 +4518,14 @@
      "partner",
      "google",
      "image-to-image",
-     "compare-landscape",
      "use-agent",
      "quick-showcase",
      "text-to-image",
      "price-list",
      "fast-inference",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Text-to-image and photo editing from Google's Gemini 2.5 Flash Image. It edits or merges up to 3 photos from a plain-language instruction and keeps a character's look consistent across edits.",
     "estimated_cost": null,
@@ -4503,10 +4533,10 @@
      {
       "inputs": {},
       "price": 0.039,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 540686,
+    "runs": 542176,
     "slug": "google/nano-banana",
     "title": "Nano Banana API: Create Mobile & Web Apps with Nano Banana"
    },
@@ -4520,7 +4550,8 @@
      "quick-showcase",
      "price-list",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "ByteDance image model that generates and edits pictures from a prompt. It takes up to 14 reference images and can return a set of up to 15 related images in one run.",
     "estimated_cost": null,
@@ -4528,10 +4559,10 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 4295,
+    "runs": 4517,
     "slug": "bytedance/seedream-v4",
     "title": "Seedream 4.0"
    },
@@ -4547,7 +4578,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Nano Banana 2.1 Advanced by Google generates and edits images with up to 14 references, optional Web or Image Search grounding, and 1K to 4K output.",
     "estimated_cost": null,
@@ -4556,10 +4588,10 @@
       "inputs": {},
       "note": "input (text/image/video/PDF) $1.50 per 1M tokens, text and thinking output $7.50 per 1M tokens, image output $30 per 1M tokens. Google Web/Image Search $0.014 per query. Higher thinking levels use more thinking tokens and cost more.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 6328,
+    "runs": 7884,
     "slug": "google/nano-banana-2-1-advanced",
     "title": "Nano Banana 2.1 Advanced (Google)"
    },
@@ -4573,9 +4605,9 @@
      "fast-inference"
     ],
     "description": "Hunyuan Flux SRPO is FLUX.1 dev (12B) fine-tuned by Tencent Hunyuan with SRPO, a human-preference training method aimed at realism and aesthetic quality without oversaturated color.",
-    "estimated_cost": 0.03934903047091412,
+    "estimated_cost": 0.039457458563535906,
     "price_rows": [],
-    "runs": 538,
+    "runs": 640,
     "slug": "tencent/hunyuan-flux-srpo",
     "title": "Hunyuan Flux SRPO"
    },
@@ -4588,7 +4620,8 @@
      "quick-showcase",
      "text-to-image",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Alibaba’s Qwen Image 3.0 Pro generates and edits PNG images from long prompts and up to 3 reference images, built for dense layouts and small text.",
     "estimated_cost": null,
@@ -4598,17 +4631,17 @@
        "size": "1K"
       },
       "price": 0.05,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "size": "2K"
       },
       "price": 0.085,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 3392,
+    "runs": 4153,
     "slug": "alibaba/qwen-image-3-0-pro",
     "title": "Alibaba Qwen Image 3.0 Pro"
    },
@@ -4617,12 +4650,13 @@
      "persistent",
      "model",
      "text-to-image",
-     "hunyuanworld"
+     "hunyuanworld",
+     "panorama-360"
     ],
     "description": "Generates a 360-degree equirectangular panorama from a text prompt, blending the left and right edges so they join when the image wraps around. Tencent built it on FLUX.1 [dev].",
-    "estimated_cost": 0.0763764705882353,
+    "estimated_cost": 0.07464255319148935,
     "price_rows": [],
-    "runs": 249,
+    "runs": 324,
     "slug": "tencent/hunyuanworld-text-to-panorama",
     "title": "HunyuanWorld-1.0 Text to Panorama"
    },
@@ -4636,9 +4670,9 @@
      "price-list"
     ],
     "description": "Renders a text prompt with the FLUX.1 checkpoint you pick, such as FLUX.1 [dev], [schnell] or Krea [dev], or with one of your private FLUX.1 fine-tunes.",
-    "estimated_cost": 0.0225946949602122,
+    "estimated_cost": 0.022678383749172,
     "price_rows": [],
-    "runs": 4682,
+    "runs": 4738,
     "slug": "wiro/text-to-image-flux",
     "title": "Flux Text to Image"
    },
@@ -4654,7 +4688,8 @@
      "fast-inference",
      "image-editing",
      "use-agent",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Nano Banana 2.1 by Google generates and edits images from text and reference photos. It supports multi-image fusion, sharp text rendering, and up to 4K output.",
     "estimated_cost": null,
@@ -4664,24 +4699,24 @@
        "resolution": "1K"
       },
       "price": 0.0336,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.0504,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.113,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 27043,
+    "runs": 42902,
     "slug": "google/nano-banana-2-1",
     "title": "Nano Banana 2.1 Image Generator (Google)"
    },
@@ -4695,7 +4730,8 @@
      "quick-showcase",
      "price-list",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "ByteDance Seedream V5 Pro generates images from text and edits a base image using up to 10 references. It’s tuned for infographics, layouts, and clear typography.",
     "estimated_cost": null,
@@ -4705,17 +4741,17 @@
        "resolution": "1k"
       },
       "price": 0.045,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2k"
       },
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 12699,
+    "runs": 14691,
     "slug": "bytedance/seedream-v5-pro",
     "title": "Seedream V5 Pro by ByteDance (Image)"
    },
@@ -4727,7 +4763,8 @@
      "text-to-image",
      "image-to-image",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "xAI’s Grok Imagine Image generates images from prompts and can edit a source image using instructions. Pick an aspect ratio, 1K or 2K, and 1–10 samples.",
     "estimated_cost": null,
@@ -4735,126 +4772,12 @@
      {
       "inputs": {},
       "price": 0.02,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 4849,
+    "runs": 5044,
     "slug": "xai/grok-imagine-image",
     "title": "Grok Imagine Image by xAI"
-   },
-   {
-    "categories": [
-     "tool",
-     "partner",
-     "openai",
-     "text-to-image",
-     "image-to-image",
-     "image-editing",
-     "nogpu-pipeline"
-    ],
-    "description": "Generate or edit images using text prompts or image edits with GPT Image 1.5. Supports multiple sizes, formats, and quality settings.",
-    "estimated_cost": null,
-    "price_rows": [
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "1:1"
-      },
-      "price": 0.009,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "3:2"
-      },
-      "price": 0.013,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "2:3"
-      },
-      "price": 0.013,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "low",
-       "size": "auto"
-      },
-      "price": 0.013,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "1:1"
-      },
-      "price": 0.034,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "3:2"
-      },
-      "price": 0.05,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "2:3"
-      },
-      "price": 0.05,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "medium",
-       "size": "auto"
-      },
-      "price": 0.05,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "1:1"
-      },
-      "price": 0.133,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "3:2"
-      },
-      "price": 0.2,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "2:3"
-      },
-      "price": 0.2,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "quality": "high",
-       "size": "auto"
-      },
-      "price": 0.2,
-      "priceMethod": "cpr"
-     }
-    ],
-    "runs": 2981,
-    "slug": "openai/gpt-image-1-5",
-    "title": "GPT Image 1.5 - Text-to-Image & Image Editing"
    },
    {
     "categories": [
@@ -4866,7 +4789,8 @@
      "quick-showcase",
      "price-list",
      "nogpu-pipeline",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Seedream 4.5 is ByteDance's image generation and editing model. It works from a prompt and up to 14 reference images, keeps faces, lighting and color tone from the references, and outputs at 2K or 4K.",
     "estimated_cost": null,
@@ -4874,10 +4798,10 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
-    "runs": 30086,
+    "runs": 36400,
     "slug": "bytedance/seedream-v4-5",
     "title": "Seedream 4.5"
    },
@@ -4890,7 +4814,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Black Forest Labs' FLUX.2 [flex] generates and edits images from a prompt and up to 8 reference images, and lets you set steps and guidance yourself. It is specialized for legible text and small details.",
     "estimated_cost": null,
@@ -4902,7 +4827,7 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -4911,10 +4836,10 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0.06,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
-    "runs": 951,
+    "runs": 1043,
     "slug": "black-forest-labs/flux-2-flex",
     "title": "FLUX.2 Flex"
    },
@@ -4927,7 +4852,8 @@
      "flux-2-pro",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "FLUX.2 [pro], from Black Forest Labs, generates images from a prompt or edits and combines up to 8 reference photos in one request. Width and height are set in pixels, up to 2048 each.",
     "estimated_cost": null,
@@ -4939,7 +4865,7 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -4948,12 +4874,127 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0.015,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
-    "runs": 5918,
+    "runs": 6900,
     "slug": "black-forest-labs/flux-2-pro",
     "title": "FLUX.2 Pro"
+   },
+   {
+    "categories": [
+     "tool",
+     "partner",
+     "openai",
+     "text-to-image",
+     "image-to-image",
+     "image-editing",
+     "nogpu-pipeline",
+     "image-compare"
+    ],
+    "description": "Generate or edit images using text prompts or image edits with GPT Image 1.5. Supports multiple sizes, formats, and quality settings.",
+    "estimated_cost": null,
+    "price_rows": [
+     {
+      "inputs": {
+       "quality": "low",
+       "size": "1:1"
+      },
+      "price": 0.009,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "low",
+       "size": "3:2"
+      },
+      "price": 0.013,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "low",
+       "size": "2:3"
+      },
+      "price": 0.013,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "low",
+       "size": "auto"
+      },
+      "price": 0.013,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "1:1"
+      },
+      "price": 0.034,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "3:2"
+      },
+      "price": 0.05,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "2:3"
+      },
+      "price": 0.05,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "medium",
+       "size": "auto"
+      },
+      "price": 0.05,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "1:1"
+      },
+      "price": 0.133,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "3:2"
+      },
+      "price": 0.2,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "2:3"
+      },
+      "price": 0.2,
+      "priceMethod": "per-run"
+     },
+     {
+      "inputs": {
+       "quality": "high",
+       "size": "auto"
+      },
+      "price": 0.2,
+      "priceMethod": "per-run"
+     }
+    ],
+    "runs": 3030,
+    "slug": "openai/gpt-image-1-5",
+    "title": "GPT Image 1.5 - Text-to-Image & Image Editing"
    },
    {
     "categories": [
@@ -4965,7 +5006,8 @@
      "fast-inference",
      "price-list",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "FLUX.2 [dev] is a 32 billion parameter rectified flow transformer from Black Forest Labs that generates, edits and combines images from text instructions, with up to 5 reference images per run.",
     "estimated_cost": null,
@@ -4973,12 +5015,63 @@
      {
       "inputs": {},
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 9679,
+    "runs": 9881,
     "slug": "wiro/flux-2-dev",
     "title": "FLUX.2 Dev"
+   },
+   {
+    "categories": [
+     "tool",
+     "klingai",
+     "partner",
+     "nogpu-pipeline",
+     "quick-showcase",
+     "hero-showcase",
+     "text-to-image",
+     "image-to-image"
+    ],
+    "description": "Generate long-form webpage or product detail page mockups from a written brief, with optional reference images. Choose 1K or 2K output for crisp layout previews.",
+    "estimated_cost": null,
+    "price_rows": [
+     {
+      "inputs": {},
+      "note": "Billed per output image. Webpage: $0.549 at 1K, $0.596 at 2K. Ecommerce: short $0.235 / $0.282, medium $0.470 / $0.549, long $0.784 / $0.862 at 1K / 2K. Plus $0.003 per input image.",
+      "price": 0,
+      "priceMethod": "reported-price"
+     }
+    ],
+    "runs": 140,
+    "slug": "klingai/kling-image-v4-long",
+    "title": "Kling Image V4 Long for Page Mockups"
+   },
+   {
+    "categories": [
+     "tool",
+     "klingai",
+     "partner",
+     "nogpu-pipeline",
+     "quick-showcase",
+     "hero-showcase",
+     "text-to-image",
+     "image-to-image",
+     "image-compare"
+    ],
+    "description": "Generate 2K–8K images from prompts, with up to 10 reference images for identity or style. Create single variations or a connected series for consistent visuals.",
+    "estimated_cost": null,
+    "price_rows": [
+     {
+      "inputs": {},
+      "note": "Billed per output image: $0.063 at 2K, $0.094 at 4K, $0.157 at 8K, plus $0.003 per input image.",
+      "price": 0,
+      "priceMethod": "reported-price"
+     }
+    ],
+    "runs": 550,
+    "slug": "klingai/kling-image-v4-advanced",
+    "title": "Kling Image V4 Advanced (KlingAI)"
    },
    {
     "categories": [
@@ -4988,7 +5081,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "OpenAI’s GPT Image 2.6 Sunburst Custom generates images, performs precise edits with masks or markup, and can create short animated GIF loops.",
     "estimated_cost": null,
@@ -4997,10 +5091,10 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. SVG output also bills the gpt-6.1-terra tokens that write the SVG: $1 / 1M input, $5 / 1M output. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 1402,
+    "runs": 2856,
     "slug": "openai/gpt-image-2-6-sunburst-custom",
     "title": "GPT Image 2.6 Sunburst Custom"
    },
@@ -5013,12 +5107,13 @@
      "model",
      "H200",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Qwen-Image-2.1 is Qwen’s open-weight 7B model for text-to-image and image editing. It supports 2K PNG output, including native RGBA transparency.",
-    "estimated_cost": 0.05224404532304725,
+    "estimated_cost": 0.05542658798283262,
     "price_rows": [],
-    "runs": 2167,
+    "runs": 2427,
     "slug": "qwen/qwen-image-2-1",
     "title": "Qwen Image 2.1"
    },
@@ -5030,7 +5125,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "A custom Sunburst build of OpenAI GPT Image 2.5 for high-fidelity image generation and precise edits with masks, transparency options, and custom sizes up to 4K.",
     "estimated_cost": null,
@@ -5039,10 +5135,10 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
-    "runs": 12406,
+    "runs": 15466,
     "slug": "openai/gpt-image-2-5-sunburst-custom",
     "title": "GPT Image 2.5 Sunburst (Custom)"
    },
@@ -5054,7 +5150,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "OpenAI’s GPT Image 2.5 Sunburst generates and edits images with tight control using prompts, reference photos, and optional masks. Supports transparent output and up to 4K.",
     "estimated_cost": null,
@@ -5066,7 +5163,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5075,7 +5172,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5084,7 +5181,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5093,7 +5190,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5102,7 +5199,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5111,7 +5208,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5120,7 +5217,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5129,7 +5226,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5138,7 +5235,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5147,7 +5244,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5156,7 +5253,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5165,7 +5262,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5174,7 +5271,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5183,7 +5280,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5192,7 +5289,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5201,7 +5298,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5210,7 +5307,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5219,7 +5316,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5228,7 +5325,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5237,7 +5334,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5246,7 +5343,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5255,7 +5352,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5264,7 +5361,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5273,7 +5370,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5282,7 +5379,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5291,7 +5388,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5300,7 +5397,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5309,7 +5406,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5318,7 +5415,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5327,7 +5424,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5336,7 +5433,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5345,7 +5442,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5354,7 +5451,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5363,7 +5460,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5372,7 +5469,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5381,7 +5478,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5390,7 +5487,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5399,7 +5496,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5408,7 +5505,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5417,7 +5514,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5426,7 +5523,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5435,7 +5532,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5444,7 +5541,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5453,7 +5550,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5462,7 +5559,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5471,7 +5568,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5480,7 +5577,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5489,7 +5586,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5498,7 +5595,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5507,7 +5604,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5516,7 +5613,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5525,7 +5622,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5534,7 +5631,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5543,7 +5640,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5552,7 +5649,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5561,7 +5658,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5570,7 +5667,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5579,7 +5676,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5588,7 +5685,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5597,7 +5694,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5606,7 +5703,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5615,7 +5712,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5624,7 +5721,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5633,7 +5730,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5642,7 +5739,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5651,7 +5748,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5660,7 +5757,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5669,7 +5766,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5678,7 +5775,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5687,7 +5784,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5696,7 +5793,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5705,7 +5802,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5714,7 +5811,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5723,7 +5820,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5732,7 +5829,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5741,7 +5838,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5750,7 +5847,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5759,7 +5856,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5768,7 +5865,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5777,7 +5874,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5786,7 +5883,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5795,7 +5892,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5804,7 +5901,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5813,7 +5910,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5822,7 +5919,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5831,7 +5928,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5840,7 +5937,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5849,7 +5946,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5858,7 +5955,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5867,7 +5964,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5876,7 +5973,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5885,7 +5982,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5894,7 +5991,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5903,7 +6000,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5912,7 +6009,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5921,7 +6018,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5930,7 +6027,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5939,7 +6036,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5948,7 +6045,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5957,7 +6054,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5966,7 +6063,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5975,7 +6072,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5984,7 +6081,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5993,7 +6090,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6002,10 +6099,10 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 37692,
+    "runs": 45144,
     "slug": "openai/gpt-image-2-5-sunburst",
     "title": "GPT Image 2.5 Sunburst (OpenAI)"
    },
@@ -6017,7 +6114,8 @@
      "text-to-image",
      "image-to-image",
      "image-editing",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Generate and edit images with GPT Image 2.5 Flare from OpenAI. Use reference images, optional masks, size controls, and PNG/JPEG/WEBP outputs.",
     "estimated_cost": null,
@@ -6029,7 +6127,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6038,7 +6136,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6047,7 +6145,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6056,7 +6154,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6065,7 +6163,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6074,7 +6172,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6083,7 +6181,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6092,7 +6190,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6101,7 +6199,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6110,7 +6208,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6119,7 +6217,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6128,7 +6226,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6137,7 +6235,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6146,7 +6244,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6155,7 +6253,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6164,7 +6262,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6173,7 +6271,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6182,7 +6280,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6191,7 +6289,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6200,7 +6298,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6209,7 +6307,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6218,7 +6316,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6227,7 +6325,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6236,7 +6334,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6245,7 +6343,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6254,7 +6352,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6263,7 +6361,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6272,7 +6370,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6281,7 +6379,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6290,7 +6388,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6299,7 +6397,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6308,7 +6406,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6317,7 +6415,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6326,7 +6424,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6335,7 +6433,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6344,7 +6442,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6353,7 +6451,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6362,7 +6460,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6371,7 +6469,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6380,7 +6478,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6389,7 +6487,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6398,7 +6496,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6407,7 +6505,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6416,7 +6514,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6425,7 +6523,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6434,7 +6532,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6443,7 +6541,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6452,7 +6550,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6461,7 +6559,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6470,7 +6568,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6479,7 +6577,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6488,7 +6586,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6497,7 +6595,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6506,7 +6604,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6515,7 +6613,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6524,7 +6622,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6533,7 +6631,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6542,7 +6640,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6551,7 +6649,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6560,7 +6658,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6569,7 +6667,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6578,7 +6676,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6587,7 +6685,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6596,7 +6694,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6605,7 +6703,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6614,7 +6712,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6623,7 +6721,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6632,7 +6730,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6641,7 +6739,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6650,7 +6748,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6659,7 +6757,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6668,7 +6766,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6677,7 +6775,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6686,7 +6784,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6695,7 +6793,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6704,7 +6802,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6713,7 +6811,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6722,7 +6820,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6731,7 +6829,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6740,7 +6838,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6749,7 +6847,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6758,7 +6856,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6767,7 +6865,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6776,7 +6874,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6785,7 +6883,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6794,7 +6892,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6803,7 +6901,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6812,7 +6910,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6821,7 +6919,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6830,7 +6928,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6839,7 +6937,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6848,7 +6946,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6857,7 +6955,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6866,7 +6964,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6875,7 +6973,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6884,7 +6982,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6893,7 +6991,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6902,7 +7000,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6911,7 +7009,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6920,7 +7018,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6929,7 +7027,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6938,7 +7036,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6947,7 +7045,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6956,7 +7054,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6965,10 +7063,10 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 32438,
+    "runs": 36867,
     "slug": "openai/gpt-image-2-5-flare",
     "title": "GPT Image 2.5 Flare Image Generator"
    },
@@ -6987,10 +7085,10 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 474,
+    "runs": 586,
     "slug": "microsoft/lens",
     "title": "Microsoft Lens Text-to-Image"
    },
@@ -7003,7 +7101,8 @@
      "fast-inference",
      "price-list",
      "image-to-image",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "Z.ai's GLM-Image creates and edits pictures by pairing a 9B autoregressive generator with a 7B diffusion decoder. It is built for images that carry a lot of text, such as posters and labeled diagrams.",
     "estimated_cost": null,
@@ -7011,10 +7110,10 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 593,
+    "runs": 662,
     "slug": "zai-org/glm-image",
     "title": "GLM-Image"
    },
@@ -7029,7 +7128,8 @@
      "model",
      "image-to-image",
      "H200",
-     "image-editing"
+     "image-editing",
+     "image-compare"
     ],
     "description": "The undistilled 9B base model of FLUX.2 [klein], for text-to-image and editing with up to 4 reference images, aimed at research and fine-tuning under a non-commercial license.",
     "estimated_cost": null,
@@ -7041,7 +7141,7 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -7050,23 +7150,23 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0.011,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
-    "runs": 3096,
+    "runs": 3107,
     "slug": "black-forest-labs/flux-2-klein-base-9b",
     "title": "FLUX.2 Klein Base 9B"
    },
    {
     "categories": [
      "tool",
-     "compare-landscape",
      "fast-inference",
      "image-to-image",
      "image-editing",
      "text-to-image",
      "partner",
-     "nogpu-pipeline"
+     "nogpu-pipeline",
+     "image-compare"
     ],
     "description": "Edits a photo from a plain-language instruction and can take up to two more images as references, for example a logo to print on a shirt. With no image attached, it creates one from the prompt.",
     "estimated_cost": null,
@@ -7074,10 +7174,10 @@
      {
       "inputs": {},
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
-    "runs": 1169,
+    "runs": 1180,
     "slug": "wiro/image-edit-general",
     "title": "Image Edit General"
    },
@@ -7094,7 +7194,7 @@
     "description": "The lighter variant in the HiDream-I1 family: the 17B Full model distilled to 16 reference sampling steps, run with guidance set to 0.",
     "estimated_cost": 0.06334751131221719,
     "price_rows": [],
-    "runs": 452,
+    "runs": 428,
     "slug": "hidreamai/hidream-i1-fast",
     "title": "HiDreamAI Fast"
    },
@@ -7107,9 +7207,9 @@
      "checkpoint-folder"
     ],
     "description": "The undistilled 17B-parameter HiDream-I1 text-to-image checkpoint. It is the only one of the three built to run with classifier-free guidance, so the guidance scale and negative prompt both shape the image.",
-    "estimated_cost": 0.096080412371134,
+    "estimated_cost": 0.09677448979591835,
     "price_rows": [],
-    "runs": 500,
+    "runs": 380,
     "slug": "hidreamai/hidream-i1-full",
     "title": "HiDreamAI Full"
    },
@@ -7122,9 +7222,9 @@
      "model"
     ],
     "description": "Qwen's 20B-parameter MMDiT text-to-image model. It draws legible English and Chinese text into the picture, from a single shop sign to a multi-line poster.",
-    "estimated_cost": 0.07058583569405098,
+    "estimated_cost": 0.06383656387665199,
     "price_rows": [],
-    "runs": 577,
+    "runs": 741,
     "slug": "qwen/qwen-image",
     "title": "Qwen Image"
    },
@@ -7140,7 +7240,7 @@
     "description": "Generate images from a text prompt with a FLUX.1 base model and a LoRA of your choice: a public style listed on Wiro, one of your private LoRAs, or a .safetensors file by URL.",
     "estimated_cost": 0.0396665351904351,
     "price_rows": [],
-    "runs": 24530,
+    "runs": 24564,
     "slug": "wiro/text-to-image-flux-lora",
     "title": "Flux LoRA Text to Image"
    },
@@ -7155,299 +7255,17 @@
      "persistent"
     ],
     "description": "Turns a text prompt into an image in 1 to 4 sampling steps. Black Forest Labs released it under Apache 2.0, so the model and its images can be used commercially.",
-    "estimated_cost": 0.019678172588832487,
+    "estimated_cost": 0.01671050847457627,
     "price_rows": [],
-    "runs": 622,
+    "runs": 748,
     "slug": "black-forest-labs/flux-1-schnell",
     "title": "FLUX.1 Schnell"
-   },
-   {
-    "categories": [
-     "tool",
-     "use-agent",
-     "nogpu-pipeline",
-     "partner",
-     "quick-showcase",
-     "text-to-image",
-     "image-to-image"
-    ],
-    "description": "MiniMax H3 Highspeed Image Advanced is the faster H3 Image with every control: edit or combine up to 16 images, set 1K to 4K or an exact size, and control prompt expansion.",
-    "estimated_cost": null,
-    "price_rows": [
-     {
-      "inputs": {},
-      "note": "Billed by token usage: $2.30 per 1M input text tokens (prompt expansion included), $3.00 per 1M input image tokens, $7.60 per 1M output image tokens.",
-      "price": 0,
-      "priceMethod": "cp-readoutput"
-     }
-    ],
-    "runs": 196,
-    "slug": "minimax/h3-highspeed-image-advanced",
-    "title": "MiniMax H3 Highspeed Image Advanced"
-   },
-   {
-    "categories": [
-     "tool",
-     "use-agent",
-     "nogpu-pipeline",
-     "partner",
-     "quick-showcase",
-     "text-to-image",
-     "image-to-image"
-    ],
-    "description": "MiniMax H3 Image Highspeed is the faster version of H3 Image. Generate images from a prompt or edit one input image, at 1K to 4K, up to 10 images per run.",
-    "estimated_cost": null,
-    "price_rows": [
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "1"
-      },
-      "price": 0.051,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "2"
-      },
-      "price": 0.102,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "3"
-      },
-      "price": 0.153,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "4"
-      },
-      "price": 0.204,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "5"
-      },
-      "price": 0.255,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "6"
-      },
-      "price": 0.306,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "7"
-      },
-      "price": 0.357,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "8"
-      },
-      "price": 0.408,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "9"
-      },
-      "price": 0.459,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "1K",
-       "samples": "10"
-      },
-      "price": 0.51,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "1"
-      },
-      "price": 0.051,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "2"
-      },
-      "price": 0.102,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "3"
-      },
-      "price": 0.153,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "4"
-      },
-      "price": 0.204,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "5"
-      },
-      "price": 0.255,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "6"
-      },
-      "price": 0.306,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "7"
-      },
-      "price": 0.357,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "8"
-      },
-      "price": 0.408,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "9"
-      },
-      "price": 0.459,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "2K",
-       "samples": "10"
-      },
-      "price": 0.51,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "1"
-      },
-      "price": 0.15,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "2"
-      },
-      "price": 0.3,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "3"
-      },
-      "price": 0.45,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "4"
-      },
-      "price": 0.6,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "5"
-      },
-      "price": 0.75,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "6"
-      },
-      "price": 0.9,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "7"
-      },
-      "price": 1.05,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "8"
-      },
-      "price": 1.2,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "9"
-      },
-      "price": 1.35,
-      "priceMethod": "cpr"
-     },
-     {
-      "inputs": {
-       "resolution": "4K",
-       "samples": "10"
-      },
-      "price": 1.5,
-      "priceMethod": "cpr"
-     }
-    ],
-    "runs": 133,
-    "slug": "minimax/h3-highspeed-image",
-    "title": "MiniMax H3 Image Highspeed"
    }
   ]
  },
  "schemas": {
   "briaai/rmbg-2-0": {
-   "approximatelycost": 0.001733659621802002,
+   "approximatelycost": 0.0018292747252747251,
    "categories": [
     "tool",
     "image-to-image",
@@ -7455,8 +7273,8 @@
     "use-agent",
     "wiroEcommerce",
     "persistent",
-    "compare-landscape",
-    "background-removal"
+    "background-removal",
+    "cutout"
    ],
    "cleanslugowner": "briaai",
    "cleanslugproject": "rmbg-2-0",
@@ -7499,7 +7317,8 @@
     "quick-showcase",
     "price-list",
     "nogpu-pipeline",
-    "image-editing"
+    "image-editing",
+    "image-compare"
    ],
    "cleanslugowner": "bytedance",
    "cleanslugproject": "seedream-v5-lite",
@@ -7509,7 +7328,7 @@
     {
      "inputs": {},
      "price": 0.035,
-     "priceMethod": "cpo"
+     "priceMethod": "per-output-file"
     }
    ],
    "parameters": [
@@ -7687,7 +7506,8 @@
     "fast-inference",
     "image-editing",
     "use-agent",
-    "nogpu-pipeline"
+    "nogpu-pipeline",
+    "image-compare"
    ],
    "cleanslugowner": "google",
    "cleanslugproject": "nano-banana-2-1",
@@ -7699,21 +7519,21 @@
       "resolution": "1K"
      },
      "price": 0.0336,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
       "resolution": "2K"
      },
      "price": 0.0504,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
       "resolution": "4K"
      },
      "price": 0.113,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -7946,7 +7766,8 @@
     "fast-inference",
     "image-editing",
     "use-agent",
-    "nogpu-pipeline"
+    "nogpu-pipeline",
+    "image-compare"
    ],
    "cleanslugowner": "google",
    "cleanslugproject": "nano-banana-2-lite",
@@ -7956,7 +7777,7 @@
     {
      "inputs": {},
      "price": 0.034,
-     "priceMethod": "cpo"
+     "priceMethod": "per-output-file"
     }
    ],
    "parameters": [
@@ -8112,7 +7933,7 @@
      },
      "note": "$0.25 for 512P",
      "price": 0.25,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8120,7 +7941,7 @@
      },
      "note": "$0.30 for 1024P",
      "price": 0.3,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8128,7 +7949,7 @@
      },
      "note": "$0.35 for 1536P",
      "price": 0.35,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -8421,7 +8242,8 @@
     "image-editing",
     "nogpu-pipeline",
     "quick-showcase",
-    "hero-showcase"
+    "hero-showcase",
+    "image-compare"
    ],
    "cleanslugowner": "openai",
    "cleanslugproject": "gpt-image-2-6-flare",
@@ -8435,7 +8257,7 @@
       "resolution": "1k"
      },
      "price": 0.025,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8444,7 +8266,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8453,7 +8275,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8462,7 +8284,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8471,7 +8293,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8480,7 +8302,7 @@
       "resolution": "1k"
      },
      "price": 0.013,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8489,7 +8311,7 @@
       "resolution": "1k"
      },
      "price": 0.013,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8498,7 +8320,7 @@
       "resolution": "1k"
      },
      "price": 0.043,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8507,7 +8329,7 @@
       "resolution": "1k"
      },
      "price": 0.034,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8516,7 +8338,7 @@
       "resolution": "1k"
      },
      "price": 0.034,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8525,7 +8347,7 @@
       "resolution": "1k"
      },
      "price": 0.035,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8534,7 +8356,7 @@
       "resolution": "1k"
      },
      "price": 0.035,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8543,7 +8365,7 @@
       "resolution": "1k"
      },
      "price": 0.024,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8552,7 +8374,7 @@
       "resolution": "1k"
      },
      "price": 0.024,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8561,7 +8383,7 @@
       "resolution": "1k"
      },
      "price": 0.053,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8570,7 +8392,7 @@
       "resolution": "1k"
      },
      "price": 0.041,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8579,7 +8401,7 @@
       "resolution": "1k"
      },
      "price": 0.041,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8588,7 +8410,7 @@
       "resolution": "1k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8597,7 +8419,7 @@
       "resolution": "1k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8606,7 +8428,7 @@
       "resolution": "1k"
      },
      "price": 0.028,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8615,7 +8437,7 @@
       "resolution": "1k"
      },
      "price": 0.028,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8624,7 +8446,7 @@
       "resolution": "1k"
      },
      "price": 0.094,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8633,7 +8455,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8642,7 +8464,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8651,7 +8473,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8660,7 +8482,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8669,7 +8491,7 @@
       "resolution": "1k"
      },
      "price": 0.05,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8678,7 +8500,7 @@
       "resolution": "1k"
      },
      "price": 0.05,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8687,7 +8509,7 @@
       "resolution": "1k"
      },
      "price": 0.211,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8696,7 +8518,7 @@
       "resolution": "1k"
      },
      "price": 0.165,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8705,7 +8527,7 @@
       "resolution": "1k"
      },
      "price": 0.165,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8714,7 +8536,7 @@
       "resolution": "1k"
      },
      "price": 0.167,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8723,7 +8545,7 @@
       "resolution": "1k"
      },
      "price": 0.167,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8732,7 +8554,7 @@
       "resolution": "1k"
      },
      "price": 0.114,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8741,7 +8563,7 @@
       "resolution": "1k"
      },
      "price": 0.114,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8750,7 +8572,7 @@
       "resolution": "2k"
      },
      "price": 0.05,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8759,7 +8581,7 @@
       "resolution": "2k"
      },
      "price": 0.032,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8768,7 +8590,7 @@
       "resolution": "2k"
      },
      "price": 0.032,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8777,7 +8599,7 @@
       "resolution": "2k"
      },
      "price": 0.031,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8786,7 +8608,7 @@
       "resolution": "2k"
      },
      "price": 0.031,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8795,7 +8617,7 @@
       "resolution": "2k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8804,7 +8626,7 @@
       "resolution": "2k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8813,7 +8635,7 @@
       "resolution": "2k"
      },
      "price": 0.088,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8822,7 +8644,7 @@
       "resolution": "2k"
      },
      "price": 0.056,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8831,7 +8653,7 @@
       "resolution": "2k"
      },
      "price": 0.056,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8840,7 +8662,7 @@
       "resolution": "2k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8849,7 +8671,7 @@
       "resolution": "2k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8858,7 +8680,7 @@
       "resolution": "2k"
      },
      "price": 0.036,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8867,7 +8689,7 @@
       "resolution": "2k"
      },
      "price": 0.036,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8876,7 +8698,7 @@
       "resolution": "2k"
      },
      "price": 0.107,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8885,7 +8707,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8894,7 +8716,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8903,7 +8725,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8912,7 +8734,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8921,7 +8743,7 @@
       "resolution": "2k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8930,7 +8752,7 @@
       "resolution": "2k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8939,7 +8761,7 @@
       "resolution": "2k"
      },
      "price": 0.19,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8948,7 +8770,7 @@
       "resolution": "2k"
      },
      "price": 0.121,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8957,7 +8779,7 @@
       "resolution": "2k"
      },
      "price": 0.121,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8966,7 +8788,7 @@
       "resolution": "2k"
      },
      "price": 0.119,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8975,7 +8797,7 @@
       "resolution": "2k"
      },
      "price": 0.119,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8984,7 +8806,7 @@
       "resolution": "2k"
      },
      "price": 0.075,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8993,7 +8815,7 @@
       "resolution": "2k"
      },
      "price": 0.075,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9002,7 +8824,7 @@
       "resolution": "2k"
      },
      "price": 0.428,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9011,7 +8833,7 @@
       "resolution": "2k"
      },
      "price": 0.269,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9020,7 +8842,7 @@
       "resolution": "2k"
      },
      "price": 0.269,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9029,7 +8851,7 @@
       "resolution": "2k"
      },
      "price": 0.267,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9038,7 +8860,7 @@
       "resolution": "2k"
      },
      "price": 0.267,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9047,7 +8869,7 @@
       "resolution": "2k"
      },
      "price": 0.17,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9056,7 +8878,7 @@
       "resolution": "2k"
      },
      "price": 0.17,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9065,7 +8887,7 @@
       "resolution": "4k"
      },
      "price": 0.083,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9074,7 +8896,7 @@
       "resolution": "4k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9083,7 +8905,7 @@
       "resolution": "4k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9092,7 +8914,7 @@
       "resolution": "4k"
      },
      "price": 0.059,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9101,7 +8923,7 @@
       "resolution": "4k"
      },
      "price": 0.059,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9110,7 +8932,7 @@
       "resolution": "4k"
      },
      "price": 0.047,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9119,7 +8941,7 @@
       "resolution": "4k"
      },
      "price": 0.047,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9128,7 +8950,7 @@
       "resolution": "4k"
      },
      "price": 0.147,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9137,7 +8959,7 @@
       "resolution": "4k"
      },
      "price": 0.095,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9146,7 +8968,7 @@
       "resolution": "4k"
      },
      "price": 0.095,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9155,7 +8977,7 @@
       "resolution": "4k"
      },
      "price": 0.104,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9164,7 +8986,7 @@
       "resolution": "4k"
      },
      "price": 0.104,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9173,7 +8995,7 @@
       "resolution": "4k"
      },
      "price": 0.086,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9182,7 +9004,7 @@
       "resolution": "4k"
      },
      "price": 0.086,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9191,7 +9013,7 @@
       "resolution": "4k"
      },
      "price": 0.178,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9200,7 +9022,7 @@
       "resolution": "4k"
      },
      "price": 0.115,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9209,7 +9031,7 @@
       "resolution": "4k"
      },
      "price": 0.115,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9218,7 +9040,7 @@
       "resolution": "4k"
      },
      "price": 0.125,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9227,7 +9049,7 @@
       "resolution": "4k"
      },
      "price": 0.125,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9236,7 +9058,7 @@
       "resolution": "4k"
      },
      "price": 0.1,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9245,7 +9067,7 @@
       "resolution": "4k"
      },
      "price": 0.1,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9254,7 +9076,7 @@
       "resolution": "4k"
      },
      "price": 0.316,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9263,7 +9085,7 @@
       "resolution": "4k"
      },
      "price": 0.206,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9272,7 +9094,7 @@
       "resolution": "4k"
      },
      "price": 0.206,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9281,7 +9103,7 @@
       "resolution": "4k"
      },
      "price": 0.223,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9290,7 +9112,7 @@
       "resolution": "4k"
      },
      "price": 0.223,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9299,7 +9121,7 @@
       "resolution": "4k"
      },
      "price": 0.178,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9308,7 +9130,7 @@
       "resolution": "4k"
      },
      "price": 0.178,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9317,7 +9139,7 @@
       "resolution": "4k"
      },
      "price": 0.712,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9326,7 +9148,7 @@
       "resolution": "4k"
      },
      "price": 0.459,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9335,7 +9157,7 @@
       "resolution": "4k"
      },
      "price": 0.459,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9344,7 +9166,7 @@
       "resolution": "4k"
      },
      "price": 0.502,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9353,7 +9175,7 @@
       "resolution": "4k"
      },
      "price": 0.502,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9362,7 +9184,7 @@
       "resolution": "4k"
      },
      "price": 0.4,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9371,7 +9193,7 @@
       "resolution": "4k"
      },
      "price": 0.4,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -9692,7 +9514,7 @@
      },
      "note": "$0.9 for textured mesh",
      "price": 0.9,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9700,7 +9522,7 @@
      },
      "note": "$0.30 for untextured white mesh.",
      "price": 0.3,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -9887,18 +9709,19 @@
    "title": "Hunyuan3D-2.1 3D Model Generator"
   },
   "tencent/hy-world-2-0-world-reconstruction": {
-   "approximatelycost": 0.03887441860465116,
+   "approximatelycost": 0.04212,
    "categories": [
     "persistent",
     "3d-generation",
     "price-list",
-    "model"
+    "model",
+    "splat-3d"
    ],
    "cleanslugowner": "tencent",
    "cleanslugproject": "hy-world-2-0-world-reconstruction",
    "cps": "0.000000000000",
    "description": "Reconstruct a 3D scene from multi-view photos or a short video. Produces 3D Gaussian splats with depth maps and cameras, plus a colored point cloud.",
-   "dynamicprice": [],
+   "dynamicprice": null,
    "parameters": [
     {
      "items": [
@@ -10160,7 +9983,7 @@
      },
      "note": "$0.30 for 1024P",
      "price": 0.3,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -10168,7 +9991,7 @@
      },
      "note": "$0.42 for 1536P",
      "price": 0.42,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -10461,17 +10284,17 @@
    "title": "Pixal3D Image-to-3D GLB Generator"
   },
   "wiro/remove-background": {
-   "approximatelycost": 0.001208299249708822,
+   "approximatelycost": 0.0012088667285792855,
    "categories": [
     "tool",
     "image-to-image",
     "quick-showcase",
-    "compare-landscape",
     "use-agent",
     "wiroEcommerce",
     "persistent",
     "wiro-models",
-    "background-removal"
+    "background-removal",
+    "cutout"
    ],
    "cleanslugowner": "wiro",
    "cleanslugproject": "remove-background",

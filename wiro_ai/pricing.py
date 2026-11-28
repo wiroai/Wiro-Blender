@@ -5,10 +5,13 @@
 - The row: Wiro bills with the first price row whose values all match the
   run's settings. When a row counts files (QUANTITY:n), it bills with the valid
   row that has the highest total count at or below what the run sends.
-- The charge: cpr is the price of the run, cpo the price per output,
-  cp-promptlength per prompt character, cp-outputVideoLength per second of
-  output video. A run that matches no row is billed for its run time; the
-  model's average cost is shown as an estimate.
+- The charge: the row's priceMethod says what its price buys. per-run is the
+  price of the run, per-output-file the price per output file,
+  per-input-character per prompt character, per-output-video-second per
+  second of output video. A run that matches no row is billed for its run
+  time; the model's average cost is shown as an estimate.
+- The words: a price is followed by Wiro's own words for its method ("per
+  second of input audio"), never by the method's id.
 
 The same rules as the Wiro AI browser extensions. This module does not import bpy.
 """
@@ -139,7 +142,7 @@ def _run_time(schema: ModelSchema, scale: float) -> Quote:
         return Quote(amount, True, f"about {format_usd(amount)}", "Billed by run time; past runs averaged this.")
     if schema.cost_per_second:
         rate = format_usd(schema.cost_per_second * scale)
-        return Quote(None, True, f"{rate} / second", "Billed by run time.")
+        return Quote(None, True, f"{rate} per second of run time", "Billed by run time.")
     return Quote(None, True, "by run time", "Billed by run time.")
 
 
@@ -147,41 +150,44 @@ def _row_quote(row: dict, params: dict, prompt_chars: int) -> Quote:
     price = _positive(row.get("price")) or 0.0
     method = str(row.get("priceMethod") or "")
     note = _note(row)
-    if method == "cpr":
+    if method == "per-run":
         if price == 0:
             return Quote(0.0, False, "Free", note)
         return Quote(price, False, format_usd(price), note)
-    if method == "cpo":
+    if method == "per-output-file":
         if price == 0:
             return Quote(0.0, False, "Free", note)
         count = _first_number(params, COUNT_KEYS) or 1
         amount = price * count
         return Quote(amount, False, format_usd(amount), note)
-    if method == "cp-promptlength":
+    if method == "per-input-character":
         if not prompt_chars:
-            return Quote(None, True, f"{format_usd(price)} / character", note)
+            return Quote(None, True, f"{format_usd(price)} per prompt character", note)
         amount = price * prompt_chars
         return Quote(amount, False, format_usd(amount), note)
-    if method == "cp-outputVideoLength":
+    if method == "per-output-video-second":
         seconds = _first_number(params, DURATION_KEYS)
         if seconds is None:
-            return Quote(None, True, f"{format_usd(price)} / video second", note)
+            return Quote(None, True, f"{format_usd(price)} per second of output video", note)
         amount = price * seconds
         return Quote(amount, False, format_usd(amount), note)
-    if method == "cp-audiosecondslength":
-        return Quote(None, True, f"{format_usd(price)} / audio second", note)
-    if method == "cp-pixel":
+    if method == "per-input-audio-second":
+        return Quote(None, True, f"{format_usd(price)} per second of input audio", note)
+    if method == "per-input-video-second":
+        return Quote(None, True, f"{format_usd(price)} per second of input video", note)
+    if method == "per-output-megapixel":
         return Quote(price, True, f"from {format_usd(price)}", note)
-    if method == "cps":
-        return Quote(None, True, f"{format_usd(price)} / second", note)
-    if method == "cpt":
-        return Quote(None, True, "by tokens", note or "Set by the tokens the run uses.")
-    if method == "cp-readoutput":
+    if method == "per-run-second":
+        return Quote(None, True, f"{format_usd(price)} per second of run time", note)
+    if method == "per-total-token":
+        rate = format_usd(price * 1_000_000)
+        return Quote(None, True, f"{rate} per 1M input and output tokens", note or "Set by the tokens the run uses.")
+    if method == "reported-price":
         if price > 0:
             return Quote(price, True, f"about {format_usd(price)}", note)
-        return Quote(None, True, "set when it ends", note or "The charge is known when the run ends.")
-    if method == "cp-realtimeturn":
-        return Quote(None, True, "live, per turn", note)
+        return Quote(None, True, "set when the run ends", note or "The charge is known when the run ends.")
+    if method == "per-realtime-turn":
+        return Quote(None, True, "per conversation turn", note)
     return Quote(None, True, "by run time", note)
 
 
@@ -194,7 +200,7 @@ def quote(schema: ModelSchema, params: dict | None = None, *, prompt_chars: int 
     rows = [row for row in schema.price_rows if isinstance(row, dict)]
     if not rows:
         return _run_time(schema, scale)
-    live = next((row for row in rows if row.get("priceMethod") == "cp-realtimeturn"), None)
+    live = next((row for row in rows if row.get("priceMethod") == "per-realtime-turn"), None)
     if live is not None:
         return _row_quote(live, params, prompt_chars)
     row = matching_row(rows, params)
@@ -225,15 +231,20 @@ def total(quotes: list) -> Quote:
 def summary_label(row: dict) -> str:
     """A short price for a model list row, from its Tool/List record."""
     rows = [r for r in row.get("price_rows") or [] if isinstance(r, dict)]
-    prices = sorted({float(r.get("price") or 0) for r in rows if r.get("priceMethod") in ("cpr", "cpo")})
+    flat = ("per-run", "per-output-file")
+    prices = sorted({float(r.get("price") or 0) for r in rows if r.get("priceMethod") in flat})
     if prices:
-        unit = "run" if all(r.get("priceMethod") == "cpr" for r in rows) else "output"
+        unit = "per run" if all(r.get("priceMethod") == "per-run" for r in rows) else "per output file"
         if len(prices) == 1:
-            return "Free" if prices[0] == 0 else f"{format_usd(prices[0])} / {unit}"
-        return f"from {format_usd(prices[0])} / {unit}"
+            return "Free" if prices[0] == 0 else f"{format_usd(prices[0])} {unit}"
+        return f"from {format_usd(prices[0])} {unit}"
     if rows:
         method = str(rows[0].get("priceMethod") or "")
-        labels = {"cpt": "by tokens", "cp-readoutput": "set when it ends", "cp-realtimeturn": "live"}
+        labels = {
+            "per-total-token": "per input and output token",
+            "reported-price": "set when the run ends",
+            "per-realtime-turn": "per conversation turn",
+        }
         return labels.get(method, "varies")
     estimate = _positive(row.get("estimated_cost"))
     return f"about {format_usd(estimate)}" if estimate else "by run time"
