@@ -14,7 +14,7 @@ import tempfile
 
 import bpy
 
-from . import catalog, schema
+from . import catalog, saved_forms, schema
 
 # Dynamic enum items must stay referenced while Blender shows them.
 _ITEMS_CACHE: dict = {}
@@ -229,11 +229,9 @@ def ensure(form, purpose: str) -> bool:
     if form.built_slug != form.slug:
         build(form, model, purpose)
     else:
-        # A form saved in a .blend keeps the file limits it was built with; take the schema's.
-        for item in form.params:
-            param = model.param(item.pid) if item.kind == "file" else None
-            if param is not None and item.max_files != (param.max_files or 0):
-                item.max_files = param.max_files or 0
+        # A form saved in a .blend keeps the file limits it was built with; a file load fixes them
+        # too (saved_forms.on_load).
+        saved_forms.refresh_file_limits(form, model)
     return True
 
 

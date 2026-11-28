@@ -318,6 +318,36 @@ def main() -> None:
     assert len(fake.requests) == sent
     print("failure and offline paths OK")
 
+    # A .blend saved with stale file limits gets the schema's limits back when it loads, before any
+    # run. Online access is still off, so only known schemas are read.
+    for param in settings.run_form.params:
+        if param.kind == "file":
+            param.max_files = 1  # what 1.1.1 keeps after Wiro's rename
+    saved_path = os.path.join(work, "stale-limits.blend")
+    assert bpy.ops.wm.save_as_mainfile(filepath=saved_path) == {"FINISHED"}
+    sent = len(fake.requests)
+    assert bpy.ops.wm.open_mainfile(filepath=saved_path) == {"FINISHED"}
+    settings = bpy.context.scene.wiro_ai  # the loaded file's scene
+    limits = {p.pid: p.max_files for p in settings.run_form.params if p.kind == "file"}
+    assert limits == {"inputImage": 2, "inputReference": 0}, limits
+    assert len(fake.requests) == sent, "loading the file sends nothing"
+    # Enabling the add-on with that file open schedules the same handler on a timer, because
+    # register() cannot read bpy.data. Timers do not run in background mode, so run it here.
+    for param in settings.run_form.params:
+        if param.kind == "file":
+            param.max_files = 1
+    bpy.ops.preferences.addon_disable(module=MODULE)
+    bpy.ops.preferences.addon_enable(module=MODULE)
+    saved_forms = importlib.import_module(f"{MODULE}.saved_forms")
+    assert saved_forms.on_load in bpy.app.handlers.load_post
+    assert bpy.app.timers.is_registered(saved_forms.on_load), "register() schedules the open file's correction"
+    saved_forms.on_load()
+    settings = bpy.context.scene.wiro_ai
+    limits = {p.pid: p.max_files for p in settings.run_form.params if p.kind == "file"}
+    assert limits == {"inputImage": 2, "inputReference": 0}, limits
+    assert len(fake.requests) == sent, "the correction sends nothing"
+    print("saved form limits on load OK")
+
     bpy.ops.preferences.addon_disable(module=MODULE)
     assert not hasattr(bpy.types, "WIRO_AI_PT_generate_3d"), "panel still registered after disable"
     print(json.dumps({"runs": len(fake.runs()), "history": len(entries)}))

@@ -264,13 +264,13 @@ def _tick():
 
 
 def _apply_loaded_schemas() -> None:
-    from . import forms
+    from . import forms, saved_forms
 
     for scene in bpy.data.scenes:
         settings = getattr(scene, "wiro_ai", None)
         if settings is None:
             continue
-        for attr in ("mesh_form", "reference_form", "cutout_form", "texture_form", "texture_edit_form", "run_form"):
+        for attr in saved_forms.FORMS:
             form = getattr(settings, attr)
             if form.slug and form.built_slug != form.slug and catalog.has_schema(form.slug):
                 forms.ensure(form, form.purpose or attr.replace("_form", ""))

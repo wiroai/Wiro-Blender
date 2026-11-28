@@ -34,13 +34,14 @@ _on_load._bpy_persistent = True
 def register():
     import bpy
 
-    from . import operators, preferences, properties, runtime, ui
+    from . import operators, preferences, properties, runtime, saved_forms, ui
 
     preferences.register()
     properties.register()
     runtime.register()
     operators.register()
     ui.register()
+    saved_forms.register()
     if _on_load not in bpy.app.handlers.load_post:
         bpy.app.handlers.load_post.append(_on_load)
     if not bpy.app.background:
@@ -50,8 +51,9 @@ def register():
 def unregister():
     import bpy
 
-    from . import operators, preferences, properties, runtime, ui
+    from . import operators, preferences, properties, runtime, saved_forms, ui
 
+    saved_forms.unregister()
     if _on_load in bpy.app.handlers.load_post:
         bpy.app.handlers.load_post.remove(_on_load)
     if bpy.app.timers.is_registered(_startup):
