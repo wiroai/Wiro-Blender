@@ -193,7 +193,7 @@ def build(form, model: schema.ModelSchema, purpose: str) -> None:
         item.label = catalog.LABELS.get(param.id, param.label) or param.id
         item.kind = param.value_kind
         item.file_kind = param.file_kind
-        item.max_files = param.max_files
+        item.max_files = param.max_files or 0  # an IntProperty, so 0 stands for no cap
         item.required = param.required
         notes = [param.note]
         if param.range_text():
@@ -228,6 +228,12 @@ def ensure(form, purpose: str) -> bool:
             return False
     if form.built_slug != form.slug:
         build(form, model, purpose)
+    else:
+        # A form saved in a .blend keeps the file limits it was built with; take the schema's.
+        for item in form.params:
+            param = model.param(item.pid) if item.kind == "file" else None
+            if param is not None and item.max_files != (param.max_files or 0):
+                item.max_files = param.max_files or 0
     return True
 
 
@@ -295,7 +301,7 @@ def collect(form, model: schema.ModelSchema) -> tuple:
             entries = [file_entry(entry, item.label) for entry in item.files]
             entries = [entry for entry in entries if entry]
             if entries:
-                files[item.pid] = entries[: max(1, param.max_files)]
+                files[item.pid] = entries[: param.max_files]
             elif param.required:
                 raise ValueError(f'"{item.label}" needs a file.')
             continue
@@ -365,7 +371,11 @@ def draw_item(layout, form_attr: str, index: int, item) -> None:
     elif item.kind == "file":
         col = layout.column(align=True)
         col.use_property_split = False
-        header = f"{label} ({len(item.files)}/{item.max_files})" if item.max_files > 1 else label
+        header = label
+        if item.max_files > 1:
+            header += f" ({len(item.files)}/{item.max_files})"
+        elif item.max_files == 0:  # no cap
+            header += f" ({len(item.files)})"
         col.label(text=header, icon="FILE_IMAGE" if item.file_kind == "image" else "FILE")
         for file_index, entry in enumerate(item.files):
             row = col.row(align=True)
@@ -375,7 +385,7 @@ def draw_item(layout, form_attr: str, index: int, item) -> None:
                 row.prop(entry, "image", text="")
             op = row.operator("wiro_ai.form_file_remove", text="", icon="X")
             op.form, op.index, op.file_index = form_attr, index, file_index
-        if len(item.files) < max(1, item.max_files):
+        if item.max_files == 0 or len(item.files) < item.max_files:
             op = col.operator("wiro_ai.form_file_add", text="Add File", icon="ADD")
             op.form, op.index = form_attr, index
     else:

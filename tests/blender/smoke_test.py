@@ -119,6 +119,7 @@ ACME = {
                     "options": [{"value": "flat", "text": "Flat"}, {"value": "photo", "text": "Photo"}],
                 },
                 {"id": "inputImage", "type": "combinefileinput", "maxinputlength": 2, "label": "Image"},
+                {"id": "inputReference", "type": "combinefileinput", "label": "Reference"},  # no limit
             ]
         }
     ],
@@ -141,6 +142,7 @@ def main() -> None:
 
     bpy.ops.preferences.addon_enable(module=MODULE)
     api = importlib.import_module(f"{MODULE}.api")
+    forms = importlib.import_module(f"{MODULE}.forms")
     preferences = importlib.import_module(f"{MODULE}.preferences")
     runtime = importlib.import_module(f"{MODULE}.runtime")
     version = importlib.import_module(f"{MODULE}.version")
@@ -264,6 +266,12 @@ def main() -> None:
     assert [r.slug for r in wm.wiro_ai_results] == ["acme/llm-image"]
     wm.wiro_ai_result_index = 0
     assert settings.run_form.built_slug == "acme/llm-image", settings.run_form.built_slug
+    limits = {p.pid: p.max_files for p in settings.run_form.params if p.kind == "file"}
+    assert limits == {"inputImage": 2, "inputReference": 0}, limits  # 0: no cap
+    saved = next(p for p in settings.run_form.params if p.pid == "inputImage")
+    saved.max_files = 1  # as kept in a .blend by a client that read no limit
+    forms.ensure(settings.run_form, "run")
+    assert saved.max_files == 2, "a built form takes the schema's limit again"
     expect_error(lambda: bpy.ops.wiro_ai.run_model(), "Fill in")
     next(p for p in settings.run_form.params if p.pid == "prompt").value_text = "a poster"
     settings.image_output = "PLANE"
