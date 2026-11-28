@@ -38,7 +38,7 @@ def test_summary_and_trim():
         tool(
             "Microsoft",
             "Trellis-2",
-            dynamicprice='[{"inputs": {}, "price": 0.3, "priceMethod": "cpr"}]',
+            dynamicprice='[{"inputs": {}, "price": 0.3, "priceMethod": "per-run"}]',
             approximatelycost="0",
             taskstat={"runcount": 7},
             readme="long readme",
@@ -70,6 +70,28 @@ def test_refresh_store_and_cache(tmp_path):
     assert "meshy/meshy-6" in [row["slug"] for row in reloaded.models("3d-generation")]
 
 
+def test_a_cache_of_another_format_is_not_read(tmp_path):
+    # A cache written before the price method ids were renamed has no format.
+    cache = tmp_path / "catalog.json"
+    rows = [{"slug": "old/model", "price_rows": [{"inputs": {}, "price": 0.3, "priceMethod": "old-id"}]}]
+    cache.write_text(json.dumps({"categories": {"3d-generation": rows}, "listed_at": {"3d-generation": 1e12}}))
+    live = catalog.Catalog(str(BUNDLED), str(cache))
+    assert "old/model" not in [row["slug"] for row in live.models("3d-generation")]
+    assert live.stale("3d-generation"), "the lists refresh at once"
+
+
+def test_bundled_copy_names_known_price_methods():
+    known = {
+        "per-run", "per-run-second", "per-output-file", "per-total-token", "per-output-megapixel",
+        "per-input-character", "per-input-audio-second", "per-input-video-second", "per-output-video-second",
+        "per-realtime-turn", "reported-price",
+    }  # fmt: skip
+    data = json.loads(BUNDLED.read_text(encoding="utf-8"))
+    rows = [r for listed in data["categories"].values() for row in listed for r in row.get("price_rows") or []]
+    rows += [r for tool in data["schemas"].values() for r in tool.get("dynamicprice") or []]
+    assert rows and {r["priceMethod"] for r in rows} <= known
+
+
 def test_fetch_schema(tmp_path):
     detail = tool("meshy", "meshy-6", parameters=[{"items": [{"id": "inputImage", "type": "combinefileinput"}]}])
     live = catalog.Catalog("", str(tmp_path / "c.json"))
@@ -86,7 +108,7 @@ def test_fetch_schema(tmp_path):
 def test_search_skips_live_models():
     rows = [
         tool("a", "image-model", categories=["text-to-image"]),
-        tool("b", "voice", dynamicprice=[{"inputs": {}, "price": 0, "priceMethod": "cp-realtimeturn"}]),
+        tool("b", "voice", dynamicprice=[{"inputs": {}, "price": 0, "priceMethod": "per-realtime-turn"}]),
         tool("c", "chat-uncensored"),
     ]
     transport = FakeTransport(tools={"": rows})

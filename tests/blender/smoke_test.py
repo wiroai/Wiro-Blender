@@ -122,7 +122,7 @@ ACME = {
             ]
         }
     ],
-    "dynamicprice": [{"inputs": {}, "price": 0.01, "priceMethod": "cpr"}],
+    "dynamicprice": [{"inputs": {}, "price": 0.01, "priceMethod": "per-run"}],
 }
 
 

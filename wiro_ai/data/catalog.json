@@ -18,7 +18,7 @@
       },
       "note": "$0.30 for 1024P",
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -26,7 +26,7 @@
       },
       "note": "$0.42 for 1536P",
       "price": 0.42,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 454,
@@ -50,7 +50,7 @@
       },
       "note": "$0.25 for 512P",
       "price": 0.25,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -58,7 +58,7 @@
       },
       "note": "$0.30 for 1024P",
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -66,7 +66,7 @@
       },
       "note": "$0.35 for 1536P",
       "price": 0.35,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 839,
@@ -89,7 +89,7 @@
       },
       "note": "$0.9 for textured mesh",
       "price": 0.9,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -97,7 +97,7 @@
       },
       "note": "$0.30 for untextured white mesh.",
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 829,
@@ -138,7 +138,7 @@
      {
       "inputs": {},
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 1176,
@@ -225,21 +225,21 @@
        "resolution": "1K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.24,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 184246,
@@ -268,28 +268,28 @@
        "resolution": "512"
       },
       "price": 0.045,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "1K"
       },
       "price": 0.067,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.101,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.151,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 139836,
@@ -316,7 +316,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -325,7 +325,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -334,7 +334,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -343,7 +343,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -352,7 +352,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -361,7 +361,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -370,7 +370,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -379,7 +379,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -388,7 +388,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -397,7 +397,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -406,7 +406,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -415,7 +415,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -424,7 +424,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -433,7 +433,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -442,7 +442,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -451,7 +451,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -460,7 +460,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -469,7 +469,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -478,7 +478,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -487,7 +487,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -496,7 +496,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -505,7 +505,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -514,7 +514,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -523,7 +523,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -532,7 +532,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -541,7 +541,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -550,7 +550,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -559,7 +559,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -568,7 +568,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -577,7 +577,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -586,7 +586,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -595,7 +595,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -604,7 +604,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -613,7 +613,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -622,7 +622,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -631,7 +631,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -640,7 +640,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -649,7 +649,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -658,7 +658,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -667,7 +667,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -676,7 +676,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -685,7 +685,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -694,7 +694,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -703,7 +703,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -712,7 +712,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -721,7 +721,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -730,7 +730,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -739,7 +739,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -748,7 +748,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -757,7 +757,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -766,7 +766,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -775,7 +775,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -784,7 +784,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -793,7 +793,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -802,7 +802,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -811,7 +811,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -820,7 +820,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -829,7 +829,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -838,7 +838,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -847,7 +847,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -856,7 +856,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -865,7 +865,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -874,7 +874,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 174876,
@@ -898,7 +898,7 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 5111,
@@ -926,7 +926,7 @@
      {
       "inputs": {},
       "price": 0.039,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 540686,
@@ -951,7 +951,7 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 4295,
@@ -979,7 +979,7 @@
       "inputs": {},
       "note": "input (text/image/video/PDF) $1.50 per 1M tokens, text and thinking output $7.50 per 1M tokens, image output $30 per 1M tokens. Google Web/Image Search $0.014 per query. Higher thinking levels use more thinking tokens and cost more.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 6328,
@@ -1005,14 +1005,14 @@
        "size": "1K"
       },
       "price": 0.05,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "size": "2K"
       },
       "price": 0.085,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 3392,
@@ -1041,21 +1041,21 @@
        "resolution": "1K"
       },
       "price": 0.0336,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.0504,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.113,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 27043,
@@ -1082,14 +1082,14 @@
        "resolution": "1k"
       },
       "price": 0.045,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2k"
       },
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 12699,
@@ -1112,7 +1112,7 @@
      {
       "inputs": {},
       "price": 0.02,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 4849,
@@ -1138,7 +1138,7 @@
        "size": "1:1"
       },
       "price": 0.009,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1146,7 +1146,7 @@
        "size": "3:2"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1154,7 +1154,7 @@
        "size": "2:3"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1162,7 +1162,7 @@
        "size": "auto"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1170,7 +1170,7 @@
        "size": "1:1"
       },
       "price": 0.034,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1178,7 +1178,7 @@
        "size": "3:2"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1186,7 +1186,7 @@
        "size": "2:3"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1194,7 +1194,7 @@
        "size": "auto"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1202,7 +1202,7 @@
        "size": "1:1"
       },
       "price": 0.133,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1210,7 +1210,7 @@
        "size": "3:2"
       },
       "price": 0.2,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1218,7 +1218,7 @@
        "size": "2:3"
       },
       "price": 0.2,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1226,7 +1226,7 @@
        "size": "auto"
       },
       "price": 0.2,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 2981,
@@ -1251,7 +1251,7 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 30086,
@@ -1279,7 +1279,7 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -1288,7 +1288,7 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0.06,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
     "runs": 867,
@@ -1316,7 +1316,7 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -1325,7 +1325,7 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0.015,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
     "runs": 5918,
@@ -1348,7 +1348,7 @@
      {
       "inputs": {},
       "price": 1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 248,
@@ -1376,7 +1376,7 @@
      {
       "inputs": {},
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 1428,
@@ -1401,7 +1401,7 @@
      {
       "inputs": {},
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 810,
@@ -1428,7 +1428,7 @@
      {
       "inputs": {},
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 4815,
@@ -1460,21 +1460,21 @@
        "outputType": "image"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "outputType": "video"
       },
       "price": 0.9,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "outputType": "both"
       },
       "price": 0.9,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 25272,
@@ -1499,7 +1499,7 @@
      {
       "inputs": {},
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 9679,
@@ -1525,7 +1525,7 @@
      {
       "inputs": {},
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 619,
@@ -1552,7 +1552,7 @@
      {
       "inputs": {},
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 1404,
@@ -1576,7 +1576,7 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. SVG output also bills the gpt-6.1-terra tokens that write the SVG: $1 / 1M input, $5 / 1M output. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 1402,
@@ -1618,7 +1618,7 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 12406,
@@ -1645,7 +1645,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1654,7 +1654,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1663,7 +1663,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1672,7 +1672,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1681,7 +1681,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1690,7 +1690,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1699,7 +1699,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1708,7 +1708,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1717,7 +1717,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1726,7 +1726,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1735,7 +1735,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1744,7 +1744,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1753,7 +1753,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1762,7 +1762,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1771,7 +1771,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1780,7 +1780,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1789,7 +1789,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1798,7 +1798,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1807,7 +1807,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1816,7 +1816,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1825,7 +1825,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1834,7 +1834,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1843,7 +1843,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1852,7 +1852,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1861,7 +1861,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1870,7 +1870,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1879,7 +1879,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1888,7 +1888,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1897,7 +1897,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1906,7 +1906,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1915,7 +1915,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1924,7 +1924,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1933,7 +1933,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1942,7 +1942,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1951,7 +1951,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1960,7 +1960,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1969,7 +1969,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1978,7 +1978,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1987,7 +1987,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -1996,7 +1996,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2005,7 +2005,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2014,7 +2014,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2023,7 +2023,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2032,7 +2032,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2041,7 +2041,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2050,7 +2050,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2059,7 +2059,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2068,7 +2068,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2077,7 +2077,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2086,7 +2086,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2095,7 +2095,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2104,7 +2104,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2113,7 +2113,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2122,7 +2122,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2131,7 +2131,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2140,7 +2140,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2149,7 +2149,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2158,7 +2158,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2167,7 +2167,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2176,7 +2176,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2185,7 +2185,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2194,7 +2194,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2203,7 +2203,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2212,7 +2212,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2221,7 +2221,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2230,7 +2230,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2239,7 +2239,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2248,7 +2248,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2257,7 +2257,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2266,7 +2266,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2275,7 +2275,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2284,7 +2284,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2293,7 +2293,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2302,7 +2302,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2311,7 +2311,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2320,7 +2320,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2329,7 +2329,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2338,7 +2338,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2347,7 +2347,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2356,7 +2356,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2365,7 +2365,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2374,7 +2374,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2383,7 +2383,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2392,7 +2392,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2401,7 +2401,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2410,7 +2410,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2419,7 +2419,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2428,7 +2428,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2437,7 +2437,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2446,7 +2446,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2455,7 +2455,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2464,7 +2464,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2473,7 +2473,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2482,7 +2482,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2491,7 +2491,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2500,7 +2500,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2509,7 +2509,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2518,7 +2518,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2527,7 +2527,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2536,7 +2536,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2545,7 +2545,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2554,7 +2554,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2563,7 +2563,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2572,7 +2572,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2581,7 +2581,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 37692,
@@ -2608,7 +2608,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2617,7 +2617,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2626,7 +2626,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2635,7 +2635,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2644,7 +2644,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2653,7 +2653,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2662,7 +2662,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2671,7 +2671,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2680,7 +2680,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2689,7 +2689,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2698,7 +2698,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2707,7 +2707,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2716,7 +2716,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2725,7 +2725,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2734,7 +2734,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2743,7 +2743,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2752,7 +2752,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2761,7 +2761,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2770,7 +2770,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2779,7 +2779,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2788,7 +2788,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2797,7 +2797,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2806,7 +2806,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2815,7 +2815,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2824,7 +2824,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2833,7 +2833,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2842,7 +2842,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2851,7 +2851,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2860,7 +2860,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2869,7 +2869,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2878,7 +2878,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2887,7 +2887,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2896,7 +2896,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2905,7 +2905,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2914,7 +2914,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2923,7 +2923,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2932,7 +2932,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2941,7 +2941,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2950,7 +2950,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2959,7 +2959,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2968,7 +2968,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2977,7 +2977,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2986,7 +2986,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -2995,7 +2995,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3004,7 +3004,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3013,7 +3013,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3022,7 +3022,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3031,7 +3031,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3040,7 +3040,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3049,7 +3049,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3058,7 +3058,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3067,7 +3067,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3076,7 +3076,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3085,7 +3085,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3094,7 +3094,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3103,7 +3103,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3112,7 +3112,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3121,7 +3121,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3130,7 +3130,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3139,7 +3139,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3148,7 +3148,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3157,7 +3157,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3166,7 +3166,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3175,7 +3175,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3184,7 +3184,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3193,7 +3193,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3202,7 +3202,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3211,7 +3211,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3220,7 +3220,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3229,7 +3229,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3238,7 +3238,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3247,7 +3247,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3256,7 +3256,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3265,7 +3265,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3274,7 +3274,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3283,7 +3283,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3292,7 +3292,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3301,7 +3301,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3310,7 +3310,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3319,7 +3319,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3328,7 +3328,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3337,7 +3337,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3346,7 +3346,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3355,7 +3355,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3364,7 +3364,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3373,7 +3373,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3382,7 +3382,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3391,7 +3391,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3400,7 +3400,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3409,7 +3409,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3418,7 +3418,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3427,7 +3427,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3436,7 +3436,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3445,7 +3445,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3454,7 +3454,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3463,7 +3463,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3472,7 +3472,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3481,7 +3481,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3490,7 +3490,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3499,7 +3499,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3508,7 +3508,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3517,7 +3517,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3526,7 +3526,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3535,7 +3535,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3544,7 +3544,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 32438,
@@ -3568,7 +3568,7 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 487,
@@ -3598,7 +3598,7 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -3607,7 +3607,7 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0.011,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
     "runs": 3096,
@@ -3630,7 +3630,7 @@
      {
       "inputs": {},
       "price": 0.14,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 265,
@@ -3652,7 +3652,7 @@
      {
       "inputs": {},
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 250,
@@ -3692,7 +3692,7 @@
      {
       "inputs": {},
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 1169,
@@ -3716,7 +3716,7 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 562,
@@ -3740,7 +3740,7 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 548,
@@ -3802,21 +3802,21 @@
        "resolution": "1K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.14,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.24,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 184246,
@@ -3845,28 +3845,28 @@
        "resolution": "512"
       },
       "price": 0.045,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "1K"
       },
       "price": 0.067,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.101,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.151,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 139836,
@@ -3893,7 +3893,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3902,7 +3902,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3911,7 +3911,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3920,7 +3920,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3929,7 +3929,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3938,7 +3938,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3947,7 +3947,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3956,7 +3956,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3965,7 +3965,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3974,7 +3974,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3983,7 +3983,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -3992,7 +3992,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4001,7 +4001,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4010,7 +4010,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4019,7 +4019,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4028,7 +4028,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4037,7 +4037,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4046,7 +4046,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4055,7 +4055,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4064,7 +4064,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4073,7 +4073,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4082,7 +4082,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4091,7 +4091,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4100,7 +4100,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4109,7 +4109,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4118,7 +4118,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4127,7 +4127,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4136,7 +4136,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4145,7 +4145,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4154,7 +4154,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4163,7 +4163,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4172,7 +4172,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4181,7 +4181,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4190,7 +4190,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4199,7 +4199,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4208,7 +4208,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4217,7 +4217,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4226,7 +4226,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4235,7 +4235,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4244,7 +4244,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4253,7 +4253,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4262,7 +4262,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4271,7 +4271,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4280,7 +4280,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4289,7 +4289,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4298,7 +4298,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4307,7 +4307,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4316,7 +4316,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4325,7 +4325,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4334,7 +4334,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4343,7 +4343,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4352,7 +4352,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4361,7 +4361,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4370,7 +4370,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4379,7 +4379,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4388,7 +4388,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4397,7 +4397,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4406,7 +4406,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4415,7 +4415,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4424,7 +4424,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4433,7 +4433,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4442,7 +4442,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4451,7 +4451,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 174876,
@@ -4475,7 +4475,7 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 5111,
@@ -4503,7 +4503,7 @@
      {
       "inputs": {},
       "price": 0.039,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 540686,
@@ -4528,7 +4528,7 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 4295,
@@ -4556,7 +4556,7 @@
       "inputs": {},
       "note": "input (text/image/video/PDF) $1.50 per 1M tokens, text and thinking output $7.50 per 1M tokens, image output $30 per 1M tokens. Google Web/Image Search $0.014 per query. Higher thinking levels use more thinking tokens and cost more.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 6328,
@@ -4598,14 +4598,14 @@
        "size": "1K"
       },
       "price": 0.05,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      },
      {
       "inputs": {
        "size": "2K"
       },
       "price": 0.085,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 3392,
@@ -4664,21 +4664,21 @@
        "resolution": "1K"
       },
       "price": 0.0336,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2K"
       },
       "price": 0.0504,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "4K"
       },
       "price": 0.113,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 27043,
@@ -4705,14 +4705,14 @@
        "resolution": "1k"
       },
       "price": 0.045,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
        "resolution": "2k"
       },
       "price": 0.09,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 12699,
@@ -4735,7 +4735,7 @@
      {
       "inputs": {},
       "price": 0.02,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 4849,
@@ -4761,7 +4761,7 @@
        "size": "1:1"
       },
       "price": 0.009,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4769,7 +4769,7 @@
        "size": "3:2"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4777,7 +4777,7 @@
        "size": "2:3"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4785,7 +4785,7 @@
        "size": "auto"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4793,7 +4793,7 @@
        "size": "1:1"
       },
       "price": 0.034,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4801,7 +4801,7 @@
        "size": "3:2"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4809,7 +4809,7 @@
        "size": "2:3"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4817,7 +4817,7 @@
        "size": "auto"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4825,7 +4825,7 @@
        "size": "1:1"
       },
       "price": 0.133,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4833,7 +4833,7 @@
        "size": "3:2"
       },
       "price": 0.2,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4841,7 +4841,7 @@
        "size": "2:3"
       },
       "price": 0.2,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -4849,7 +4849,7 @@
        "size": "auto"
       },
       "price": 0.2,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 2981,
@@ -4874,7 +4874,7 @@
      {
       "inputs": {},
       "price": 0.04,
-      "priceMethod": "cpo"
+      "priceMethod": "per-output-file"
      }
     ],
     "runs": 30086,
@@ -4902,7 +4902,7 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -4911,7 +4911,7 @@
       "price": 0.06,
       "priceExtra": 0.06,
       "priceInput": 0.06,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
     "runs": 951,
@@ -4939,7 +4939,7 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -4948,7 +4948,7 @@
       "price": 0.03,
       "priceExtra": 0.015,
       "priceInput": 0.015,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
     "runs": 5918,
@@ -4973,7 +4973,7 @@
      {
       "inputs": {},
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 9679,
@@ -4997,7 +4997,7 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. SVG output also bills the gpt-6.1-terra tokens that write the SVG: $1 / 1M input, $5 / 1M output. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 1402,
@@ -5039,7 +5039,7 @@
       "inputs": {},
       "note": "Pricing is calculated from input and output tokens reported by OpenAI: text input $5 / 1M tokens, image input $8 / 1M tokens, image output $30 / 1M tokens. The final price is computed when the task finishes.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 12406,
@@ -5066,7 +5066,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5075,7 +5075,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5084,7 +5084,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5093,7 +5093,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5102,7 +5102,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5111,7 +5111,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5120,7 +5120,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5129,7 +5129,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5138,7 +5138,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5147,7 +5147,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5156,7 +5156,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5165,7 +5165,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5174,7 +5174,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5183,7 +5183,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5192,7 +5192,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5201,7 +5201,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5210,7 +5210,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5219,7 +5219,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5228,7 +5228,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5237,7 +5237,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5246,7 +5246,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5255,7 +5255,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5264,7 +5264,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5273,7 +5273,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5282,7 +5282,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5291,7 +5291,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5300,7 +5300,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5309,7 +5309,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5318,7 +5318,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5327,7 +5327,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5336,7 +5336,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5345,7 +5345,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5354,7 +5354,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5363,7 +5363,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5372,7 +5372,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5381,7 +5381,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5390,7 +5390,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5399,7 +5399,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5408,7 +5408,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5417,7 +5417,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5426,7 +5426,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5435,7 +5435,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5444,7 +5444,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5453,7 +5453,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5462,7 +5462,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5471,7 +5471,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5480,7 +5480,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5489,7 +5489,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5498,7 +5498,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5507,7 +5507,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5516,7 +5516,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5525,7 +5525,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5534,7 +5534,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5543,7 +5543,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5552,7 +5552,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5561,7 +5561,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5570,7 +5570,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5579,7 +5579,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5588,7 +5588,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5597,7 +5597,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5606,7 +5606,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5615,7 +5615,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5624,7 +5624,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5633,7 +5633,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5642,7 +5642,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5651,7 +5651,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5660,7 +5660,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5669,7 +5669,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5678,7 +5678,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5687,7 +5687,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5696,7 +5696,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5705,7 +5705,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5714,7 +5714,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5723,7 +5723,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5732,7 +5732,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5741,7 +5741,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5750,7 +5750,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5759,7 +5759,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5768,7 +5768,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5777,7 +5777,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5786,7 +5786,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5795,7 +5795,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5804,7 +5804,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5813,7 +5813,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5822,7 +5822,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5831,7 +5831,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5840,7 +5840,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5849,7 +5849,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5858,7 +5858,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5867,7 +5867,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5876,7 +5876,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5885,7 +5885,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5894,7 +5894,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5903,7 +5903,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5912,7 +5912,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5921,7 +5921,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5930,7 +5930,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5939,7 +5939,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5948,7 +5948,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5957,7 +5957,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5966,7 +5966,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5975,7 +5975,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5984,7 +5984,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -5993,7 +5993,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6002,7 +6002,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 37692,
@@ -6029,7 +6029,7 @@
        "resolution": "1k"
       },
       "price": 0.006,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6038,7 +6038,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6047,7 +6047,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6056,7 +6056,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6065,7 +6065,7 @@
        "resolution": "1k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6074,7 +6074,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6083,7 +6083,7 @@
        "resolution": "1k"
       },
       "price": 0.003,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6092,7 +6092,7 @@
        "resolution": "1k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6101,7 +6101,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6110,7 +6110,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6119,7 +6119,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6128,7 +6128,7 @@
        "resolution": "1k"
       },
       "price": 0.01,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6137,7 +6137,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6146,7 +6146,7 @@
        "resolution": "1k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6155,7 +6155,7 @@
        "resolution": "1k"
       },
       "price": 0.053,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6164,7 +6164,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6173,7 +6173,7 @@
        "resolution": "1k"
       },
       "price": 0.041,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6182,7 +6182,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6191,7 +6191,7 @@
        "resolution": "1k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6200,7 +6200,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6209,7 +6209,7 @@
        "resolution": "1k"
       },
       "price": 0.028,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6218,7 +6218,7 @@
        "resolution": "1k"
       },
       "price": 0.094,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6227,7 +6227,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6236,7 +6236,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6245,7 +6245,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6254,7 +6254,7 @@
        "resolution": "1k"
       },
       "price": 0.074,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6263,7 +6263,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6272,7 +6272,7 @@
        "resolution": "1k"
       },
       "price": 0.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6281,7 +6281,7 @@
        "resolution": "1k"
       },
       "price": 0.211,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6290,7 +6290,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6299,7 +6299,7 @@
        "resolution": "1k"
       },
       "price": 0.165,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6308,7 +6308,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6317,7 +6317,7 @@
        "resolution": "1k"
       },
       "price": 0.167,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6326,7 +6326,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6335,7 +6335,7 @@
        "resolution": "1k"
       },
       "price": 0.114,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6344,7 +6344,7 @@
        "resolution": "2k"
       },
       "price": 0.012,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6353,7 +6353,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6362,7 +6362,7 @@
        "resolution": "2k"
       },
       "price": 0.008,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6371,7 +6371,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6380,7 +6380,7 @@
        "resolution": "2k"
       },
       "price": 0.007,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6389,7 +6389,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6398,7 +6398,7 @@
        "resolution": "2k"
       },
       "price": 0.005,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6407,7 +6407,7 @@
        "resolution": "2k"
       },
       "price": 0.027,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6416,7 +6416,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6425,7 +6425,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6434,7 +6434,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6443,7 +6443,7 @@
        "resolution": "2k"
       },
       "price": 0.017,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6452,7 +6452,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6461,7 +6461,7 @@
        "resolution": "2k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6470,7 +6470,7 @@
        "resolution": "2k"
       },
       "price": 0.107,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6479,7 +6479,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6488,7 +6488,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6497,7 +6497,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6506,7 +6506,7 @@
        "resolution": "2k"
       },
       "price": 0.067,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6515,7 +6515,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6524,7 +6524,7 @@
        "resolution": "2k"
       },
       "price": 0.042,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6533,7 +6533,7 @@
        "resolution": "2k"
       },
       "price": 0.19,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6542,7 +6542,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6551,7 +6551,7 @@
        "resolution": "2k"
       },
       "price": 0.121,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6560,7 +6560,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6569,7 +6569,7 @@
        "resolution": "2k"
       },
       "price": 0.119,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6578,7 +6578,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6587,7 +6587,7 @@
        "resolution": "2k"
       },
       "price": 0.075,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6596,7 +6596,7 @@
        "resolution": "2k"
       },
       "price": 0.428,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6605,7 +6605,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6614,7 +6614,7 @@
        "resolution": "2k"
       },
       "price": 0.269,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6623,7 +6623,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6632,7 +6632,7 @@
        "resolution": "2k"
       },
       "price": 0.267,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6641,7 +6641,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6650,7 +6650,7 @@
        "resolution": "2k"
       },
       "price": 0.17,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6659,7 +6659,7 @@
        "resolution": "4k"
       },
       "price": 0.02,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6668,7 +6668,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6677,7 +6677,7 @@
        "resolution": "4k"
       },
       "price": 0.013,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6686,7 +6686,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6695,7 +6695,7 @@
        "resolution": "4k"
       },
       "price": 0.014,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6704,7 +6704,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6713,7 +6713,7 @@
        "resolution": "4k"
       },
       "price": 0.011,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6722,7 +6722,7 @@
        "resolution": "4k"
       },
       "price": 0.044,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6731,7 +6731,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6740,7 +6740,7 @@
        "resolution": "4k"
       },
       "price": 0.029,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6749,7 +6749,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6758,7 +6758,7 @@
        "resolution": "4k"
       },
       "price": 0.031,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6767,7 +6767,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6776,7 +6776,7 @@
        "resolution": "4k"
       },
       "price": 0.026,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6785,7 +6785,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6794,7 +6794,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6803,7 +6803,7 @@
        "resolution": "4k"
       },
       "price": 0.115,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6812,7 +6812,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6821,7 +6821,7 @@
        "resolution": "4k"
       },
       "price": 0.125,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6830,7 +6830,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6839,7 +6839,7 @@
        "resolution": "4k"
       },
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6848,7 +6848,7 @@
        "resolution": "4k"
       },
       "price": 0.316,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6857,7 +6857,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6866,7 +6866,7 @@
        "resolution": "4k"
       },
       "price": 0.206,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6875,7 +6875,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6884,7 +6884,7 @@
        "resolution": "4k"
       },
       "price": 0.223,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6893,7 +6893,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6902,7 +6902,7 @@
        "resolution": "4k"
       },
       "price": 0.178,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6911,7 +6911,7 @@
        "resolution": "4k"
       },
       "price": 0.712,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6920,7 +6920,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6929,7 +6929,7 @@
        "resolution": "4k"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6938,7 +6938,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6947,7 +6947,7 @@
        "resolution": "4k"
       },
       "price": 0.502,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6956,7 +6956,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -6965,7 +6965,7 @@
        "resolution": "4k"
       },
       "price": 0.4,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 32438,
@@ -6987,7 +6987,7 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 474,
@@ -7011,7 +7011,7 @@
      {
       "inputs": {},
       "price": 0.03,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 593,
@@ -7041,7 +7041,7 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      },
      {
       "inputs": {
@@ -7050,7 +7050,7 @@
       "price": 0.011,
       "priceExtra": 0.011,
       "priceInput": 0.011,
-      "priceMethod": "cp-pixel"
+      "priceMethod": "per-output-megapixel"
      }
     ],
     "runs": 3096,
@@ -7074,7 +7074,7 @@
      {
       "inputs": {},
       "price": 0.1,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 1169,
@@ -7178,7 +7178,7 @@
       "inputs": {},
       "note": "Billed by token usage: $2.30 per 1M input text tokens (prompt expansion included), $3.00 per 1M input image tokens, $7.60 per 1M output image tokens.",
       "price": 0,
-      "priceMethod": "cp-readoutput"
+      "priceMethod": "reported-price"
      }
     ],
     "runs": 196,
@@ -7204,7 +7204,7 @@
        "samples": "1"
       },
       "price": 0.051,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7212,7 +7212,7 @@
        "samples": "2"
       },
       "price": 0.102,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7220,7 +7220,7 @@
        "samples": "3"
       },
       "price": 0.153,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7228,7 +7228,7 @@
        "samples": "4"
       },
       "price": 0.204,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7236,7 +7236,7 @@
        "samples": "5"
       },
       "price": 0.255,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7244,7 +7244,7 @@
        "samples": "6"
       },
       "price": 0.306,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7252,7 +7252,7 @@
        "samples": "7"
       },
       "price": 0.357,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7260,7 +7260,7 @@
        "samples": "8"
       },
       "price": 0.408,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7268,7 +7268,7 @@
        "samples": "9"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7276,7 +7276,7 @@
        "samples": "10"
       },
       "price": 0.51,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7284,7 +7284,7 @@
        "samples": "1"
       },
       "price": 0.051,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7292,7 +7292,7 @@
        "samples": "2"
       },
       "price": 0.102,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7300,7 +7300,7 @@
        "samples": "3"
       },
       "price": 0.153,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7308,7 +7308,7 @@
        "samples": "4"
       },
       "price": 0.204,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7316,7 +7316,7 @@
        "samples": "5"
       },
       "price": 0.255,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7324,7 +7324,7 @@
        "samples": "6"
       },
       "price": 0.306,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7332,7 +7332,7 @@
        "samples": "7"
       },
       "price": 0.357,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7340,7 +7340,7 @@
        "samples": "8"
       },
       "price": 0.408,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7348,7 +7348,7 @@
        "samples": "9"
       },
       "price": 0.459,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7356,7 +7356,7 @@
        "samples": "10"
       },
       "price": 0.51,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7364,7 +7364,7 @@
        "samples": "1"
       },
       "price": 0.15,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7372,7 +7372,7 @@
        "samples": "2"
       },
       "price": 0.3,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7380,7 +7380,7 @@
        "samples": "3"
       },
       "price": 0.45,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7388,7 +7388,7 @@
        "samples": "4"
       },
       "price": 0.6,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7396,7 +7396,7 @@
        "samples": "5"
       },
       "price": 0.75,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7404,7 +7404,7 @@
        "samples": "6"
       },
       "price": 0.9,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7412,7 +7412,7 @@
        "samples": "7"
       },
       "price": 1.05,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7420,7 +7420,7 @@
        "samples": "8"
       },
       "price": 1.2,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7428,7 +7428,7 @@
        "samples": "9"
       },
       "price": 1.35,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      },
      {
       "inputs": {
@@ -7436,7 +7436,7 @@
        "samples": "10"
       },
       "price": 1.5,
-      "priceMethod": "cpr"
+      "priceMethod": "per-run"
      }
     ],
     "runs": 133,
@@ -7509,7 +7509,7 @@
     {
      "inputs": {},
      "price": 0.035,
-     "priceMethod": "cpo"
+     "priceMethod": "per-output-file"
     }
    ],
    "parameters": [
@@ -7699,21 +7699,21 @@
       "resolution": "1K"
      },
      "price": 0.0336,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
       "resolution": "2K"
      },
      "price": 0.0504,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
       "resolution": "4K"
      },
      "price": 0.113,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -7956,7 +7956,7 @@
     {
      "inputs": {},
      "price": 0.034,
-     "priceMethod": "cpo"
+     "priceMethod": "per-output-file"
     }
    ],
    "parameters": [
@@ -8112,7 +8112,7 @@
      },
      "note": "$0.25 for 512P",
      "price": 0.25,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8120,7 +8120,7 @@
      },
      "note": "$0.30 for 1024P",
      "price": 0.3,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8128,7 +8128,7 @@
      },
      "note": "$0.35 for 1536P",
      "price": 0.35,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -8435,7 +8435,7 @@
       "resolution": "1k"
      },
      "price": 0.025,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8444,7 +8444,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8453,7 +8453,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8462,7 +8462,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8471,7 +8471,7 @@
       "resolution": "1k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8480,7 +8480,7 @@
       "resolution": "1k"
      },
      "price": 0.013,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8489,7 +8489,7 @@
       "resolution": "1k"
      },
      "price": 0.013,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8498,7 +8498,7 @@
       "resolution": "1k"
      },
      "price": 0.043,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8507,7 +8507,7 @@
       "resolution": "1k"
      },
      "price": 0.034,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8516,7 +8516,7 @@
       "resolution": "1k"
      },
      "price": 0.034,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8525,7 +8525,7 @@
       "resolution": "1k"
      },
      "price": 0.035,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8534,7 +8534,7 @@
       "resolution": "1k"
      },
      "price": 0.035,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8543,7 +8543,7 @@
       "resolution": "1k"
      },
      "price": 0.024,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8552,7 +8552,7 @@
       "resolution": "1k"
      },
      "price": 0.024,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8561,7 +8561,7 @@
       "resolution": "1k"
      },
      "price": 0.053,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8570,7 +8570,7 @@
       "resolution": "1k"
      },
      "price": 0.041,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8579,7 +8579,7 @@
       "resolution": "1k"
      },
      "price": 0.041,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8588,7 +8588,7 @@
       "resolution": "1k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8597,7 +8597,7 @@
       "resolution": "1k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8606,7 +8606,7 @@
       "resolution": "1k"
      },
      "price": 0.028,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8615,7 +8615,7 @@
       "resolution": "1k"
      },
      "price": 0.028,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8624,7 +8624,7 @@
       "resolution": "1k"
      },
      "price": 0.094,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8633,7 +8633,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8642,7 +8642,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8651,7 +8651,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8660,7 +8660,7 @@
       "resolution": "1k"
      },
      "price": 0.074,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8669,7 +8669,7 @@
       "resolution": "1k"
      },
      "price": 0.05,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8678,7 +8678,7 @@
       "resolution": "1k"
      },
      "price": 0.05,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8687,7 +8687,7 @@
       "resolution": "1k"
      },
      "price": 0.211,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8696,7 +8696,7 @@
       "resolution": "1k"
      },
      "price": 0.165,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8705,7 +8705,7 @@
       "resolution": "1k"
      },
      "price": 0.165,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8714,7 +8714,7 @@
       "resolution": "1k"
      },
      "price": 0.167,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8723,7 +8723,7 @@
       "resolution": "1k"
      },
      "price": 0.167,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8732,7 +8732,7 @@
       "resolution": "1k"
      },
      "price": 0.114,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8741,7 +8741,7 @@
       "resolution": "1k"
      },
      "price": 0.114,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8750,7 +8750,7 @@
       "resolution": "2k"
      },
      "price": 0.05,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8759,7 +8759,7 @@
       "resolution": "2k"
      },
      "price": 0.032,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8768,7 +8768,7 @@
       "resolution": "2k"
      },
      "price": 0.032,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8777,7 +8777,7 @@
       "resolution": "2k"
      },
      "price": 0.031,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8786,7 +8786,7 @@
       "resolution": "2k"
      },
      "price": 0.031,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8795,7 +8795,7 @@
       "resolution": "2k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8804,7 +8804,7 @@
       "resolution": "2k"
      },
      "price": 0.02,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8813,7 +8813,7 @@
       "resolution": "2k"
      },
      "price": 0.088,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8822,7 +8822,7 @@
       "resolution": "2k"
      },
      "price": 0.056,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8831,7 +8831,7 @@
       "resolution": "2k"
      },
      "price": 0.056,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8840,7 +8840,7 @@
       "resolution": "2k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8849,7 +8849,7 @@
       "resolution": "2k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8858,7 +8858,7 @@
       "resolution": "2k"
      },
      "price": 0.036,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8867,7 +8867,7 @@
       "resolution": "2k"
      },
      "price": 0.036,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8876,7 +8876,7 @@
       "resolution": "2k"
      },
      "price": 0.107,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8885,7 +8885,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8894,7 +8894,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8903,7 +8903,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8912,7 +8912,7 @@
       "resolution": "2k"
      },
      "price": 0.067,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8921,7 +8921,7 @@
       "resolution": "2k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8930,7 +8930,7 @@
       "resolution": "2k"
      },
      "price": 0.042,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8939,7 +8939,7 @@
       "resolution": "2k"
      },
      "price": 0.19,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8948,7 +8948,7 @@
       "resolution": "2k"
      },
      "price": 0.121,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8957,7 +8957,7 @@
       "resolution": "2k"
      },
      "price": 0.121,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8966,7 +8966,7 @@
       "resolution": "2k"
      },
      "price": 0.119,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8975,7 +8975,7 @@
       "resolution": "2k"
      },
      "price": 0.119,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8984,7 +8984,7 @@
       "resolution": "2k"
      },
      "price": 0.075,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -8993,7 +8993,7 @@
       "resolution": "2k"
      },
      "price": 0.075,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9002,7 +9002,7 @@
       "resolution": "2k"
      },
      "price": 0.428,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9011,7 +9011,7 @@
       "resolution": "2k"
      },
      "price": 0.269,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9020,7 +9020,7 @@
       "resolution": "2k"
      },
      "price": 0.269,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9029,7 +9029,7 @@
       "resolution": "2k"
      },
      "price": 0.267,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9038,7 +9038,7 @@
       "resolution": "2k"
      },
      "price": 0.267,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9047,7 +9047,7 @@
       "resolution": "2k"
      },
      "price": 0.17,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9056,7 +9056,7 @@
       "resolution": "2k"
      },
      "price": 0.17,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9065,7 +9065,7 @@
       "resolution": "4k"
      },
      "price": 0.083,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9074,7 +9074,7 @@
       "resolution": "4k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9083,7 +9083,7 @@
       "resolution": "4k"
      },
      "price": 0.055,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9092,7 +9092,7 @@
       "resolution": "4k"
      },
      "price": 0.059,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9101,7 +9101,7 @@
       "resolution": "4k"
      },
      "price": 0.059,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9110,7 +9110,7 @@
       "resolution": "4k"
      },
      "price": 0.047,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9119,7 +9119,7 @@
       "resolution": "4k"
      },
      "price": 0.047,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9128,7 +9128,7 @@
       "resolution": "4k"
      },
      "price": 0.147,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9137,7 +9137,7 @@
       "resolution": "4k"
      },
      "price": 0.095,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9146,7 +9146,7 @@
       "resolution": "4k"
      },
      "price": 0.095,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9155,7 +9155,7 @@
       "resolution": "4k"
      },
      "price": 0.104,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9164,7 +9164,7 @@
       "resolution": "4k"
      },
      "price": 0.104,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9173,7 +9173,7 @@
       "resolution": "4k"
      },
      "price": 0.086,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9182,7 +9182,7 @@
       "resolution": "4k"
      },
      "price": 0.086,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9191,7 +9191,7 @@
       "resolution": "4k"
      },
      "price": 0.178,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9200,7 +9200,7 @@
       "resolution": "4k"
      },
      "price": 0.115,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9209,7 +9209,7 @@
       "resolution": "4k"
      },
      "price": 0.115,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9218,7 +9218,7 @@
       "resolution": "4k"
      },
      "price": 0.125,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9227,7 +9227,7 @@
       "resolution": "4k"
      },
      "price": 0.125,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9236,7 +9236,7 @@
       "resolution": "4k"
      },
      "price": 0.1,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9245,7 +9245,7 @@
       "resolution": "4k"
      },
      "price": 0.1,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9254,7 +9254,7 @@
       "resolution": "4k"
      },
      "price": 0.316,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9263,7 +9263,7 @@
       "resolution": "4k"
      },
      "price": 0.206,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9272,7 +9272,7 @@
       "resolution": "4k"
      },
      "price": 0.206,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9281,7 +9281,7 @@
       "resolution": "4k"
      },
      "price": 0.223,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9290,7 +9290,7 @@
       "resolution": "4k"
      },
      "price": 0.223,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9299,7 +9299,7 @@
       "resolution": "4k"
      },
      "price": 0.178,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9308,7 +9308,7 @@
       "resolution": "4k"
      },
      "price": 0.178,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9317,7 +9317,7 @@
       "resolution": "4k"
      },
      "price": 0.712,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9326,7 +9326,7 @@
       "resolution": "4k"
      },
      "price": 0.459,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9335,7 +9335,7 @@
       "resolution": "4k"
      },
      "price": 0.459,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9344,7 +9344,7 @@
       "resolution": "4k"
      },
      "price": 0.502,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9353,7 +9353,7 @@
       "resolution": "4k"
      },
      "price": 0.502,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9362,7 +9362,7 @@
       "resolution": "4k"
      },
      "price": 0.4,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9371,7 +9371,7 @@
       "resolution": "4k"
      },
      "price": 0.4,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -9692,7 +9692,7 @@
      },
      "note": "$0.9 for textured mesh",
      "price": 0.9,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -9700,7 +9700,7 @@
      },
      "note": "$0.30 for untextured white mesh.",
      "price": 0.3,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
@@ -10160,7 +10160,7 @@
      },
      "note": "$0.30 for 1024P",
      "price": 0.3,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     },
     {
      "inputs": {
@@ -10168,7 +10168,7 @@
      },
      "note": "$0.42 for 1536P",
      "price": 0.42,
-     "priceMethod": "cpr"
+     "priceMethod": "per-run"
     }
    ],
    "parameters": [
