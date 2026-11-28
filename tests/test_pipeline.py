@@ -4,7 +4,7 @@
 import pytest
 
 from tests.fakes import FakeClock, FakeTransport, bundled_catalog, form_parts
-from wiro_ai import api, pipeline
+from wiro_ai import api, pipeline, schema
 
 CATALOG = bundled_catalog()
 TRELLIS = CATALOG.schema("microsoft/trellis-2")
@@ -81,6 +81,19 @@ def test_single_picture_model_gets_one_picture_after_the_cutout(tmp_path):
     assert ("inputImage", "a.png", b"A") in form_parts(cut)
     images = [value for name, _f, value in form_parts(mesh) if name == "inputImage"]
     assert images == [b"https://cdn1.wiro.ai/100/cutout.png"]
+
+
+def test_a_model_without_a_file_limit_gets_every_picture(tmp_path):
+    item = {"id": "inputImage", "type": "combinefileinput", "required": True}  # no maxinputlength
+    mesh = schema.parse_tool({"cleanslugowner": "acme", "cleanslugproject": "views", "parameters": [{"items": [item]}]})
+    uploads = [(f"view{i}.png", f"PNG{i}".encode(), "image/png") for i in range(3)]
+    steps = pipeline.three_d_steps(mode=pipeline.IMAGE, mesh=mesh, mesh_values={}, images=uploads, cutout=CUTOUT)
+    transport = FakeTransport()
+    job = make_job(tmp_path, transport, steps)
+    job.run()
+    assert job.snapshot().ok, job.snapshot().error
+    images = sorted(value for name, _f, value in form_parts(transport.runs()[1]) if name == "inputImage")
+    assert images == [b"PNG1", b"PNG2", b"https://cdn1.wiro.ai/100/cutout.png"]
 
 
 def test_texture_steps(tmp_path):

@@ -42,7 +42,7 @@ The add-on adds a **Wiro AI** tab to the sidebar of the 3D Viewport. Describe an
 
 3. Search for **Wiro AI** in **Get Extensions** and click **Install**. New versions appear under **Check for Updates** in the same menu.
 
-**From a file:** download `wiro_ai-1.1.0.zip` from the [latest release](https://github.com/wiroai/Wiro-Blender/releases/latest) and drag it into Blender, or choose **Install from Disk** in the menu at the top right of **Get Extensions**.
+**From a file:** download `wiro_ai-1.1.2.zip` from the [latest release](https://github.com/wiroai/Wiro-Blender/releases/latest) and drag it into Blender, or choose **Install from Disk** in the menu at the top right of **Get Extensions**.
 
 The models run online, so **Allow Online Access** has to be on (**Edit > Preferences > System > Network**). The panel tells you when it is off.
 
@@ -176,13 +176,13 @@ blender --command extension build --source-dir wiro_ai --output-dir dist
 The smoke test installs the package and runs every panel through its real operator against a fake Wiro AI API, without network access:
 
 ```bash
-blender --command extension install-file -r user_default dist/wiro_ai-1.1.0.zip
+blender --command extension install-file -r user_default dist/wiro_ai-1.1.2.zip
 blender --background --factory-startup --python-exit-code 1 --python tests/blender/smoke_test.py -- tests/fixtures/cube.glb
 ```
 
 `tests/blender/live_test.py` makes real runs and is billed to the key's wallet, so it stays out of CI. CI runs lint and the unit tests on Python 3.11 and 3.13, and the manifest check, build and smoke test on Blender 4.2.23 and 5.3.0. `python scripts/update_catalog.py` refreshes `wiro_ai/data/catalog.json` from the public catalog.
 
-Pushing a tag such as `v1.1.0` runs the Release workflow: it builds the package with Blender, attaches it to the GitHub release and publishes the extension repository (`index.json` and an `index.html` page) on GitHub Pages.
+Pushing a tag such as `v1.1.2` runs the Release workflow: it builds the package with Blender, attaches it to the GitHub release and publishes the extension repository (`index.json` and an `index.html` page) on GitHub Pages.
 
 ## Pricing
 

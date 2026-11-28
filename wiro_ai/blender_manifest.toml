@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "wiro_ai"
-version = "1.1.1"
+version = "1.1.2"
 name = "Wiro AI 3D Generator"
 tagline = "Text and image to 3D, textures and 1,000+ models from Wiro AI"
 maintainer = "Wiro AI <support@wiro.ai>"

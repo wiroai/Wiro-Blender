@@ -38,6 +38,37 @@ def test_multi_image_model():
     assert model.param("inputVideo").file_kind == "video"
 
 
+def test_file_limit_comes_from_maxinputlength():
+    misspelled = "maxinput" + "lenght"
+    model = schema.parse_tool(
+        tool(
+            [
+                {"id": "three", "type": "combinefileinput", "maxinputlength": 3},
+                {"id": "one", "type": "combinefileinput", "maxinputlength": 1},
+                {"id": "missing", "type": "combinefileinput"},
+                {"id": "misspelled", "type": "combinefileinput", misspelled: 3},
+                {"id": "null", "type": "combinefileinput", "maxinputlength": None},
+                {"id": "zero", "type": "combinefileinput", "maxinputlength": 0},
+                {"id": "documents", "type": "multifileinput"},
+                {"id": "single", "type": "fileinput"},
+            ]
+        )
+    )
+    # No usable limit means no cap, not one file; a fileinput still takes one file.
+    assert {p.id: p.max_files for p in model.params} == {
+        "three": 3,
+        "one": 1,
+        "missing": None,
+        "misspelled": None,
+        "null": None,
+        "zero": None,
+        "documents": None,
+        "single": 1,
+    }
+    assert model.param("missing").takes_many and model.param("three").takes_many
+    assert not model.param("one").takes_many and not model.param("single").takes_many
+
+
 def test_image_model_slots():
     model = CATALOG.schema("google/nano-banana-2-1")
     assert model.prompt_param().id == "prompt"

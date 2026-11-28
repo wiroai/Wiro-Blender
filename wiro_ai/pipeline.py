@@ -411,13 +411,13 @@ def three_d_steps(
     def mesh_fields(results):
         if "cutout" in results:
             pictures = [_need(results["cutout"], "image", "background removal").url]
-            if mode == IMAGE and images and image_param.max_files > 1:
+            if mode == IMAGE and images and image_param.takes_many:
                 pictures += list(images[1:])
         elif mode == TEXT:
             pictures = [_need(results.get("reference"), "image", "reference picture").url]
         else:
             pictures = list(images or [])
-        pictures = pictures[: max(1, image_param.max_files)]
+        pictures = pictures[: image_param.max_files]  # None: no cap
         files = dict(mesh_files or {})
         files[image_param.id] = pictures
         return schema.build_fields(mesh, mesh_values, files)

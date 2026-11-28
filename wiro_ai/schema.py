@@ -50,11 +50,15 @@ class Param:
     minimum: float | None = None
     maximum: float | None = None
     step: float | None = None
-    max_files: int = 1
+    max_files: int | None = 1  # how many files a file field takes; None: no cap
 
     @property
     def is_file(self) -> bool:
         return self.type in FILE_TYPES
+
+    @property
+    def takes_many(self) -> bool:
+        return self.max_files is None or self.max_files > 1
 
     @property
     def file_kind(self) -> str:
@@ -261,7 +265,6 @@ def parse_tool(tool: dict) -> ModelSchema:
                 if isinstance(option, dict) and option.get("value") not in (None, ""):
                     value = str(option["value"])
                     options.append((value, str(option.get("text") or option.get("label") or value)))
-            max_files = item.get("maxinputlenght")
             ptype = str(item.get("type") or "text").lower()
             params.append(
                 Param(
@@ -277,7 +280,7 @@ def parse_tool(tool: dict) -> ModelSchema:
                     minimum=_number(item.get("minvalue")),
                     maximum=_number(item.get("maxvalue")),
                     step=_number(item.get("incrementby")),
-                    max_files=int(max_files) if str(max_files or "").isdigit() and int(max_files) > 0 else 1,
+                    max_files=_max_files(item.get("maxinputlength"), ptype),
                 )
             )
     discount = _number(tool.get("discount"))
@@ -292,6 +295,15 @@ def parse_tool(tool: dict) -> ModelSchema:
         cost_per_second=_number(tool.get("cps")) or None,
         discount_percent=discount if discount and 0 < discount <= 100 else None,
     )
+
+
+def _max_files(value: Any, ptype: str) -> int | None:
+    """A file field's limit from its maxinputlength. Without a positive one, a fileinput still takes
+    one file and the other file types have no cap, so a missing limit never blocks files."""
+    limit = int(value) if str(value or "").isdigit() and int(value) > 0 else None
+    if ptype == "fileinput":
+        return limit or 1
+    return limit
 
 
 def _note(value: Any) -> str:

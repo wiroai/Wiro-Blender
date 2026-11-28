@@ -135,7 +135,8 @@ _MODERATION = re.compile(r"detect|classif|moderat|filter|checker", re.I)
 CACHE_SECONDS = 6 * 3600
 # What the disk cache holds. Bump it when that changes; a file of another format is not read.
 # 2: Wiro's renamed price method ids (per-run, per-output-file...).
-CACHE_FORMAT = 2
+# 3: the file limit of a file field under its corrected name, maxinputlength.
+CACHE_FORMAT = 3
 
 
 def is_hidden(row: dict) -> bool:
@@ -205,7 +206,7 @@ _ITEM_KEYS = (
     "minvalue",
     "maxvalue",
     "incrementby",
-    "maxinputlenght",
+    "maxinputlength",
 )
 
 

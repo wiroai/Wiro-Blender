@@ -57,7 +57,7 @@ class WiroAIParam(bpy.types.PropertyGroup):
     file_kind: StringProperty()
     section: StringProperty(default="main")
     required: BoolProperty()
-    max_files: IntProperty(default=1)
+    max_files: IntProperty(default=1)  # 0: no cap
     options_json: StringProperty()
     value_text: StringProperty(name="Value", description="The value sent to the model")
     value_int: IntProperty(name="Value", description="The value sent to the model")

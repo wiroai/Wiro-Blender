@@ -130,16 +130,19 @@ class WIRO_AI_PT_generate_3d(bpy.types.Panel):
         else:
             mesh = runtime.catalog.schema(settings.mesh_form.slug)
             image_param = mesh.image_param() if mesh else None
-            limit = image_param.max_files if image_param else 1
-            header = "Pictures" if limit > 1 else "Picture"
-            wide.label(text=f"{header} ({len(settings.images)}/{limit})" if limit > 1 else header)
+            limit = image_param.max_files if image_param else 1  # None: no cap
+            if limit is None:
+                header = f"Pictures ({len(settings.images)})"
+            else:
+                header = f"Pictures ({len(settings.images)}/{limit})" if limit > 1 else "Picture"
+            wide.label(text=header)
             for index, entry in enumerate(settings.images):
                 row = wide.row(align=True)
                 if entry.image is None:
                     row.prop(entry, "path", text="")
                 row.prop(entry, "image", text="")
                 row.operator("wiro_ai.image_remove", text="", icon="X").index = index
-            if len(settings.images) < max(1, limit):
+            if limit is None or len(settings.images) < limit:
                 wide.operator("wiro_ai.image_add", icon="ADD")
             first = settings.images[0] if len(settings.images) else None
             if first is not None and first.path and not first.image:
