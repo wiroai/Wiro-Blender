@@ -118,7 +118,7 @@ ACME = {
                     "defaultvalue": "flat",
                     "options": [{"value": "flat", "text": "Flat"}, {"value": "photo", "text": "Photo"}],
                 },
-                {"id": "inputImage", "type": "combinefileinput", "maxinputlenght": 2, "label": "Image"},
+                {"id": "inputImage", "type": "combinefileinput", "maxinputlength": 2, "label": "Image"},
             ]
         }
     ],

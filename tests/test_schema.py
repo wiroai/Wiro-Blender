@@ -38,6 +38,20 @@ def test_multi_image_model():
     assert model.param("inputVideo").file_kind == "video"
 
 
+def test_file_limit_comes_from_maxinputlength():
+    misspelled = "maxinput" + "lenght"
+    model = schema.parse_tool(
+        tool(
+            [
+                {"id": "inputImage", "type": "combinefileinput", "maxinputlength": 4},
+                {"id": "inputMask", "type": "combinefileinput", misspelled: 4},
+            ]
+        )
+    )
+    assert model.param("inputImage").max_files == 4
+    assert model.param("inputMask").max_files == 1, "the misspelled name is not read"
+
+
 def test_image_model_slots():
     model = CATALOG.schema("google/nano-banana-2-1")
     assert model.prompt_param().id == "prompt"

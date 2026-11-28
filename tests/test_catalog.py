@@ -2,9 +2,13 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import json
+import pathlib
+import subprocess
 
 from tests.fakes import BUNDLED, FakeTransport, bundled_catalog
 from wiro_ai import api, catalog
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def client(transport):
@@ -51,6 +55,9 @@ def test_summary_and_trim():
     )
     assert "readme" not in trimmed
     assert trimmed["parameters"] == [{"items": [{"id": "p", "type": "text"}]}]
+    files = {"id": "f", "type": "combinefileinput", "maxinputlength": 3, "maxinput" + "lenght": 3}
+    trimmed = catalog.trim_tool(tool("a", "b", parameters=[{"items": [files]}]))
+    assert trimmed["parameters"] == [{"items": [{"id": "f", "type": "combinefileinput", "maxinputlength": 3}]}]
 
 
 def test_refresh_store_and_cache(tmp_path):
@@ -71,13 +78,16 @@ def test_refresh_store_and_cache(tmp_path):
 
 
 def test_a_cache_of_another_format_is_not_read(tmp_path):
-    # A cache written before the price method ids were renamed has no format.
+    # A cache written before the price method ids were renamed has no format. Format 2 keeps
+    # the file limit under its misspelled name.
     cache = tmp_path / "catalog.json"
     rows = [{"slug": "old/model", "price_rows": [{"inputs": {}, "price": 0.3, "priceMethod": "old-id"}]}]
-    cache.write_text(json.dumps({"categories": {"3d-generation": rows}, "listed_at": {"3d-generation": 1e12}}))
-    live = catalog.Catalog(str(BUNDLED), str(cache))
-    assert "old/model" not in [row["slug"] for row in live.models("3d-generation")]
-    assert live.stale("3d-generation"), "the lists refresh at once"
+    for stamp in ({}, {"format": 2}):
+        payload = {**stamp, "categories": {"3d-generation": rows}, "listed_at": {"3d-generation": 1e12}}
+        cache.write_text(json.dumps(payload))
+        live = catalog.Catalog(str(BUNDLED), str(cache))
+        assert "old/model" not in [row["slug"] for row in live.models("3d-generation")], stamp
+        assert live.stale("3d-generation"), "the lists refresh at once"
 
 
 def test_bundled_copy_names_known_price_methods():
@@ -90,6 +100,15 @@ def test_bundled_copy_names_known_price_methods():
     rows = [r for listed in data["categories"].values() for row in listed for r in row.get("price_rows") or []]
     rows += [r for tool in data["schemas"].values() for r in tool.get("dynamicprice") or []]
     assert rows and {r["priceMethod"] for r in rows} <= known
+
+
+def test_no_misspelled_maxinputlength():
+    # Wiro's catalog names the file limit maxinputlength; no tracked file may bring back the old misspelling.
+    needle = ("maxinput" + "lenght").encode()
+    names = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, text=True, check=True).stdout
+    paths = [ROOT / name for name in names.split("\0") if name]
+    found = [str(path.relative_to(ROOT)) for path in paths if path.is_file() and needle in path.read_bytes().lower()]
+    assert not found, f"the misspelled file limit name is back in {found}"
 
 
 def test_fetch_schema(tmp_path):

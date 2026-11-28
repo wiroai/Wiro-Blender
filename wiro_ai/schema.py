@@ -261,7 +261,7 @@ def parse_tool(tool: dict) -> ModelSchema:
                 if isinstance(option, dict) and option.get("value") not in (None, ""):
                     value = str(option["value"])
                     options.append((value, str(option.get("text") or option.get("label") or value)))
-            max_files = item.get("maxinputlenght")
+            max_files = item.get("maxinputlength")
             ptype = str(item.get("type") or "text").lower()
             params.append(
                 Param(
